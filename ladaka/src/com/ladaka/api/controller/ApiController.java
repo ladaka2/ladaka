@@ -40,7 +40,7 @@ public class ApiController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/apiGet")
+	@RequestMapping(value="/apiGet", produces="application/text; charset=utf8")
 	@ResponseBody
 	public String ApiGet(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("TestController > test");
@@ -64,11 +64,9 @@ public class ApiController {
 		
 		try {
 			String serviceKey = "vZNjcCd88Bf%2BSJspiaA%2FfXS6JhvSRPK7yfYknuja0T1KYDickPWAElWdJlIhpkvF8H1hNKLVAVjomuREV%2B0Agw%3D%3D"; //인증키
-			String apiURL = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList?ServiceKey="+ serviceKey+"&pageNo=1&numOfRows=10"; //결과
 			
 			StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList"); /*URL*/
-			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
-			urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*서비스키 */
+			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*서비스키 */
 			urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
 			urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
 			
