@@ -31,7 +31,6 @@
 	}
 	
 	function parseJson(data) {
-		//alert(data);
 		var html = "";
 		//alert(data.response.body.pageNo);
 		//alert(data.response.body.totalCount);
