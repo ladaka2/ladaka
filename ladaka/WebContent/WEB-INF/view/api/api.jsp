@@ -5,13 +5,19 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>API CALL TEST</title>
 	<script src="js/jquery-3.2.0.min.js"></script>
+	<script src="js/angular.min.js"></script>
 </head>
 
 <script>
+	var param = {};
+	
 	$(document).ready(function(){
-		alert("1111");
-		
-		var param = {};
+		//search(1);
+	});
+	
+	function search(no) {
+		param = {};
+		param.pageNo = no;
 		
 		$.ajax({
 			type : "POST"
@@ -19,18 +25,123 @@
 			, data : param
 			//, dataType : "xml"
 			, dataType : "json"
-			, success : parseXml
+			, success : parseJson
 			, error : function() { alert("error!!"); }
 		});
-	});
+	}
 	
-	function parseXml(data) {
-		alert(data);
+	function parseJson(data) {
+		//alert(data);
+		var html = "";
+		//alert(data.response.body.pageNo);
+		//alert(data.response.body.totalCount);
+		$("#span").html(data.response.body.pageNo+"/"+data.response.body.totalCount);
+		
+		$.each(data.response.body.items.item, function(index, entry){
+			html += "<tr>";
+				html += "<td>";
+				html += entry["yadmNm"];
+				html += "</td>";
+				html += "<td>";
+				html += entry["telno"];
+				html += "</td>";
+				html += "<td>";
+				html += entry["addr"];
+				html += "</td>";
+			html += "</tr>";
+		});
+		$("#tableBody").html(html);
+		
+		//page
+		html = "";
+		
+		
 	}
 </script>
 
-<body>
-	API CALL TEST!!!
+<script>
+	//앵귤러js
+	var app = angular.module("app", []);
 	
+	app.controller('appCtrl', function($scope, $http) {
+		$http({
+			method: "GET",
+			url: "http://localhost:8080/ladaka/apiGet"
+		}).then(function successCallback(response2) {
+			$scope.message = response2.data.response.body.items;
+			$scope.rows = response2.data.response.body.items.item;
+		}, function errorCallback(response2) {
+			//error
+		})
+		
+		
+	});
+	
+	
+
+</script>
+
+<body>
+	API CALL TEST!!!<br/>
+	<button>검색</button><br/>
+	
+	<span id="span">Loading...</span><br/>
+	
+	<table border="1">
+		<thead>
+		</thead>
+		<tbody id="tableBody">
+		<tr><td>Loading...</td></tr>
+		</tbody>
+	</table>
+	<div id="page"></div>
+	
+	<div ng-app="app" ng-controller="appCtrl">
+		<!--  
+		<h1>{{ message }}</h1>
+		-->
+		<table border="1">
+			<thead>
+				<tr>
+					<th>요양기호</th>
+					<th>병원명</th>
+					<th>병원주소</th>
+					<th>읍면동명</th>
+					<th>전화번호</th>
+					<th>종별코드</th>
+					<th>종별코드명</th>
+					<th>시도코드</th>
+					<th>시도명</th>
+					<th>시군구코드</th>
+					<th>시군구명</th>
+					<th>읍면동명</th>
+					<th>우편번호</th>
+					<th>x좌표</th>
+					<th>y좌표</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="row in rows">
+				<tr>
+					<td>{{ row.ykiho }}</td>
+					<td>{{ row.yadmNm }}</td>
+					<td>{{ row.addr }}</td>
+					<td>{{ row.emdongNm }}</td>
+					<td>{{ row.telno }}</td>
+					<td>{{ row.clCd }}</td>
+					<td>{{ row.clCdNm }}</td>
+					<td>{{ row.sidoCd }}</td>
+					<td>{{ row.sidoCdNm }}</td>
+					<td>{{ row.sgguCd }}</td>
+					<td>{{ row.sgguCdNm }}</td>
+					<td>{{ row.emdongNm }}</td>
+					<td>{{ row.postNo }}</td>
+					<td>{{ row.XPos }}</td>
+					<td>{{ row.YPos }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 </body>
+
 </html>
