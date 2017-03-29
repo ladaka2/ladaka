@@ -59,7 +59,7 @@
 </script>
 
 <script>
-	//앵귤러js
+	//angular js
 	var app = angular.module("app", []);
 	
 	app.controller('appCtrl', function($scope, $http) {
@@ -71,6 +71,7 @@
 			$scope.rows = response2.data.response.body.items.item;
 		}, function errorCallback(response2) {
 			//error
+			
 		})
 		
 		
