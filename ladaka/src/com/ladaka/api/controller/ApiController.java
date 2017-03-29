@@ -111,11 +111,11 @@ public class ApiController {
 		
 		//결과값
 		//ArrayList<HashMap<String, Object>> result = null;
-		String result = null;
+		JSONObject result = null;
 		
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		params.put("pageNo", 6885);
+		params.put("pageNo", 1);
 		params.put("numOfRows", 10);
 		
 		
@@ -124,11 +124,11 @@ public class ApiController {
 		mav.setViewName("api/api");
 		
 		//API 호출
-		result = apiService.ApiGet(params);
+		result = apiService.apiGet(params);
 		System.out.println("[ApiGetToDB]"+result);//tot 68846
 		
 		//DB Insert
-		
+		apiService.insertJsonHospital(result);
 		
 		return mav;
 	}

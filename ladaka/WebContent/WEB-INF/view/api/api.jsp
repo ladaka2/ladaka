@@ -116,7 +116,6 @@
 					<th>시도명</th>
 					<th>시군구코드</th>
 					<th>시군구명</th>
-					<th>읍면동명</th>
 					<th>우편번호</th>
 					<th>x좌표</th>
 					<th>y좌표</th>
@@ -135,7 +134,6 @@
 					<td>{{ row.sidoCdNm }}</td>
 					<td>{{ row.sgguCd }}</td>
 					<td>{{ row.sgguCdNm }}</td>
-					<td>{{ row.emdongNm }}</td>
 					<td>{{ row.postNo }}</td>
 					<td>{{ row.XPos }}</td>
 					<td>{{ row.YPos }}</td>
