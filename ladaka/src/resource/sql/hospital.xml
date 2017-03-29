@@ -8,4 +8,42 @@
 		SELECT * FROM HOSPITAL
 	</select>
 	
+	
+	<insert id="insertHospital" parameterType="hashmap">
+		INSERT INTO HOSPITAL (
+			HOST_IDX
+			, Y_KIHO
+			, YADM_NM
+			, ADDR
+			, EMDONG_NM
+			, TEL_NO
+			, CL_CD
+			, CL_CD_NM
+			, SIDO_CD
+			, SIDO_CD_NM
+			, SGGU_CD
+			, SGGU_CD_NM
+			, POST_NO
+			, X_POS
+			, Y_POS
+		) VALUES (
+			(SELECT COUNT(1) FROM HOSPITAL) + 1
+			, ${y_kiho}
+			, ${yadm_nm}
+			, ${addr}
+			, ${emdong_nm}
+			, ${tel_no}
+			, ${cl_cd}
+			, ${cl_cd_nm}
+			, ${sido_cd}
+			, ${sido_cd_nm}
+			, ${sggu_cd}
+			, ${sggu_cd_nm}
+			, ${post_no}
+			, ${x_pos}
+			, ${y_pos}
+		)
+	</insert>
+	
+	
 </mapper>

@@ -66,10 +66,10 @@
 		$http({
 			method: "GET",
 			url: "http://localhost:8080/ladaka/apiGet"
-		}).then(function successCallback(response2) {
-			$scope.message = response2.data.response.body.items;
-			$scope.rows = response2.data.response.body.items.item;
-		}, function errorCallback(response2) {
+		}).then(function successCallback(response) {
+			$scope.message = response.data.response.body.items;
+			$scope.rows = response.data.response.body.items.item;
+		}, function errorCallback(response) {
 			//error
 			
 		})
@@ -83,6 +83,8 @@
 
 <body>
 	API CALL TEST!!!<br/>
+	<button onclick="location.href='/ladaka/apiGetToDB'">DB입력</button><br/><br/>
+	
 	<button>검색</button><br/>
 	
 	<span id="span">Loading...</span><br/>

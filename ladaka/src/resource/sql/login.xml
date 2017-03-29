@@ -9,11 +9,9 @@
 	</select>
 	
 	<select id="selectUserLogin" resultMap="hashmap">
-		SELECT * FROM USER 
-		WHERE
-		EMAIL = "aaa@aaa.com"
-		AND 
-		PSWORD = "111"
+		SELECT * FROM USER
+		WHERE EMAIL = "aaa@aaa.com"
+		AND PSWORD = "111"
 	</select>
 	
 </mapper>

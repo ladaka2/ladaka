@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ladaka.test.service.TestService;
+import com.ladaka.api.service.ApiService;
 
 @Controller
 public class ApiController {
 	
 	@Autowired
-	private TestService testService;
+	private ApiService apiService;
 	
 	protected static Logger logger = Logger.getLogger(ApiController.class.getName());//로그
 	ModelAndView mav = null;//모델
@@ -49,7 +49,6 @@ public class ApiController {
 		//ArrayList<HashMap<String, Object>> result = null;
 		String result = null;
 		
-		
 		//파라메터 설정
 		params = new HashMap<String, Object>();
 		
@@ -60,8 +59,7 @@ public class ApiController {
 		//서비스 호출
 		//result = testService.test(params);
 		
-		//String serviceKey = "tDynG7S6CMRrpuhmuh4snhAdL0MMX3YuG%2BpCpN5ZbagqP889Sef9XGObqa%2BOAd%2BD4%2FBBlHDNQrmdTZi7vlIWtA%3D%3D";//애플리케이션 클라이언트 아이디값";
-		
+		//API 호출
 		try {
 			String serviceKey = "vZNjcCd88Bf%2BSJspiaA%2FfXS6JhvSRPK7yfYknuja0T1KYDickPWAElWdJlIhpkvF8H1hNKLVAVjomuREV%2B0Agw%3D%3D"; //인증키
 			
@@ -78,9 +76,9 @@ public class ApiController {
 			
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
-			if(responseCode==200) { // 정상 호출
+			if(responseCode==200) { //정상 호출
 				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			} else { // 에러 발생
+			} else { //에러 발생
 				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 			}
 			String inputLine;
@@ -105,6 +103,34 @@ public class ApiController {
 		//logger.debug(result.toString());
 		
 		return result;
-	}//end test
+	}//end ApiGet
+	
+	
+	@RequestMapping(value = "/apiGetToDB")
+	public ModelAndView ApiGetToDB(HttpServletRequest req, HttpServletResponse res) {
+		
+		//결과값
+		//ArrayList<HashMap<String, Object>> result = null;
+		String result = null;
+		
+		//파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("pageNo", 6885);
+		params.put("numOfRows", 10);
+		
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("api/api");
+		
+		//API 호출
+		result = apiService.ApiGet(params);
+		System.out.println("[ApiGetToDB]"+result);//tot 68846
+		
+		//DB Insert
+		
+		
+		return mav;
+	}
 	
 }
