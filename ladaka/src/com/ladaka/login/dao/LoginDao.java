@@ -30,5 +30,9 @@ public class LoginDao {
 	public ArrayList selectUserLogin(HashMap<String, Object> params) {
 		return (ArrayList)sqlSession.selectList("login.selectUserLogin", params);
 	}
+	
+	public ArrayList selectUserLogin2(HashMap<String, Object> params) {
+		return (ArrayList)sqlSession.selectList("login.selectUserLogin2", params);
+	}
 
 }

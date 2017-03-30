@@ -97,6 +97,9 @@
 			</div>
 			<div id="goRegist2Div" style="display: none">
 				<button id="goRegist2">병원외 사업자회원 가입</button>
+				<p>
+				* 병원 회원 가입을 하시려면 병원찾기 > 병원 리스트에서 해당 병원 선택 후 병원 회원 가입 신청을 해주셔야 합니다.
+				</p>
 			</div>
 		</div>
 

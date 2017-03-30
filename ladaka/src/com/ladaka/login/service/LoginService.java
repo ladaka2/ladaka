@@ -21,5 +21,9 @@ public class LoginService {
 	public ArrayList<HashMap<String, Object>> userLogin(HashMap<String, Object> params) {
 		return (ArrayList) loginDao.selectUserLogin(params);
 	}
+	
+	public ArrayList<HashMap<String, Object>> userLogin2(HashMap<String, Object> params) {
+		return (ArrayList) loginDao.selectUserLogin2(params);
+	}
 
 }
