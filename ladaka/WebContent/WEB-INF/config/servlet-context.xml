@@ -9,17 +9,26 @@
   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
  
- <!-- 어노테이션 -->
+ <!-- Spring MVC 애노테이션 설정을 활성화한다.(@Controller 등의) -->
  <annotation-driven/>
  
- <!-- 리소스 -->
+ <!-- HTTP GET 요청에서 사용할 리소스내용을 위해서 /resources 디렉토리의 파일을 가져온다. -->
  <resources mapping="/resources/-*" location="/resources/" />
  
- <!--  -->
- <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ <!-- JSON View 설정 -->
+ <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" id="viewResolver">
+  </beans:bean>
+  <beans:bean class="net.sf.json.spring.web.servlet.view.JsonView" id="jsonView">
+    <beans:property name="contentType" value="application/json;charset=UTF-8"></beans:property>
+  </beans:bean>
+ 
+ <!-- Controller 에서 반환하는 view 이름에 jsp 경로를 연결 -->
+ <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
   <beans:property name="prefix" value="/WEB-INF/view/" />
   <beans:property name="suffix" value=".jsp" />
  </beans:bean>
+ 
+ 
  
  <!--Controller -->
  <!--  

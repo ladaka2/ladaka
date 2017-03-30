@@ -28,20 +28,20 @@
 			, Y_POS
 		) VALUES (
 			(SELECT COUNT(1) FROM HOSPITAL) + 1
-			, ${y_kiho}
-			, ${yadm_nm}
-			, ${addr}
-			, ${emdong_nm}
-			, ${tel_no}
-			, ${cl_cd}
-			, ${cl_cd_nm}
-			, ${sido_cd}
-			, ${sido_cd_nm}
-			, ${sggu_cd}
-			, ${sggu_cd_nm}
-			, ${post_no}
-			, ${x_pos}
-			, ${y_pos}
+			, '${ykiho}'
+			, '${yadmNm}'
+			, '${addr}'
+			, '${emdongNm}'
+			, '${telno}'
+			, '${clCd}'
+			, '${clCdNm}'
+			, '${sidoCd}'
+			, '${sidoCdNm}'
+			, '${sgguCd}'
+			, '${sgguCdNm}'
+			, '${postNo}'
+			, '${XPos}'
+			, '${YPos}'
 		)
 	</insert>
 	

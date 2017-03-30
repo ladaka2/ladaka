@@ -112,7 +112,7 @@ public class ApiService {
 			params.put("XPos", obj.get("XPos") );
 			params.put("YPos", obj.get("YPos") );
 			
-			//hospitalDao.insertHospital(params);
+			hospitalDao.insertHospital(params);
 			
 		}
 		
