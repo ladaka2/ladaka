@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>API CALL TEST</title>
+	<title>API CALL 병원정보 서비스</title>
 	<script src="js/jquery-3.2.0.min.js"></script>
 	<script src="js/angular.min.js"></script>
 </head>
@@ -82,9 +82,10 @@
 </script>
 
 <body>
-	API CALL TEST!!!<br/>
+	API CALL 병원정보 서비스<br/>
+	<hr/>
 	<button onclick="location.href='/ladaka/apiGetToDB'">DB입력</button><br/><br/>
-	
+	<hr/>
 	<button>검색</button><br/>
 	
 	<span id="span">Loading...</span><br/>
