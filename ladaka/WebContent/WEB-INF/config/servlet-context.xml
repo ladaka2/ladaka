@@ -17,10 +17,10 @@
  
  <!-- JSON View 설정 -->
  <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" id="viewResolver">
-  </beans:bean>
-  <beans:bean class="net.sf.json.spring.web.servlet.view.JsonView" id="jsonView">
-    <beans:property name="contentType" value="application/json;charset=UTF-8"></beans:property>
-  </beans:bean>
+ </beans:bean>
+ <beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+  <beans:property name="contentType" value="application/json;charset=UTF-8"></beans:property>
+ </beans:bean>
  
  <!-- Controller 에서 반환하는 view 이름에 jsp 경로를 연결 -->
  <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
