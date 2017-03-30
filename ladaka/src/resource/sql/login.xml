@@ -11,7 +11,7 @@
 	<select id="selectUserLogin" resultMap="hashmap">
 		SELECT * FROM USER
 		WHERE EMAIL = "aaa@aaa.com"
-		AND PSWORD = "111"
+		AND PSWORD = "1111"
 	</select>
 	
 </mapper>

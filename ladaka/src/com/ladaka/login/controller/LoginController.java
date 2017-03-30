@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ladaka.login.service.LoginService;
@@ -46,35 +47,18 @@ public class LoginController {
 		mav.setViewName("login/login");
 
 		// 서비스 호출
-		result = loginService.login(params);
+		//result = loginService.login(params);
 
 		// 확인
-		logger.debug(result.toString());
+		//logger.debug(result.toString());
 
 		return mav;
 	} // end login
 
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-	public void userLogin(HttpServletRequest req, HttpServletResponse res) {
+	@ResponseBody
+	public String userLogin(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("LoginController > userLogin");
-
-		/*
-		 * // 결과값 ArrayList<HashMap<String, Object>> result = null;
-		 * 
-		 * // 서비스 호출 result = loginService.userLogin(params);
-		 * 
-		 * // 확인 logger.debug("userLogin : " + result.toString());
-		 * 
-		 * // String --> Json 변환 JSONArray loginArray = null; try { loginArray =
-		 * new JSONArray(result); } catch (JSONException e) {
-		 * e.printStackTrace(); }
-		 * 
-		 * JSONObject obj = null; for (int i = 0; i < loginArray.length(); i++)
-		 * { obj = loginArray.getJSONObject(i); }
-		 * logger.debug("userLoginObject : " + obj);
-		 * 
-		 * return;
-		 */
 
 		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
 		result = loginService.userLogin(params);
@@ -91,28 +75,64 @@ public class LoginController {
 				jArray.put(sObject);
 			}
 
-			obj.put("result", jArray); // 배열을 넣음
-
-			System.out.println(obj.toString());
+			obj.put("list", jArray); // 배열을 넣음
+			logger.debug("userLoginJsonArray : " + obj.toString());
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-
-		return;
-
-		/*
-		 * HashMap<String,Object> result = new HashMap<String, Object>();
-		 * 
-		 * List<Map<String, Object>> obj = loginService.userLogin(params);
-		 * result.put("result", obj);
-		 * 
-		 * logger.debug("userLoginObject : " + obj);
-		 * logger.debug("userLoginObjectResult : " + result);
-		 * 
-		 * return;
-		 */
+		return obj.toString();
 	}
 
+	@RequestMapping(value = "/findPw")
+	public ModelAndView findPw(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("LoginController > findPw");
+
+		// 결과값
+		ArrayList<HashMap<String, Object>> result = null;
+
+		// 파라메터 설정
+		params = new HashMap<String, Object>();
+
+		// 모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("login/findPw");
+
+		return mav;
+	}
+	
+	@RequestMapping(value = "/goRegist")
+	public ModelAndView goRegist(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("LoginController > goRegist");
+
+		// 결과값
+		ArrayList<HashMap<String, Object>> result = null;
+
+		// 파라메터 설정
+		params = new HashMap<String, Object>();
+
+		// 모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("login/goRegist");
+
+		return mav;
+	}
+	
+	@RequestMapping(value = "/goRegist2")
+	public ModelAndView goRegist2(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("LoginController > goRegist2");
+		
+		// 결과값
+		ArrayList<HashMap<String, Object>> result = null;
+		
+		// 파라메터 설정
+		params = new HashMap<String, Object>();
+		
+		// 모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("login/goRegist2");
+		
+		return mav;
+	}
 }
