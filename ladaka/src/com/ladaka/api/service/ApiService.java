@@ -87,9 +87,6 @@ public class ApiService {
 		for(int i=0; i<array.length(); i++) {
 			JSONObject obj = (JSONObject) array.get(i);
 			params = new HashMap();
-			
-			//System.out.println(obj.get("yadmNm"));
-			
 			params.put("ykiho", obj.get("ykiho") );
 			params.put("yadmNm", obj.get("yadmNm") );
 			params.put("addr", obj.get("addr") );
@@ -109,10 +106,6 @@ public class ApiService {
 			hospitalDao.insertHospital(params);
 			
 		}
-		
-		//System.out.println(json);
-		//data.get("response").get("body").get("items");
-		//
 		
 		return 1;
 	}//end insertJsonHospital
