@@ -115,22 +115,26 @@ public class ApiController {
 		
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		params.put("pageNo", 1);
-		params.put("numOfRows", 10);
+		params.put("numOfRows", 100);
 		
+		for(int i=1; i<=689; i++) {
+			params.put("pageNo", i);
+			
+			//API 호출
+			result = apiService.apiGet(params);
+			System.out.println("[ApiGetToDB]"+result);//tot 68846 > 6885/10 > 689/100
+			
+			//DB Insert
+			apiService.insertJsonHospital(result);
+		}
 		
 		//모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("api/api");
 		
-		//API 호출
-		result = apiService.apiGet(params);
-		System.out.println("[ApiGetToDB]"+result);//tot 68846
-		
-		//DB Insert
-		apiService.insertJsonHospital(result);
-		
 		return mav;
 	}
+	
+	
 	
 }
