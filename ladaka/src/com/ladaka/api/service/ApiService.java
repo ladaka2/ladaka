@@ -93,14 +93,8 @@ public class ApiService {
 			params.put("ykiho", obj.get("ykiho") );
 			params.put("yadmNm", obj.get("yadmNm") );
 			params.put("addr", obj.get("addr") );
-			
-			if(obj.has("emdongNm")) { params.put("emdongNm", obj.get("emdongNm") ); }
-			
-			//params.put("emdongNm", obj.get("emdongNm") );
-			//String test = StringUtil.replaceNull(obj.get("emdongNm"));
-			//System.out.println(test);
-			
-			params.put("telno", obj.get("telno") );
+			if(obj.has("emdongNm")) params.put("emdongNm", obj.get("emdongNm"));
+			if(obj.has("telno")) params.put("telno", obj.get("telno"));
 			params.put("clCd", obj.get("clCd") );
 			params.put("clCdNm", obj.get("clCdNm") );
 			params.put("sidoCd", obj.get("sidoCd") );
@@ -109,8 +103,8 @@ public class ApiService {
 			params.put("sgguCdNm", obj.get("sgguCdNm") );
 			//params.put("emdongNm", obj.get("emdongNm") );
 			params.put("postNo", obj.get("postNo") );
-			params.put("XPos", obj.get("XPos") );
-			params.put("YPos", obj.get("YPos") );
+			if(obj.has("XPos")) params.put("XPos", obj.get("XPos")); else params.put("XPos", "0");
+			if(obj.has("YPos")) params.put("YPos", obj.get("YPos")); else params.put("YPos", "0");
 			
 			hospitalDao.insertHospital(params);
 			
