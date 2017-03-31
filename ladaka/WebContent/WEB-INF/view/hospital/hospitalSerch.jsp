@@ -13,6 +13,21 @@
 	
 	$(document).ready(function(){
 		//search(1);
+		
+		
+		if (navigator.geolocation) {  
+			/* geolocation is available */
+			navigator.geolocation.getCurrentPosition(showMap);
+			function showMap(position) {
+				latitude = position.coords.latitude;
+				longitude = position.coords.longitude;
+				
+				alert(latitude+"/"+longitude);
+			}
+		} else {
+			alert("I'm sorry, but geolocation services are not supported by your browser.");
+		}
+		
 	});
 	
 	//angular js
