@@ -107,24 +107,43 @@ public class ApiController {
 		
 		//모델 설정
 		mav = new ModelAndView();
-		mav.setViewName("api/apiMedicDetail");
+		mav.setViewName("jsonView");
 		
 		//결과값
 		JSONObject result = null;
+		
+		//
+		//String apiType = req.getAttribute("apiType").toString();
+		String apiType = req.getParameter("apiType");
+		
 		
 		//파라메터 설정
 		params = new HashMap<String, Object>();
 		params.put("numOfRows", 100);
 		params.put("pageNo", 1);
+		params.put("apiType", apiType);
+		
+		System.out.println(params.toString());
 		
 		result = apiService.apiGetMedicDetailInfo(params);
 		
 		System.out.println("[L122]"+result.toString());
-		
+		mav.addObject("result", result.toString());
 		return mav;
 		
 	}//end apiGetMedicDetail
 	
 	
+	@RequestMapping(value = "/apiGetToDBDetail")
+	@ResponseBody
+	public ModelAndView ApiGetToDBDetail(HttpServletRequest req, HttpServletResponse res) {
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+		
+		return mav;
+		
+	}//ApiGetToDBDetail
 	
 }

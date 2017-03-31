@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.JSONArray;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.ladaka.api.dao.ApiDao;
 import com.ladaka.hospital.dao.HospitalDao;
+import com.ladaka.util.CommonUtil;
 
 @Service
 public class ApiService {
@@ -24,6 +26,8 @@ public class ApiService {
 	
 	@Autowired
 	HospitalDao hospitalDao;
+	
+	CommonUtil commonUtil;
 	
 	//병원정보서비스
 	public JSONObject apiGet(HashMap<String, Object> params) {
@@ -88,15 +92,17 @@ public class ApiService {
 		String serviceKey = "vZNjcCd88Bf%2BSJspiaA%2FfXS6JhvSRPK7yfYknuja0T1KYDickPWAElWdJlIhpkvF8H1hNKLVAVjomuREV%2B0Agw%3D%3D";
 		
 		//입력값
-		String pageNo = params.get("pageNo").toString();
-		String numOfRows = params.get("numOfRows").toString();
-		String apiType  = params.get("apiType").toString();
-		
+		String pageNo = commonUtil.HashMapEmptyNull(params, "pageNo");
+		String numOfRows = commonUtil.HashMapEmptyNull(params, "numOfRows");
+		String apiType = commonUtil.HashMapEmptyNull(params, "apiType");
 		
 		//URL
 		String urlApi = "http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getDetailInfo";
 		
-		
+		//start page
+		params.put("start", 1);
+		params.put("page", 10);
+		ArrayList hospitalList = hospitalDao.selectHospitalPage(params);
 		
 		
 		//API 호출
@@ -150,7 +156,7 @@ public class ApiService {
 		
 		for(int i=0; i<array.length(); i++) {
 			JSONObject obj = (JSONObject) array.get(i);
-			params = new HashMap();
+			params = new HashMap<String, Object>();
 			params.put("ykiho", obj.get("ykiho") );
 			params.put("yadmNm", obj.get("yadmNm") );
 			params.put("addr", obj.get("addr") );

@@ -8,6 +8,10 @@
 		SELECT * FROM HOSPITAL
 	</select>
 	
+	<select id="selectHospitalPage" resultMap="hashmap">
+		SELECT * FROM HOSPITAL INNER JOIN
+			(SELECT * FROM HOSPITAL WHERE 1=1 limit ${start}, ${page}) AS B USING(HOST_IDX)
+	</select>
 	
 	<insert id="insertHospital" parameterType="hashmap">
 		INSERT INTO HOSPITAL (

@@ -16,8 +16,17 @@
 	});
 	
 	function search(no) {
+		//check
+		//alert($("#apiType").val());
+		var apiType = $("#apiType").val();
+		if(apiType == "") {
+			alert("API 타입을 선택해 주세요.");
+			return false;
+		}
+		
 		param = {};
 		param.pageNo = no;
+		param.apiType = apiType;
 		
 		$.ajax({
 			type : "POST"
@@ -82,6 +91,12 @@
 <body>
 	API CALL 의료기관별 상세 정보서비스<br/>
 	<hr/>
+	<select id="apiType" name="apiType">
+		<option value="">선택</option>
+		<option value="transport">교통정보</option>
+		<option value="회사원">진료과목</option>
+		<option value="기타">세부정보</option>
+	</select>
 	<button onclick="javascript:search('1');">검색</button><br/>
 	
 	<span id="span">Loading...</span><br/>

@@ -1,6 +1,8 @@
 package com.ladaka.hospital.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -19,6 +21,10 @@ public class HospitalDao {
 	
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
+	}
+	
+	public ArrayList<HashMap<String, Object>> selectHospitalPage(Map params) {
+		return (ArrayList)sqlSession.selectList("hospital.selectHospitalPage", params);
 	}
 	
 	public int insertHospital(HashMap<String, Object> params) {
