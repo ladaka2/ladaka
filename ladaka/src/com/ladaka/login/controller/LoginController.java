@@ -74,6 +74,8 @@ public class LoginController {
 
 		//파라메터 설정
 		params = new HashMap<String, Object>();
+		params.put("EMAIL", "aaa@aaa.com");
+		params.put("PSWORD", "1111");
 		
 		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
 		
@@ -91,10 +93,9 @@ public class LoginController {
 			obj.put("list", jArray); // 배열을 넣음
 			logger.debug("userLoginJsonArray : " + obj.toString());
 			
-			//params.put("EMAIL", obj.get("EMAIL") );
-			//params.put("PSWORD", obj.get("PSWORD") );
-			params.put("EMAIL", "aaa@aaa.com");
-			params.put("PSWORD", "1111");
+//			params.put("EMAIL", obj.get("EMAIL") );
+//			params.put("PSWORD", obj.get("PSWORD") );
+			
 			result = loginService.userLogin(params); // DB Select
 
 		} catch (Exception e) {
