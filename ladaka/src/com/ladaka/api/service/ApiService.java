@@ -76,7 +76,10 @@ public class ApiService {
 	}//end ApiGet
 	
 	
-	//의료기관별상세정보서비스 http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getTransportInfoList
+	//의료기관별 상세 정보서비스
+	//(교통정보) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getTransportInfoList
+	//(진료과목) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getMdlrtSbjectInfoList
+	//(세부정보) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getDetailInfo
 	public JSONObject apiGetMedicDetailInfo(HashMap<String, Object> params) {
 		//결과값
 		JSONObject result = null;
@@ -84,12 +87,17 @@ public class ApiService {
 		//인증키
 		String serviceKey = "vZNjcCd88Bf%2BSJspiaA%2FfXS6JhvSRPK7yfYknuja0T1KYDickPWAElWdJlIhpkvF8H1hNKLVAVjomuREV%2B0Agw%3D%3D";
 		
-		//URL
-		String urlApi = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList";
-		
 		//입력값
 		String pageNo = params.get("pageNo").toString();
 		String numOfRows = params.get("numOfRows").toString();
+		String apiType  = params.get("apiType").toString();
+		
+		
+		//URL
+		String urlApi = "http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getDetailInfo";
+		
+		
+		
 		
 		//API 호출
 		try {
@@ -97,8 +105,10 @@ public class ApiService {
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "="+serviceKey); //서비스키
 			urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(pageNo, "UTF-8")); //페이지번호
 			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode(numOfRows, "UTF-8")); //한 페이지 결과 수
+			urlBuilder.append("&" + URLEncoder.encode("ykiho", "UTF-8") + "=" + URLEncoder.encode("JDQ4MTg4MSM1MSMkMSMkMCMkODkkMzgxMzUxIzExIyQyIyQ3IyQwMCQyNjEyMjIjNjEjJDEjJDgjJDgz", "UTF-8"));
 			
 			URL url = new URL(urlBuilder.toString());
+			System.out.println("URL:"+url);
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("GET");
 			
@@ -152,7 +162,6 @@ public class ApiService {
 			params.put("sidoCdNm", obj.get("sidoCdNm") );
 			params.put("sgguCd", obj.get("sgguCd") );
 			params.put("sgguCdNm", obj.get("sgguCdNm") );
-			//params.put("emdongNm", obj.get("emdongNm") );
 			params.put("postNo", obj.get("postNo") );
 			if(obj.has("XPos")) params.put("XPos", obj.get("XPos")); else params.put("XPos", "0");
 			if(obj.has("YPos")) params.put("YPos", obj.get("YPos")); else params.put("YPos", "0");

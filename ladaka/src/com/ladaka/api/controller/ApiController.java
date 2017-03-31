@@ -91,6 +91,40 @@ public class ApiController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/apiMedicDetail")
+	public ModelAndView apiMedicDetail(HttpServletRequest req, HttpServletResponse res) {
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("api/apiMedicDetail");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/apiGetMedicDetail")
+	@ResponseBody
+	public ModelAndView apiGetMedicDetail(HttpServletRequest req, HttpServletResponse res) {
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("api/apiMedicDetail");
+		
+		//결과값
+		JSONObject result = null;
+		
+		//파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("numOfRows", 100);
+		params.put("pageNo", 1);
+		
+		result = apiService.apiGetMedicDetailInfo(params);
+		
+		System.out.println("[L122]"+result.toString());
+		
+		return mav;
+		
+	}//end apiGetMedicDetail
+	
 	
 	
 }

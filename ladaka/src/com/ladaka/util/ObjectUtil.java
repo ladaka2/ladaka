@@ -1,4 +1,4 @@
-package com.ladaka.common;
+package com.ladaka.util;
 
 import java.util.List;
 import java.util.Map;

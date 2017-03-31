@@ -1,4 +1,4 @@
-package com.ladaka.common;
+package com.ladaka.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
