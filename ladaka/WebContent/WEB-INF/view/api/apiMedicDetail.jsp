@@ -15,7 +15,7 @@
 		//search(1);
 	});
 	
-	function search(no) {
+	function insert() {
 		//check
 		//alert($("#apiType").val());
 		var apiType = $("#apiType").val();
@@ -25,12 +25,11 @@
 		}
 		
 		param = {};
-		param.pageNo = no;
 		param.apiType = apiType;
 		
 		$.ajax({
 			type : "POST"
-			, url : "http://localhost:8080/ladaka/apiGetMedicDetail"
+			, url : "http://localhost:8080/ladaka/apiGetToDBDetail"
 			, data : param
 			//, dataType : "xml"
 			, dataType : "json"
@@ -97,7 +96,7 @@
 		<option value="회사원">진료과목</option>
 		<option value="기타">세부정보</option>
 	</select>
-	<button onclick="javascript:search('1');">검색</button><br/>
+	<button onclick="javascript:insert();">입력</button><br/>
 	
 	<span id="span">Loading...</span><br/>
 	
@@ -153,7 +152,7 @@
 			</tbody>
 		</table>
 	</div>
-
+	
 </body>
 
 </html>

@@ -112,7 +112,7 @@ public class ApiController {
 		//결과값
 		JSONObject result = null;
 		
-		//
+		//입력값
 		//String apiType = req.getAttribute("apiType").toString();
 		String apiType = req.getParameter("apiType");
 		
@@ -142,6 +142,21 @@ public class ApiController {
 		mav = new ModelAndView();
 		mav.setViewName("jsonView");
 		
+		//결과값
+		String result = "false";
+		
+		//입력값
+		String apiType = req.getParameter("apiType");
+		
+		//파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("numOfRows", 100);
+		params.put("pageNo", 1);
+		params.put("apiType", apiType);
+		
+		
+		
+		mav.addObject("result", result);
 		return mav;
 		
 	}//ApiGetToDBDetail

@@ -16,7 +16,7 @@
 	<insert id="insertHospital" parameterType="hashmap">
 		INSERT INTO HOSPITAL (
 			HOST_IDX
-			, Y_KIHO
+			, YKIHO
 			, YADM_NM
 			, ADDR
 			, EMDONG_NM

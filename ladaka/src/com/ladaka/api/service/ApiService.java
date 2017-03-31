@@ -179,4 +179,28 @@ public class ApiService {
 		return 1;
 	}//end insertJsonHospital
 	
+	
+	//
+	public String insertJsonHospitalDetail(HashMap<String, Object> params) {
+		
+		//
+		String result = "true";
+		
+		//입력값
+		String apiType = commonUtil.HashMapEmptyNull(params, "apiType");
+		
+		if(apiType.equals("")) {//교통정보
+			
+		} else if(apiType.equals("")) {//
+			
+		} else if(apiType.equals("")) {
+			
+		} else {
+			
+		}
+		
+		return result;
+	}//end insertJsonHospitalDetail
+	
+	
 }
