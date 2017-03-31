@@ -78,6 +78,7 @@ public class LoginController {
 		params.put("PSWORD", "1111");
 		
 		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
+		result = loginService.userLogin(params); // DB Select
 		
 		JSONObject obj = new JSONObject();
 		
@@ -92,11 +93,6 @@ public class LoginController {
 
 			obj.put("list", jArray); // 배열을 넣음
 			logger.debug("userLoginJsonArray : " + obj.toString());
-			
-//			params.put("EMAIL", obj.get("EMAIL") );
-//			params.put("PSWORD", obj.get("PSWORD") );
-			
-			result = loginService.userLogin(params); // DB Select
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -114,38 +110,26 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/userLogin2", method = RequestMethod.POST)
 	@ResponseBody
-	public String userLogin2(HttpServletRequest req, HttpServletResponse res) {
+	public ModelAndView userLogin2(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("LoginController > userLogin2");
 		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+
+		//결과값
+		ArrayList result = null;
+
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		
-		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
-		
-		JSONObject obj = new JSONObject();
-		
-		try {
-			JSONArray jArray = new JSONArray(); // 배열이 필요할때
-			
-			for (int i = 0; i < result.size(); i++) {
-				JSONObject sObject = new JSONObject(); // 배열 내에 들어갈 json
-				sObject.put("item", result.get(i));
-				jArray.put(sObject);
-			}
-			
-			obj.put("list", jArray); // 배열을 넣음
-			logger.debug("userLoginJsonArray : " + obj.toString());
-			
-			params.put("REGIST_NUM", obj.get("REGIST_NUM") );
-			params.put("PSWORD", obj.get("PSWORD") );
-			result = loginService.userLogin2(params); // DB Select
+		params.put("REGIST_NUM", "1111111111-22");
+		params.put("PSWORD", "3333");
+		System.out.println("userLogin2 params : " + params.toString());
 
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		return obj.toString();
+		result = loginService.userLogin2(params); // DB Select
+
+		mav.addObject("list", result);
+		return mav;
 	}
 
 	/**

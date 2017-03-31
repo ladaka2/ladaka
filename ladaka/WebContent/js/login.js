@@ -159,11 +159,11 @@ function searchUser2() {
 			console.log("ajax error code:" + xhr.status);
 		},
 		success : function(data) {
-			console.log(data.list[0].item.REGIST_NUM);
-			console.log(data.list[0].item.PSWORD);
+			console.log(data.list[0].REGIST_NUM);
+			console.log(data.list[0].PSWORD);
 			
-			var userRegistNum = data.list[0].item.REGIST_NUM;
-			var userPsword = data.list[0].item.PSWORD;
+			var userRegistNum = data.list[0].REGIST_NUM;
+			var userPsword = data.list[0].PSWORD;
 			
 			var registNum = $('#business_num1').val() + "-" + $('#business_num2').val()
 			var pw = $('#user_pw2').val();
