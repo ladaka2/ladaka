@@ -155,7 +155,6 @@ public class ApiController {
 		params.put("apiType", apiType);
 		
 		
-		
 		mav.addObject("result", result);
 		return mav;
 		

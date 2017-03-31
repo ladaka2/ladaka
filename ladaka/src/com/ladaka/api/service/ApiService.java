@@ -99,7 +99,7 @@ public class ApiService {
 		//URL
 		String urlApi = "http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getDetailInfo";
 		
-		//start page
+		//
 		params.put("start", 1);
 		params.put("page", 10);
 		ArrayList hospitalList = hospitalDao.selectHospitalPage(params);
