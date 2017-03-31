@@ -154,6 +154,7 @@ function searchUser2() {
 		url : "/ladaka/userLogin2",
 		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 		dataType : "json",
+		data : registNumImsi,
 		async : false,
 		error : function(xhr, status, error) {
 			console.log("ajax error code:" + xhr.status);

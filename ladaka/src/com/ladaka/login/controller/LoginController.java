@@ -1,10 +1,12 @@
 package com.ladaka.login.controller;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -113,6 +115,8 @@ public class LoginController {
 	public ModelAndView userLogin2(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("LoginController > userLogin2");
 		
+		String registNum = req.getParameter("registNumImsi");
+		
 		//모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("jsonView");
@@ -122,7 +126,8 @@ public class LoginController {
 
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		params.put("REGIST_NUM", "1111111111-22");
+		params.put("REGIST_NUM", registNum);
+//		params.put("REGIST_NUM", "1111111111-22");
 		params.put("PSWORD", "3333");
 		System.out.println("userLogin2 params : " + params.toString());
 
