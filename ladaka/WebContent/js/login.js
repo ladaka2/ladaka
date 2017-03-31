@@ -148,13 +148,18 @@ function searchUser() {
 }
 
 function searchUser2() {
+	var param = {};
+	var imsi = $('#business_num1').val() + "-" + $('#business_num2').val()
+	param = {};
+	param.registNumImsi = imsi;
+	
 	// 사업자 회원정보 조회
 	$.ajax({
 		type : "POST",
 		url : "/ladaka/userLogin2",
 		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+		data : param,
 		dataType : "json",
-		data : registNumImsi,
 		async : false,
 		error : function(xhr, status, error) {
 			console.log("ajax error code:" + xhr.status);
