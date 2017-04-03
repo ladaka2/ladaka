@@ -137,7 +137,7 @@ function searchUser() {
 			var pw = $('#user_pw').val();
 
 			if (email == userEmail && pw == userPsword) {
-				window.open("http://localhost:8080/ladaka/goHome", "_self");
+				window.open("http://localhost:8080/ladaka/home", "_self");
 				return;
 			} else {
 				alert("로그인실패");
@@ -177,7 +177,7 @@ function searchUser2() {
 			var pw = $('#user_pw2').val();
 			
 			if (registNum == userRegistNum && pw == userPsword) {
-				window.open("http://localhost:8080/ladaka/goHome", "_self");
+				window.open("http://localhost:8080/ladaka/home", "_self");
 				return;
 			} else {
 				alert("로그인실패");

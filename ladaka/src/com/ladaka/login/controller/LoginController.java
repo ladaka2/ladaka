@@ -212,7 +212,7 @@ public class LoginController {
 	 * 2. 처리내용: 홈화면 출력
 	 * </pre>
 	 */
-	@RequestMapping(value = "/goHome")
+	@RequestMapping(value = "/home")
 	public ModelAndView goHome(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("LoginController > goHome");
 		
