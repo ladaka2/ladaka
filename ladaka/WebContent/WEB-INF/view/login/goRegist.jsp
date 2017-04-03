@@ -10,6 +10,7 @@
 <script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/goRegist.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/commonFunc.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/healingCamp.css">
 </head>
 <body>
 
@@ -17,12 +18,86 @@
 
 		<!-- 상단 -->
 		<div>
-			<div class="topSearch_in">
-				<a href="javascript:;" id="back">뒤로</a>
-				<div>일반회원가입</div>
+			<div id="title">
+				<div style="float: left;">
+					<a href="javascript:;" id="back">뒤로</a>
+				</div>
+				<div>회원가입</div>
 			</div>
 		</div>
 		<!--// 상단 -->
+
+		<div class="registForm">
+			<div>
+				<h5>이메일</h5>
+				<div>
+					<input type='text' id='user_email' maxlength='40' placeholder="이메일" /> @ <input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
+					<select style="width: 100px; margin-right: 10px" name="selectEmail" id="selectEmail">
+						<option value="1">직접입력</option>
+						<option value="naver.com" selected>naver.com</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="nate.com">nate.com</option>
+						<option value="yahoo.co.kr">yahoo.co.kr</option>
+						<option value="gmail.com">gmail.com</option>
+					</select>
+				</div>
+				<p>병원 회원을 위해 일반 회원의 경우 닉네임에 병원, 전문의, 일반의, 의사, 진료과목명들의 단어를 포함하여 사용할 수 없습니다.</p>
+			</div>
+			<div class="nickName">
+				<h5>닉네임</h5>
+				<div>
+					<input type='text' id='user_nickname' maxlength='40' placeholder="닉네임" />
+				</div>
+			</div>
+
+			<div>
+				<div class="pw">
+					<h6>비밀번호 (4자이상)</h6>
+					<div>
+						<input type='password' id='user_pw' placeholder="비밀번호" />
+					</div>
+				</div>
+				<div class="pw">
+					<h6>비밀번호 확인 (4자이상)</h6>
+					<div>
+						<input type='password' id='user_pw_re' placeholder="비밀번호 확인" />
+					</div>
+				</div>
+			</div>
+
+			<div class="gender">
+				<h5>성별</h5>
+				<div>
+					<input type="text" id='gender' placeholder="성별" />
+				</div>
+			</div>
+			<div class="bornYear">
+				<h5>출생 연도</h5>
+				<div>
+					<input type="number" id='bornYear' placeholder="출생 연도" />
+				</div>
+			</div>
+
+			<div style="float: left; padding: 20px;">* 만 14세 미만은 회원 가입이 안됩니다. 양해 부탁드립니다.</div>
+
+			<div id="ruleCheck">
+				<div>
+					<li>
+						<input type="checkbox" id="allCheck" />전체선택
+					</li>
+					<li>
+						<input type="checkbox" />이용약관 동의 (필수)
+					</li>
+					<li>
+						<input type="checkbox" />개인정보취급방침 동의 (필수)
+					</li>
+				</div>
+			</div>
+
+
+			<button style="width: 100%">회원가입 신청</button>
+		</div>
+
 
 	</div>
 

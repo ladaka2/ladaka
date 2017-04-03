@@ -139,3 +139,44 @@ div.s_bottom2 {
 	text-align: right;
 	font-size: 12px;
 }
+
+/* 회원가입페이지 */
+.registForm {
+	width: 100%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.nickName {
+	float: left;
+	width: 100%;
+}
+
+.pw {
+	float: left;
+	width: 40%;
+}
+
+.gender {
+	float: left;
+	width: 40%;
+}
+
+.bornYear {
+	float: left;
+	width: 40%;
+}
+
+#ruleCheck {
+	float: left;
+	padding-bottom: 10px;
+}
+
+#ruleCheck li {
+	list-style-type: none;
+}
+
+
+
+
+
