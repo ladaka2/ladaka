@@ -116,6 +116,7 @@ public class LoginController {
 		logger.debug("LoginController > userLogin2");
 		
 		String registNum = req.getParameter("registNumImsi");
+		String pwNum = req.getParameter("pwImsi");
 		
 		//모델 설정
 		mav = new ModelAndView();
@@ -127,8 +128,7 @@ public class LoginController {
 		//파라메터 설정
 		params = new HashMap<String, Object>();
 		params.put("REGIST_NUM", registNum);
-//		params.put("REGIST_NUM", "1111111111-22");
-		params.put("PSWORD", "3333");
+		params.put("PSWORD", pwNum);
 		System.out.println("userLogin2 params : " + params.toString());
 
 		result = loginService.userLogin2(params); // DB Select

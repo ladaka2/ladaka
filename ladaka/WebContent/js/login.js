@@ -149,9 +149,11 @@ function searchUser() {
 
 function searchUser2() {
 	var param = {};
-	var imsi = $('#business_num1').val() + "-" + $('#business_num2').val()
+	var imsi1 = $('#business_num1').val() + "-" + $('#business_num2').val();
+	var imsi2 = $('#user_pw2').val();
 	param = {};
-	param.registNumImsi = imsi;
+	param.registNumImsi = imsi1;
+	param.pwImsi = imsi2;
 	
 	// 사업자 회원정보 조회
 	$.ajax({
