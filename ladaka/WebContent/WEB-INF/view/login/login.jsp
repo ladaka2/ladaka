@@ -105,7 +105,5 @@
 
 	</div>
 	
-	<input type="hidden" id="registNumImsi" name="registNumImsi" value="">
-
 </body>
 </html>

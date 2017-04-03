@@ -71,10 +71,10 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
 	@ResponseBody
-	public String userLogin(HttpServletRequest req, HttpServletResponse res) {
+	public ModelAndView userLogin(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("LoginController > userLogin");
 
-		//파라메터 설정
+		/*//파라메터 설정
 		params = new HashMap<String, Object>();
 		params.put("EMAIL", "aaa@aaa.com");
 		params.put("PSWORD", "1111");
@@ -101,7 +101,28 @@ public class LoginController {
 			e.printStackTrace();
 		}
 		
-		return obj.toString();
+		return obj.toString();*/
+		
+		String email = req.getParameter("emailImsi");
+		String pwNum = req.getParameter("pwImsi");
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+
+		//결과값
+		ArrayList result = null;
+
+		//파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("EMAIL", email);
+		params.put("PSWORD", pwNum);
+		System.out.println("userLogin params : " + params.toString());
+
+		result = loginService.userLogin(params); // DB Select
+
+		mav.addObject("list", result);
+		return mav;
 	}
 	
 	/**
