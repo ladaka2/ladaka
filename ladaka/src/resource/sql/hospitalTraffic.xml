@@ -15,7 +15,7 @@
 			, YKIHO
 			, TRAF_NM
 			, LINE_NO
-			, ARIV_PIC
+			, ARIV_PLC
 			, DIR
 			, DIST
 			, DELETE_YN
@@ -27,7 +27,7 @@
 			, '${ykiho}'
 			, '${trafNm}'
 			, '${lineNo}'
-			, '${arivPic}'
+			, '${arivPlc}'
 			, '${dir}'
 			, '${dist}'
 			, 'N'

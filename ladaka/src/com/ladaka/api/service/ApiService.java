@@ -1,7 +1,6 @@
 package com.ladaka.api.service;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -203,10 +202,9 @@ public class ApiService {
 		//입력값
 		String apiType = commonUtil.HashMapEmptyNull(params, "apiType");
 		String serviceKey = dataPortalKey; //인증키
-		System.out.println(serviceKey);
+		HashMap<String, Object> paramsTmp = null;
 		
-		System.out.println(apiType);
-		
+		//서비스 호출
 		params.put("start", 0);
 		params.put("page", 10);
 		hospitalList = hospitalDao.selectHospitalPage(params);
@@ -215,10 +213,12 @@ public class ApiService {
 		String urlApi = "http://apis.data.go.kr/B551182/medicInsttDetailInfoService";//URL
 		String pageNo = "1";
 		String numOfRows = "100";
+		String hostIdx = "";
 		String ykiho = "JDQ4MTg4MSM1MSMkMSMkMCMkODkkMzgxMzUxIzExIyQyIyQ3IyQwMCQyNjEyMjIjNjEjJDEjJDgjJDgz";
 		
 		if(apiType.equals("transport")) {//교통정보
 			urlApi += "/getTransportInfoList";
+			hospitalDao.deleteHospitalTraffic();
 		} else if(apiType.equals("sbject")) {//진료과목
 			urlApi += "/getMdlrtSbjectInfoList";
 		} else if(apiType.equals("detail")) {//세부정보
@@ -229,8 +229,14 @@ public class ApiService {
 		
 		for(int i=0; i<hospitalList.size(); i++) {
 			HashMap hashMap = (HashMap)hospitalList.get(i);
+			System.out.println(hashMap.get("HOST_IDX"));
 			System.out.println(hashMap.get("YKIHO"));
+			hostIdx =  hashMap.get("HOST_IDX").toString();
 			ykiho = hashMap.get("YKIHO").toString();
+			paramsTmp = new HashMap<String, Object>();
+			paramsTmp.put("hostIdx", hostIdx);
+			paramsTmp.put("ykiho", ykiho);
+			paramsTmp.put("insertId", "init_batch");
 			
 			//API 호출
 			try {
@@ -279,8 +285,16 @@ public class ApiService {
 				tmp = (JSONObject)tmp.get("item");
 				
 				if(apiType.equals("transport")) {//교통정보
-					hospitalDao.deleteHospitalTraffic();
-					System.out.println(tmp.get("trafNm"));
+					
+					//System.out.println(tmp.get("trafNm"));
+					
+					paramsTmp.put("trafNm", tmp.get("trafNm").toString());
+					paramsTmp.put("lineNo", tmp.get("lineNo").toString());
+					paramsTmp.put("arivPic", tmp.get("arivPic").toString());
+					paramsTmp.put("dir", tmp.get("dir").toString());
+					paramsTmp.put("dist", CommonUtil.JsonObjectEmptyNull(tmp, "dist"));
+					
+					//hospitalDao.insertHospital(paramsTmp);
 				} else if(apiType.equals("sbject")) {//진료과목
 					
 				} else if(apiType.equals("detail")) {//세부정보
@@ -295,7 +309,14 @@ public class ApiService {
 					JSONObject obj = (JSONObject) tmpArray.get(j);
 					
 					if(apiType.equals("transport")) {//교통정보
-						System.out.println(obj.get("trafNm"));
+						//System.out.println(obj.get("trafNm"));
+						
+						paramsTmp.put("trafNm", obj.get("trafNm").toString());
+						paramsTmp.put("lineNo", obj.get("lineNo").toString());
+						paramsTmp.put("arivPlc", obj.get("arivPlc").toString());
+						paramsTmp.put("dir", obj.get("dir").toString());
+						paramsTmp.put("dist", CommonUtil.JsonObjectEmptyNull(obj, "dist"));
+						
 					} else if(apiType.equals("sbject")) {//진료과목
 						
 					} else if(apiType.equals("detail")) {//세부정보
