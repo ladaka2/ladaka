@@ -10,10 +10,6 @@
 <script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/mypage.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/commonFunc.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-// 	var bookmarkCnt = "${param.bookmarkCnt}";
-	var bookmarkCnt = "100";
-</script>
 <link rel="stylesheet" href="css/healingCamp.css">
 </head>
 <body>
@@ -33,9 +29,11 @@
 		<div class="UserInfo">
 			
 			<!-- 로그인 안한 경우 -->
-			<div id="nonLogin" style="display: block">
-				<button>로그인/회원가입</button>
-				<a href="javascript:;" onclick="goHome()">홈이동</a>
+			<div>
+				<button id="nonLogin" >로그인/회원가입</button>
+				<div style="float: right;">
+					<a href="javascript:;" onclick="goHome()">홈이동</a>
+				</div>
 			</div>
 			<!--// 로그인 안한 경우 -->
 			

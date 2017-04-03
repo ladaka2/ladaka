@@ -74,35 +74,6 @@ public class LoginController {
 	public ModelAndView userLogin(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("LoginController > userLogin");
 
-		/*//파라메터 설정
-		params = new HashMap<String, Object>();
-		params.put("EMAIL", "aaa@aaa.com");
-		params.put("PSWORD", "1111");
-		
-		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
-		result = loginService.userLogin(params); // DB Select
-		
-		JSONObject obj = new JSONObject();
-		
-		try {
-			JSONArray jArray = new JSONArray(); // 배열이 필요할때
-
-			for (int i = 0; i < result.size(); i++) {
-				JSONObject sObject = new JSONObject(); // 배열 내에 들어갈 json
-				sObject.put("item", result.get(i));
-				jArray.put(sObject);
-			}
-
-			obj.put("list", jArray); // 배열을 넣음
-			logger.debug("userLoginJsonArray : " + obj.toString());
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		return obj.toString();*/
-		
 		String email = req.getParameter("emailImsi");
 		String pwNum = req.getParameter("pwImsi");
 		
