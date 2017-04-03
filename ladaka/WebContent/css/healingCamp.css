@@ -1,5 +1,6 @@
 @CHARSET "EUC-KR";
 
+/* 홈 */
 #title {
 	text-align: center;
 }
@@ -88,6 +89,46 @@ div.s_bottom2 {
 	margin: 5px;
 }
 
+
+/* 마이페이지 */
+#menuCategory {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	cursor: pointer;
+}
+
+#menuCategory .menu {
+	background-color: #c0c0c0;
+	float: left;
+	width: 18%;
+	height: 40px;
+	margin: 2px;
+}
+
+.contents {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	cursor: pointer;
+}
+
+.conLeft {
+	background-color: #f0f0f0;
+	float: left;
+	width: 46%;
+	height: 180px;
+	margin: 5px;
+}
+
+.conRight {
+	background-color: #f0f0f0;
+	float: right;
+	width: 46%;
+	height: 180px;
+	margin: 5px;
+}
+
 .footer {
 	position: absolute;
 	right: 0;
@@ -95,6 +136,6 @@ div.s_bottom2 {
 	left: 0;
 	padding: 1rem;
 	background-color: #efefef;
-	text-align: center;
+	text-align: right;
 	font-size: 12px;
 }

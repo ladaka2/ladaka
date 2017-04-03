@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
 <meta name="format-detection" content="telephone=no">
-<title>비밀번호찾기</title>
+<title>힐링캠프</title>
 <script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/findPw.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/commonFunc.js" type="text/javascript" charset="utf-8"></script>

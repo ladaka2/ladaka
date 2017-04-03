@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
 <meta name="format-detection" content="telephone=no">
-<title>로그인</title>
+<title>힐링캠프</title>
 <script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/commonFunc.js" type="text/javascript" charset="utf-8"></script>
@@ -105,7 +105,5 @@
 
 	</div>
 	
-	<input type="hidden" id="registNumImsi" name="registNumImsi" value="">
-
 </body>
 </html>
