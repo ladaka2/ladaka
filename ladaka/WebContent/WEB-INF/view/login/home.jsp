@@ -20,8 +20,11 @@
 		<div>
 			<div>
 				<div>
-					<div id="title">힐링캠프</div>
-					<img id="magnify" src="images/magnify.png" alt="magnify">
+					<div id="title">
+						힐링캠프
+						<img id="menu" src="images/menu.png" alt="menu" onclick="mypage()">
+						<img id="magnify" src="images/magnify.png" alt="magnify" onclick="keywordSearch()">
+					</div>
 				</div>
 			</div>
 		</div>

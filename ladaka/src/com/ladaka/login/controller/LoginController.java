@@ -228,4 +228,27 @@ public class LoginController {
 		
 		return mav;
 	}
+	
+	/**
+	 * <pre>
+	 * 1. 개요: mypage
+	 * 2. 처리내용: 마이페이지 출력
+	 * </pre>
+	 */
+	@RequestMapping(value = "/mypage")
+	public ModelAndView mypage(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("LoginController > mypage");
+		
+		// 결과값
+		ArrayList<HashMap<String, Object>> result = null;
+		
+		// 파라메터 설정
+		params = new HashMap<String, Object>();
+		
+		// 모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("login/mypage");
+		
+		return mav;
+	}
 }

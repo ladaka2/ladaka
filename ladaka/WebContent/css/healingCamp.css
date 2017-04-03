@@ -10,6 +10,12 @@
 	float: right;
 }
 
+#menu {
+	width: 24px;
+	height: 24px;
+	float: right;
+}
+
 .container {
 	background-color: #c0c0c0;
 	width: 100%;
@@ -80,4 +86,15 @@ div.s_bottom2 {
 	background: #c0c0c0;
 	float: right;
 	margin: 5px;
+}
+
+.footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #efefef;
+	text-align: center;
+	font-size: 12px;
 }

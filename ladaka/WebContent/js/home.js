@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 	$("#s_left").click(function() {
-		alert("가까운 병원 찾기");
 		window.open("http://localhost:8080/ladaka/hospitalSearch", "_self");
 	});
 	$("#s_right1").click(function() {
@@ -27,3 +26,11 @@ $(document).ready(function() {
 	});
 
 });
+
+function keywordSearch() {
+	alert("키워드검색");
+}
+
+function mypage() {
+	window.open("http://localhost:8080/ladaka/mypage", "_self");
+}
