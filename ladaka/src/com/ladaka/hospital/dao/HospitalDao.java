@@ -31,4 +31,9 @@ public class HospitalDao {
 		return sqlSession.insert("hospital.insertHospital", params);
 	}
 	
+	//Traffic
+	public int deleteHospitalTraffic() {
+		return sqlSession.delete("hospitalTraffic.deleteHospitalTraffic");
+	}
+	
 }

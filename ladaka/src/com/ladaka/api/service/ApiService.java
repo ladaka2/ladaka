@@ -202,12 +202,8 @@ public class ApiService {
 		
 		//입력값
 		String apiType = commonUtil.HashMapEmptyNull(params, "apiType");
-		String serviceKey = dataPortalKey;//인증키
+		String serviceKey = dataPortalKey; //인증키
 		System.out.println(serviceKey);
-		
-		//(교통정보) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getTransportInfoList
-		//(진료과목) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getMdlrtSbjectInfoList
-		//(세부정보) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getDetailInfo
 		
 		System.out.println(apiType);
 		
@@ -282,7 +278,14 @@ public class ApiService {
 				tmp = (JSONObject)tmp.get("items");
 				tmp = (JSONObject)tmp.get("item");
 				
-				System.out.println(tmp.get("trafNm"));
+				if(apiType.equals("transport")) {//교통정보
+					hospitalDao.deleteHospitalTraffic();
+					System.out.println(tmp.get("trafNm"));
+				} else if(apiType.equals("sbject")) {//진료과목
+					
+				} else if(apiType.equals("detail")) {//세부정보
+					
+				}
 				
 			} else {
 				tmp = (JSONObject)tmp.get("items");
@@ -290,7 +293,15 @@ public class ApiService {
 				
 				for(int j=0; j<tmpArray.length(); j++) {
 					JSONObject obj = (JSONObject) tmpArray.get(j);
-					System.out.println(obj.get("trafNm"));
+					
+					if(apiType.equals("transport")) {//교통정보
+						System.out.println(obj.get("trafNm"));
+					} else if(apiType.equals("sbject")) {//진료과목
+						
+					} else if(apiType.equals("detail")) {//세부정보
+						
+					}
+					
 				}
 				
 			}

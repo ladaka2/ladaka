@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospitalTraffic">
+	
+	<resultMap type="java.util.HashMap" id="hashmap"></resultMap>
+	
+	<delete id="deleteHospitalTraffic">
+		DELETE FROM HOSPITAL_TRAFFIC
+	</delete>
+	
+	<insert id="insertHospitalTraffic" parameterType="hashmap">
+		INSERT INTO HOSPITAL_TRAFFIC (
+			TRAFFIC_IDX
+			, HOST_IDX
+			, YKIHO
+			, TRAF_NM
+			, LINE_NO
+			, ARIV_PIC
+			, DIR
+			, DIST
+			, DELETE_YN
+			, INSERT_DATE
+			, INSERT_ID
+		) VALUES (
+			(SELECT IFNULL(MAX(TRAFFIC_IDX), 0)+1 FROM HOSPITAL_TRAFFIC A)
+			, '${hostIdx}'
+			, '${ykiho}'
+			, '${trafNm}'
+			, '${lineNo}'
+			, '${arivPic}'
+			, '${dir}'
+			, '${dist}'
+			, 'N'
+			, NOW()
+			, '${insertId}'
+		)
+	</insert>
+	
+</mapper>
