@@ -1,17 +1,20 @@
 package com.ladaka.api.service;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.ladaka.api.dao.ApiDao;
@@ -28,6 +31,12 @@ public class ApiService {
 	HospitalDao hospitalDao;
 	
 	CommonUtil commonUtil;
+	
+	Properties properties = new Properties();
+	
+	// 프로퍼티 파일 읽기
+	@Value("${common.public.dataPortalKey}")
+	private String dataPortalKey;
 	
 	//병원정보서비스
 	public JSONObject apiGet(HashMap<String, Object> params) {
@@ -90,6 +99,9 @@ public class ApiService {
 		
 		//인증키
 		String serviceKey = "vZNjcCd88Bf%2BSJspiaA%2FfXS6JhvSRPK7yfYknuja0T1KYDickPWAElWdJlIhpkvF8H1hNKLVAVjomuREV%2B0Agw%3D%3D";
+		
+		
+		
 		
 		//입력값
 		String pageNo = commonUtil.HashMapEmptyNull(params, "pageNo");
@@ -183,21 +195,111 @@ public class ApiService {
 	//
 	public String insertJsonHospitalDetail(HashMap<String, Object> params) {
 		
-		//
+		//결과값
 		String result = "true";
+		ArrayList hospitalList = new ArrayList();
+		JSONObject jsonObject = null;
 		
 		//입력값
 		String apiType = commonUtil.HashMapEmptyNull(params, "apiType");
+		String serviceKey = dataPortalKey;//인증키
+		System.out.println(serviceKey);
 		
-		if(apiType.equals("")) {//교통정보
-			
-		} else if(apiType.equals("")) {//
-			
-		} else if(apiType.equals("")) {
-			
+		//(교통정보) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getTransportInfoList
+		//(진료과목) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getMdlrtSbjectInfoList
+		//(세부정보) http://apis.data.go.kr/B551182/medicInsttDetailInfoService/getDetailInfo
+		
+		System.out.println(apiType);
+		
+		params.put("start", 0);
+		params.put("page", 10);
+		hospitalList = hospitalDao.selectHospitalPage(params);
+		
+		
+		String urlApi = "http://apis.data.go.kr/B551182/medicInsttDetailInfoService";//URL
+		String pageNo = "1";
+		String numOfRows = "100";
+		String ykiho = "JDQ4MTg4MSM1MSMkMSMkMCMkODkkMzgxMzUxIzExIyQyIyQ3IyQwMCQyNjEyMjIjNjEjJDEjJDgjJDgz";
+		
+		if(apiType.equals("transport")) {//교통정보
+			urlApi += "/getTransportInfoList";
+		} else if(apiType.equals("sbject")) {//진료과목
+			urlApi += "/getMdlrtSbjectInfoList";
+		} else if(apiType.equals("detail")) {//세부정보
+			urlApi += "/getDetailInfo";
 		} else {
-			
+			return "false";
 		}
+		
+		for(int i=0; i<hospitalList.size(); i++) {
+			HashMap hashMap = (HashMap)hospitalList.get(i);
+			System.out.println(hashMap.get("YKIHO"));
+			ykiho = hashMap.get("YKIHO").toString();
+			
+			//API 호출
+			try {
+				StringBuilder urlBuilder = new StringBuilder(urlApi); //URL
+				urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "="+serviceKey); //서비스키
+				urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(pageNo, "UTF-8")); //페이지번호
+				urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode(numOfRows, "UTF-8")); //한 페이지 결과 수
+				urlBuilder.append("&" + URLEncoder.encode("ykiho", "UTF-8") + "=" + URLEncoder.encode(ykiho, "UTF-8"));
+				
+				URL url = new URL(urlBuilder.toString());
+				System.out.println("URL:"+url);
+				HttpURLConnection con = (HttpURLConnection)url.openConnection();
+				con.setRequestMethod("GET");
+				
+				int responseCode = con.getResponseCode();
+				BufferedReader br;
+				if(responseCode==200) { //정상 호출
+					br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				} else { //에러 발생
+					br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+				}
+				String inputLine;
+				StringBuffer response = new StringBuffer();
+				while ((inputLine = br.readLine()) != null) {
+					response.append(inputLine);
+				}
+				br.close();
+				jsonObject = XML.toJSONObject(response.toString());
+				System.out.println(jsonObject.toString());
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			
+			//DB Insert
+			JSONObject tmp = null;
+			JSONArray tmpArray = null;
+			int totalCount = 0;
+			
+			tmp = (JSONObject)jsonObject.get("response");
+			tmp = (JSONObject)tmp.get("body");
+			
+			totalCount = Integer.parseInt(tmp.get("totalCount").toString());
+			if(totalCount == 0) continue;
+			else if(totalCount == 1) {
+				tmp = (JSONObject)tmp.get("items");
+				tmp = (JSONObject)tmp.get("item");
+				
+				System.out.println(tmp.get("trafNm"));
+				
+			} else {
+				tmp = (JSONObject)tmp.get("items");
+				tmpArray = tmp.getJSONArray("item");
+				
+				for(int j=0; j<tmpArray.length(); j++) {
+					JSONObject obj = (JSONObject) tmpArray.get(j);
+					System.out.println(obj.get("trafNm"));
+				}
+				
+			}
+			
+			System.out.println(tmp.toString());
+		}//end for
+		
+		
+		
 		
 		return result;
 	}//end insertJsonHospitalDetail

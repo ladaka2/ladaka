@@ -15,14 +15,14 @@
 		//search(1);
 		
 		
-		if (navigator.geolocation) {  
+		if(navigator.geolocation) {
 			/* geolocation is available */
 			navigator.geolocation.getCurrentPosition(showMap);
 			function showMap(position) {
 				latitude = position.coords.latitude;
 				longitude = position.coords.longitude;
 				
-				alert(latitude+"/"+longitude);
+				//alert(latitude+"/"+longitude);
 			}
 		} else {
 			alert("I'm sorry, but geolocation services are not supported by your browser.");
@@ -62,7 +62,9 @@
 						<div>{{ message }}</div>
 						-->
 						<div ng-repeat="row in rows">
-							{{ row.YADM_NM }}
+							{{ row.YADM_NM }}<br/>
+							({{ row.SGGU_CD_NM}} {{ row.EMDONG_NM}})<br/>
+							[{{ row.X_POS}} {{ row.Y_POS}}]
 						</div>
 					</td>
 				</tr>

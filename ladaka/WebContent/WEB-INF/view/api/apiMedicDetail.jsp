@@ -39,11 +39,13 @@
 	}
 	
 	function parseJson(data) {
+		alert("L42");
 		var html = "";
-		//alert(data.response.body.pageNo);
+		alert(data.result);
 		//alert(data.response.body.totalCount);
-		$("#span").html(data.response.body.pageNo+"/"+data.response.body.totalCount);
+		//$("#span").html(data.response.body.pageNo+"/"+data.response.body.totalCount);
 		
+		/*
 		$.each(data.response.body.items.item, function(index, entry){
 			html += "<tr>";
 				html += "<td>";
@@ -57,6 +59,7 @@
 				html += "</td>";
 			html += "</tr>";
 		});
+		*/
 		$("#tableBody").html(html);
 		
 		//page
@@ -93,8 +96,8 @@
 	<select id="apiType" name="apiType">
 		<option value="">선택</option>
 		<option value="transport">교통정보</option>
-		<option value="회사원">진료과목</option>
-		<option value="기타">세부정보</option>
+		<option value="sbject">진료과목</option>
+		<option value="detail">세부정보</option>
 	</select>
 	<button onclick="javascript:insert();">입력</button><br/>
 	

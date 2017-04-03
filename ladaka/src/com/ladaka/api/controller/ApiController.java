@@ -134,6 +134,7 @@ public class ApiController {
 	}//end apiGetMedicDetail
 	
 	
+	//병원 상세 데이터 입력 초기데이터 구축
 	@RequestMapping(value = "/apiGetToDBDetail")
 	@ResponseBody
 	public ModelAndView ApiGetToDBDetail(HttpServletRequest req, HttpServletResponse res) {
@@ -151,9 +152,11 @@ public class ApiController {
 		//파라메터 설정
 		params = new HashMap<String, Object>();
 		params.put("numOfRows", 100);
-		params.put("pageNo", 1);
+		params.put("pageNo", 0);
 		params.put("apiType", apiType);
 		
+		//서비스 호출
+		apiService.insertJsonHospitalDetail(params);
 		
 		mav.addObject("result", result);
 		return mav;

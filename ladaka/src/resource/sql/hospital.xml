@@ -10,7 +10,7 @@
 	
 	<select id="selectHospitalPage" resultMap="hashmap">
 		SELECT * FROM HOSPITAL INNER JOIN
-			(SELECT * FROM HOSPITAL WHERE 1=1 limit ${start}, ${page}) AS B USING(HOST_IDX)
+			(SELECT * FROM HOSPITAL WHERE 1=1 ORDER BY HOST_IDX ASC LIMIT ${start}, ${page}) AS B USING(HOST_IDX)
 	</select>
 	
 	<insert id="insertHospital" parameterType="hashmap">
