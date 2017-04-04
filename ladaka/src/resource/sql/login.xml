@@ -10,24 +10,24 @@
 
 	<select id="selectUserLogin" resultMap="hashmap">
 		SELECT
-		EMAIL, PSWORD
+			EMAIL, PSWORD
 		FROM
-		USER
+			USER
 		WHERE 1=1
-		AND EMAIL = '${EMAIL}'
-		AND PSWORD = '${PSWORD}'
-		LIMIT 1
+			AND EMAIL = '${email}'
+			AND PSWORD = '${psword}'
+			LIMIT 1
 	</select>
 
 	<select id="selectUserLogin2" resultMap="hashmap">
 		SELECT
-		REGIST_NUM, PSWORD
-		FROM USER_HOS
+			REGIST_NUM, PSWORD
+		FROM
+			USER_HOS
 		WHERE 1=1
-		AND REGIST_NUM = '${REGIST_NUM}'
-		AND PSWORD =
-		'${PSWORD}'
-		LIMIT 1
+			AND REGIST_NUM = '${registNum}'
+			AND PSWORD = '${psword}'
+			LIMIT 1
 	</select>
 
 </mapper>

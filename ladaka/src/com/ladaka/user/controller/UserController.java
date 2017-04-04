@@ -48,11 +48,11 @@ public class UserController {
 
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		params.put("EMAIL", email);
-		params.put("NICKNAME", nickname);
-		params.put("PSWORD", password);
-		params.put("GENDER", gender);
-		params.put("BORNYEAR", bornyear);
+		params.put("email", email);
+		params.put("nickname", nickname);
+		params.put("psword", password);
+		params.put("gender", gender);
+		params.put("bornYear", bornyear);
 		System.out.println("userLogin params : " + params.toString());
 
 		// 서비스 호출
@@ -89,13 +89,13 @@ public class UserController {
 		
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		params.put("NAME", businessName);
-		params.put("REGIST_NUM", businessNum);
-		params.put("REGIST_PIC", registPic);
-		params.put("PHONE_NUM", phoneNum);
-		params.put("PSWORD", password);
-		params.put("EMAIL", email);
-		params.put("KEYWORD", hospitalKeyword);
+		params.put("name", businessName);
+		params.put("registNum", businessNum);
+		params.put("registPic", registPic);
+		params.put("phoneNum", phoneNum);
+		params.put("psword", password);
+		params.put("email", email);
+		params.put("keyword", hospitalKeyword);
 		System.out.println("userLogin2 params : " + params.toString());
 		
 		// 서비스 호출

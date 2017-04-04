@@ -78,8 +78,8 @@ public class LoginController {
 
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		params.put("EMAIL", email);
-		params.put("PSWORD", pwNum);
+		params.put("email", email);
+		params.put("psword", pwNum);
 		System.out.println("userLogin params : " + params.toString());
 
 		result = loginService.userLogin(params); // DB Select
@@ -111,8 +111,8 @@ public class LoginController {
 
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		params.put("REGIST_NUM", registNum);
-		params.put("PSWORD", pwNum);
+		params.put("registNum", registNum);
+		params.put("psword", pwNum);
 		System.out.println("userLogin2 params : " + params.toString());
 
 		result = loginService.userLogin2(params); // DB Select

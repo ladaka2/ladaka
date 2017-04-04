@@ -65,6 +65,22 @@
 				<p style="font-size: 12px;">병원 회원 검증을 위해 사업자 등록증 사본을 제출하셔야 합니다.</p>
 			</div>
 			
+			<div>
+				<div style="float: left; width: 40%;">
+					<h6>담당자 이름</h6>
+					<div>
+						<input type='text' id='managerName' placeholder="담당자 이름" />
+					</div>
+				</div>
+				<div style="float: left; width: 40%;">
+					<h6>담당자 휴대폰 번호</h6>
+					<div>
+						<input type='text' id='managerNum' placeholder="담당자 휴대폰 번호" />
+					</div>
+				</div>
+			</div>
+			
+			
 			<div style="float: left;">
 				<h5>담당자 이메일</h5>
 				<div>

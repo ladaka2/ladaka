@@ -6,53 +6,53 @@
 
 	<insert id="insertUserLogin" parameterType="hashmap">
 		INSERT INTO USER (
-		USER_IDX
-		, EMAIL
-		, NICKNAME
-		, PSWORD
-		, GENDER
-		, BORNYEAR
-		, DELETE_YN
-		, INSERT_DATE
-		, INSERT_ID
+			USER_IDX
+			, EMAIL
+			, NICKNAME
+			, PSWORD
+			, GENDER
+			, BORNYEAR
+			, DELETE_YN
+			, INSERT_DATE
+			, INSERT_ID
 		) VALUES (
-		(SELECT IFNULL(MAX(USER_IDX), 0)+1 FROM USER A)
-		, '${EMAIL}'
-		, '${NICKNAME}'
-		, '${PSWORD}'
-		, '${GENDER}'
-		, '${BORNYEAR}'
-		, 'N'
-		, NOW()
-		, '${insertId}'
+			(SELECT IFNULL(MAX(USER_IDX), 0)+1 FROM USER A)
+			, '${email}'
+			, '${nickname}'
+			, '${psword}'
+			, '${gender}'
+			, '${bornYear}'
+			, 'N'
+			, NOW()
+			, '${insertId}'
 		)
 	</insert>
 
 	<insert id="insertUserLogin2" parameterType="hashmap">
 		INSERT INTO USER_HOS (
-		USER_HOS_IDX
-		, NAME
-		, REGIST_NUM
-		, REGIST_PIC
-		, PHONE_NUM
-		, PSWORD
-		, EMAIL
-		, KEYWORD
-		, DELETE_YN
-		, INSERT_DATE
-		, INSERT_ID
+			USER_HOS_IDX
+			, NAME
+			, REGIST_NUM
+			, REGIST_PIC
+			, PHONE_NUM
+			, PSWORD
+			, EMAIL
+			, KEYWORD
+			, DELETE_YN
+			, INSERT_DATE
+			, INSERT_ID
 		) VALUES (
-		(SELECT IFNULL(MAX(USER_HOS_IDX), 0)+1 FROM USER_HOS A)
-		, '${NAME}'
-		, '${REGIST_NUM}'
-		, '${REGIST_PIC}'
-		, '${PHONE_NUM}'
-		, '${PSWORD}'
-		, '${EMAIL}'
-		, '${KEYWORD}'
-		, 'N'
-		, NOW()
-		, '${insertId}'
+			(SELECT IFNULL(MAX(USER_HOS_IDX), 0)+1 FROM USER_HOS A)
+			, '${name}'
+			, '${registNum}'
+			, '${registPic}'
+			, '${phoneNum}'
+			, '${psword}'
+			, '${email}'
+			, '${keyword}'
+			, 'N'
+			, NOW()
+			, '${insertId}'
 		)
 	</insert>
 
