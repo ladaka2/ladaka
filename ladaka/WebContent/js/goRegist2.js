@@ -3,6 +3,13 @@ $(document).ready(function() {
 		back();
 	})
 
+	var cellPhone = document.getElementById('managerNum');
+	cellPhone.onkeyup = function(event) {
+	event = event || window.event;
+	var _val = this.value.trim();
+	this.value = autoHypenPhone(_val);
+	}
+
 	$("[name=checkAll]").click(function() {
 		allCheckFunc(this);
 	});
@@ -12,7 +19,7 @@ $(document).ready(function() {
 			alert('checked' + index);
 		});
 	});
-	
+
 	//이메일 입력방식 선택
 	$('#selectEmail').change(function() {
 		$("#selectEmail option:selected").each(function() {
@@ -31,29 +38,31 @@ $(document).ready(function() {
 		var businessName = $("#business_nm").val();
 		var businessNum = $("#business_num1").val() + "-" + $("#business_num2").val();
 		var registPic = "";
-		var phoneNum = "";
 		var password = $("#user_pw").val();
 		var passwordRe = $("#user_pw_re").val();
+		var managerName = $("#managerName").val();
+		var managerNum = $("#managerNum").val();
 		var email = $("#user_email").val() + "@" + $("#str_email").val();
 		var hospitalKeyword = $("#hospitalKeyword").val();
-		
+
 		console.log(businessName + " / " + businessNum + " / " + password + " / " + email + " / " + hospitalKeyword);
-		
+
 		if (password != passwordRe) {
 			alert("비밀번호를 확인해주세요.");
 			return;
 		} else {
-			
+
 			var param = {};
 			param = {};
 			param.businessName = businessName;
 			param.businessNum = businessNum;
 			param.registPic = registPic;
-			param.phoneNum = phoneNum;
 			param.password = password;
+			param.managerName = managerName;
+			param.managerNum = managerNum;
 			param.email = email;
 			param.hospitalKeyword = hospitalKeyword;
-			
+
 			$.ajax({
 				type : "POST",
 				url : "/ladaka/goRegistAjax2",
@@ -68,12 +77,40 @@ $(document).ready(function() {
 
 				}
 			});
-			
+
 		}
-		
+
 	});
 
 });
+
+function autoHypenPhone(str) {
+	str = str.replace(/[^0-9]/g, '');
+	var tmp = '';
+	if (str.length < 4) {
+		return str;
+	} else if (str.length < 7) {
+		tmp += str.substr(0, 3);
+		tmp += '-';
+		tmp += str.substr(3);
+		return tmp;
+	} else if (str.length < 11) {
+		tmp += str.substr(0, 3);
+		tmp += '-';
+		tmp += str.substr(3, 3);
+		tmp += '-';
+		tmp += str.substr(6);
+		return tmp;
+	} else {
+		tmp += str.substr(0, 3);
+		tmp += '-';
+		tmp += str.substr(3, 4);
+		tmp += '-';
+		tmp += str.substr(7);
+		return tmp;
+	}
+	return str;
+}
 
 function allCheckFunc(obj) {
 	$("[name=checkOne]").prop("checked", $(obj).prop("checked")); // 필수
@@ -84,7 +121,7 @@ function allCheckFunc(obj) {
 function oneCheckFunc(obj) {
 	var allObj = $("[name=checkAll]");
 	var objName = $(obj).attr("name");
-	
+
 	if ($(obj).prop("checked")) {
 		checkBoxLength = $("[name=" + objName + "]").length;
 		checkedLength = $("[name=" + objName + "]:checked").length;

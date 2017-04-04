@@ -75,7 +75,7 @@
 				<div style="float: left; width: 40%;">
 					<h6>담당자 휴대폰 번호</h6>
 					<div>
-						<input type='text' id='managerNum' placeholder="담당자 휴대폰 번호" />
+						<input type="text" name="managerNum" id="managerNum" placeholder="담당자 휴대폰 번호" maxlength="13" />
 					</div>
 				</div>
 			</div>

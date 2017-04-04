@@ -34,8 +34,9 @@
 			, NAME
 			, REGIST_NUM
 			, REGIST_PIC
-			, PHONE_NUM
 			, PSWORD
+			, MANAGER_NAME
+			, PHONE_NUM
 			, EMAIL
 			, KEYWORD
 			, DELETE_YN
@@ -46,8 +47,9 @@
 			, '${name}'
 			, '${registNum}'
 			, '${registPic}'
-			, '${phoneNum}'
 			, '${psword}'
+			, '${managerName}'
+			, '${managerNum}'
 			, '${email}'
 			, '${keyword}'
 			, 'N'

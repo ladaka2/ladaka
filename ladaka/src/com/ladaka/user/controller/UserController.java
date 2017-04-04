@@ -77,6 +77,8 @@ public class UserController {
 		String registPic = req.getParameter("registPic");
 		String phoneNum = req.getParameter("phoneNum");
 		String password = req.getParameter("password");
+		String managerName = req.getParameter("managerName");
+		String managerNum = req.getParameter("managerNum");
 		String email = req.getParameter("email");
 		String hospitalKeyword = req.getParameter("hospitalKeyword");
 		
@@ -94,6 +96,8 @@ public class UserController {
 		params.put("registPic", registPic);
 		params.put("phoneNum", phoneNum);
 		params.put("psword", password);
+		params.put("managerName", managerName);
+		params.put("managerNum", managerNum);
 		params.put("email", email);
 		params.put("keyword", hospitalKeyword);
 		System.out.println("userLogin2 params : " + params.toString());
