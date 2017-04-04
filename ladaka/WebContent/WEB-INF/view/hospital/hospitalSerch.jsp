@@ -13,16 +13,22 @@
 	
 	$(document).ready(function(){
 		//search(1);
-		
-		
+		/* */
 		if(navigator.geolocation) {
-			/* geolocation is available */
+			//geolocation is available
 			navigator.geolocation.getCurrentPosition(showMap);
 			function showMap(position) {
 				latitude = position.coords.latitude;
 				longitude = position.coords.longitude;
 				
 				//alert(latitude+"/"+longitude);
+				$("#latitude").val(latitude);
+				$("#longitude").val(longitude);
+				//$scope.latitude = latitude;
+				//$scope.longitude = longitude;
+				
+				$("#latitude").change();
+				$("#longitude").change();
 			}
 		} else {
 			alert("I'm sorry, but geolocation services are not supported by your browser.");
@@ -31,33 +37,65 @@
 	});
 	
 	//angular js
-	var app = angular.module("app", []);
+	var app = angular.module("myApp", []);
 	
 	app.controller('appCtrl', function($scope, $http) {
-		$http({
-			method: "GET",
-			url: "http://localhost:8080/ladaka/hospitalSearchAjax"
-		}).then(function successCallback(response) {
-			$scope.message = response.data.result;
-			$scope.rows = response.data.result;
-		}, function errorCallback(response) {
-			//error
-			
-		})
 		
+		$scope.search = function() {
+			/* 
+			if(navigator.geolocation) {
+				//geolocation is available
+				navigator.geolocation.getCurrentPosition(showMap);
+				function showMap(position) {
+					latitude = position.coords.latitude;
+					longitude = position.coords.longitude;
+					
+					$scope.latitude = latitude;
+					$scope.longitude = longitude;
+					
+					//$("#latitude").change();
+					//$("#longitude").change();
+				}
+			} else {
+				alert("I'm sorry, but geolocation services are not supported by your browser.");
+			}
+			*/
+			
+			$http({
+				method : "POST"
+				, data : {latitude: $scope.latitude, longitude: $scope.longitude}
+				, url : "http://localhost:8080/ladaka/hospitalSearchAjax"
+			}).then(function successCallback(response) {
+				$scope.message = response.data.result;
+				$scope.rows = response.data.result;
+			}, function errorCallback(response) {
+				//error
+				
+			})
+		
+		};
+		
+		$scope.search();
 	});
+	
 	
 </script>
 
 <body>
-	<div>
+	
+	<div ng-app="myApp" ng-controller="appCtrl">
+		<from>
+			<input type="text" id="latitude" name="latitude" ng-model="latitude" value="1"/>
+			<input type="text" id="longitude" name="longitude" ng-model="longitude" value="2"/>
+			<input type="button" id="searchBtn" value="search" ng-click="search()">
+		</from>
 		<table border="1">
 			<thead>
 			</thead>
 			<tbody>
 				<tr>
 					<td>지도</td>
-					<td ng-app="app" ng-controller="appCtrl">
+					<td>
 						<!--  
 						<div>{{ message }}</div>
 						-->
@@ -73,4 +111,9 @@
 	</div>
 </body>
 
+<script>
+	$(document).ready(function(){
+		//$("#searchBtn").click();
+	});
+</script>
 </html>

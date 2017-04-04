@@ -1,5 +1,6 @@
 package com.ladaka.hospital.controller;
 
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +49,30 @@ public class HospitalController {
 		//결과값
 		//ArrayList result = new ArrayList();
 		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
+		
+		//입력값
+		String latitude = null;
+		String longitude = null;
+		
+		//Angular JS get Data
+		StringBuilder sb = new StringBuilder();
+		BufferedReader br = null;
+		try {
+			br = req.getReader();
+			
+			String str = null;
+			while ((str = br.readLine()) != null) {
+				sb.append(str);
+			}
+			JSONObject jObj = new JSONObject(sb.toString());
+			latitude = jObj.getString("latitude");
+			longitude = jObj.getString("longitude");
+			
+		} catch(Exception e) {
+			
+		}
+		System.out.println(latitude+"/"+longitude);
+		
 		
 		//모델 설정
 		mav = new ModelAndView();
