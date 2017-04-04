@@ -3,7 +3,6 @@ package com.ladaka.login.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +16,6 @@ public class LoginService {
 
 	public ArrayList<HashMap<String, Object>> login(HashMap<String, Object> params) {
 		return (ArrayList) loginDao.selectUser(params);
-	}
-
-	public ArrayList<HashMap<String, Object>> userLogin(HashMap<String, Object> params) {
-		return (ArrayList) loginDao.selectUserLogin(params);
-	}
-	
-	public ArrayList userLogin2(HashMap<String, Object> params) {
-		return (ArrayList) loginDao.selectUserLogin2(params);
 	}
 
 }

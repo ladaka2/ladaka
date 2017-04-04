@@ -1,25 +1,15 @@
 package com.ladaka.login.controller;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ladaka.login.service.LoginService;
@@ -55,79 +45,13 @@ public class LoginController {
 		mav.setViewName("login/login");
 
 		// 서비스 호출
-		//result = loginService.login(params);
+		// result = loginService.login(params);
 
 		// 확인
-		//logger.debug(result.toString());
+		// logger.debug(result.toString());
 
 		return mav;
 	} // end login
-
-	/**
-	 * <pre>
-	 * 1. 개요: userLogin
-	 * 2. 처리내용: 일반회원 로그인 AJAX
-	 * </pre>
-	 */
-	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView userLogin(HttpServletRequest req, HttpServletResponse res) {
-		logger.debug("LoginController > userLogin");
-
-		String email = req.getParameter("emailImsi");
-		String pwNum = req.getParameter("pwImsi");
-		
-		//모델 설정
-		mav = new ModelAndView();
-		mav.setViewName("jsonView");
-
-		//결과값
-		ArrayList result = null;
-
-		//파라메터 설정
-		params = new HashMap<String, Object>();
-		params.put("EMAIL", email);
-		params.put("PSWORD", pwNum);
-		System.out.println("userLogin params : " + params.toString());
-
-		result = loginService.userLogin(params); // DB Select
-
-		mav.addObject("list", result);
-		return mav;
-	}
-	
-	/**
-	 * <pre>
-	 * 1. 개요: userLogin2
-	 * 2. 처리내용: 사업자회원 로그인 AJAX
-	 * </pre>
-	 */
-	@RequestMapping(value = "/userLogin2", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView userLogin2(HttpServletRequest req, HttpServletResponse res) {
-		logger.debug("LoginController > userLogin2");
-		
-		String registNum = req.getParameter("registNumImsi");
-		String pwNum = req.getParameter("pwImsi");
-		
-		//모델 설정
-		mav = new ModelAndView();
-		mav.setViewName("jsonView");
-
-		//결과값
-		ArrayList result = null;
-
-		//파라메터 설정
-		params = new HashMap<String, Object>();
-		params.put("REGIST_NUM", registNum);
-		params.put("PSWORD", pwNum);
-		System.out.println("userLogin2 params : " + params.toString());
-
-		result = loginService.userLogin2(params); // DB Select
-
-		mav.addObject("list", result);
-		return mav;
-	}
 
 	/**
 	 * <pre>
@@ -151,7 +75,7 @@ public class LoginController {
 
 		return mav;
 	}
-	
+
 	/**
 	 * <pre>
 	 * 1. 개요: goRegist
@@ -174,7 +98,7 @@ public class LoginController {
 
 		return mav;
 	}
-	
+
 	/**
 	 * <pre>
 	 * 1. 개요: goRegist2
@@ -184,63 +108,18 @@ public class LoginController {
 	@RequestMapping(value = "/goRegist2")
 	public ModelAndView goRegist2(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("LoginController > goRegist2");
-		
+
 		// 결과값
 		ArrayList<HashMap<String, Object>> result = null;
-		
+
 		// 파라메터 설정
 		params = new HashMap<String, Object>();
-		
+
 		// 모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("login/goRegist2");
-		
+
 		return mav;
 	}
-	
-	/**
-	 * <pre>
-	 * 1. 개요: goHome
-	 * 2. 처리내용: 홈화면 출력
-	 * </pre>
-	 */
-	@RequestMapping(value = "/home")
-	public ModelAndView goHome(HttpServletRequest req, HttpServletResponse res) {
-		logger.debug("LoginController > goHome");
-		
-		// 결과값
-		ArrayList<HashMap<String, Object>> result = null;
-		
-		// 파라메터 설정
-		params = new HashMap<String, Object>();
-		
-		// 모델 설정
-		mav = new ModelAndView();
-		mav.setViewName("login/home");
-		
-		return mav;
-	}
-	
-	/**
-	 * <pre>
-	 * 1. 개요: mypage
-	 * 2. 처리내용: 마이페이지 출력
-	 * </pre>
-	 */
-	@RequestMapping(value = "/mypage")
-	public ModelAndView mypage(HttpServletRequest req, HttpServletResponse res) {
-		logger.debug("LoginController > mypage");
-		
-		// 결과값
-		ArrayList<HashMap<String, Object>> result = null;
-		
-		// 파라메터 설정
-		params = new HashMap<String, Object>();
-		
-		// 모델 설정
-		mav = new ModelAndView();
-		mav.setViewName("login/mypage");
-		
-		return mav;
-	}
+
 }

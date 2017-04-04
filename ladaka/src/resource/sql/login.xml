@@ -3,29 +3,9 @@
 <mapper namespace="login">
 
 	<resultMap type="java.util.HashMap" id="hashmap"></resultMap>
-	
+
 	<select id="selectUser" resultMap="hashmap">
 		SELECT * FROM USER
 	</select>
-	
-	<select id="selectUserLogin" resultMap="hashmap">
-		SELECT
-		EMAIL, PSWORD
-		FROM USER
-		WHERE 1=1
-		AND EMAIL = '${EMAIL}'
-		AND PSWORD = '${PSWORD}'
-		LIMIT 1
-	</select>
-	
-	<select id="selectUserLogin2" resultMap="hashmap">
-		SELECT
-		REGIST_NUM, PSWORD
-		FROM USER_HOS
-		WHERE 1=1
-		AND REGIST_NUM = '${REGIST_NUM}'
-		AND PSWORD = '${PSWORD}'
-		LIMIT 1
-	</select>
-	
+
 </mapper>

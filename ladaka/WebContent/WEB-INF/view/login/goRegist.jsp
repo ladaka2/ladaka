@@ -68,34 +68,71 @@
 			<div class="gender">
 				<h5>성별</h5>
 				<div>
-					<input type="text" id='gender' placeholder="성별" />
+					<!-- 					<input type="text" id='gender' placeholder="성별" /> -->
+					<input type="text" name="genderInput" id="genderInput" style="width: 100px;" disabled value="남">
+					<select style="width: 100px; margin-right: 10px" name="gender" id="gender">
+						<option value="남" selected>남</option>
+						<option value="여">여</option>
+					</select>
 				</div>
 			</div>
 			<div class="bornYear">
 				<h5>출생 연도</h5>
 				<div>
-					<input type="number" id='bornYear' placeholder="출생 연도" />
+					<input type="month" id='bornYear' placeholder="출생 연도" />
 				</div>
 			</div>
 
 			<div style="float: left; padding: 20px;">* 만 14세 미만은 회원 가입이 안됩니다. 양해 부탁드립니다.</div>
 
 			<div id="ruleCheck">
-				<div>
-					<li>
-						<input type="checkbox" id="allCheck" />전체선택
-					</li>
-					<li>
-						<input type="checkbox" />이용약관 동의 (필수)
-					</li>
-					<li>
-						<input type="checkbox" />개인정보취급방침 동의 (필수)
-					</li>
-				</div>
+				<table>
+					<thead>
+						<tr>
+							<th><input type="checkbox" name="checkAll"></th>
+							<th>전체선택</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input type="checkbox" name="checkOne">
+							</td>
+							<td>
+							이용약관 동의 (필수)
+								<div style="float: right; text-decoration: underline; color: blue;" onclick="term1();">
+									내용보기
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="checkOne">
+							</td>
+							<td>
+							개인정보취급방침 동의 (필수)
+								<div style="float: right; text-decoration: underline; color: blue;" onclick="term2();">
+									내용보기
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="checkOne">
+							</td>
+							<td>
+							위치정보 동의 (선택)
+								<div style="float: right; text-decoration: underline; color: blue;" onclick="term3();">
+									내용보기
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 
 
-			<button style="width: 100%">회원가입 신청</button>
+			<button id="registTrue" style="width: 100%">회원가입 신청</button>
 		</div>
 
 
