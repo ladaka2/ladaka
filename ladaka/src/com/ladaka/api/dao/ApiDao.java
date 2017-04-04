@@ -1,7 +1,5 @@
 package com.ladaka.api.dao;
 
-import java.util.HashMap;
-
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;

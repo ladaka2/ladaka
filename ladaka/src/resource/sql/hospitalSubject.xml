@@ -4,7 +4,44 @@
 	
 	<resultMap type="java.util.HashMap" id="hashmap"></resultMap>
 	
-	<delete id="deleteHospitalDetail">
-		DELETE FROM HOSPITAL_DETAIL
+	<delete id="deletehospitalSubject">
+		DELETE FROM HOSPITAL_SUBJECT
 	</delete>
+	
+	<insert id="inserthospitalSubject" parameterType="hashmap">
+		INSERT INTO HOSPITAL_SUBJECT (
+			HOST_IDX
+			, YKIHO
+			, YADM_NM
+			, ADDR
+			, EMDONG_NM
+			, TEL_NO
+			, CL_CD
+			, CL_CD_NM
+			, SIDO_CD
+			, SIDO_CD_NM
+			, SGGU_CD
+			, SGGU_CD_NM
+			, POST_NO
+			, X_POS
+			, Y_POS
+		) VALUES (
+			(SELECT COUNT(1)+1 FROM HOSPITAL A)
+			, '${ykiho}'
+			, '${yadmNm}'
+			, '${addr}'
+			, '${emdongNm}'
+			, '${telno}'
+			, '${clCd}'
+			, '${clCdNm}'
+			, '${sidoCd}'
+			, '${sidoCdNm}'
+			, '${sgguCd}'
+			, '${sgguCdNm}'
+			, '${postNo}'
+			, '${XPos}'
+			, '${YPos}'
+		)
+	</insert>
+	
 </mapper>

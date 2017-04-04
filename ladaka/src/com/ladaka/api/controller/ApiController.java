@@ -1,6 +1,7 @@
 package com.ladaka.api.controller;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,12 +15,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ladaka.api.service.ApiService;
+import com.ladaka.hospital.service.HospitalService;
 
 @Controller
 public class ApiController {
 	
 	@Autowired
 	private ApiService apiService;
+	
+	@Autowired
+	private HospitalService hospitalService;
 	
 	protected static Logger logger = Logger.getLogger(ApiController.class.getName());//로그
 	ModelAndView mav = null;//모델
@@ -156,8 +161,32 @@ public class ApiController {
 		params.put("apiType", apiType);
 		
 		//서비스 호출
-		apiService.insertJsonHospitalDetail(params);
+		/* 초기 데이터 구축용 */
+		if(apiType.equals("transport")) {//교통정보
+			//hospitalService.deleteHospitalTraffic();
+		} else if(apiType.equals("sbject")) {//진료과목
+			
+		} else if(apiType.equals("detail")) {//세부정보
+			
+		} else {
+			mav.addObject("result", result);
+			return mav;
+		}
 		
+		try {
+			for(int i=0; i<=6922; i++) { //69227 / 10 = 6922
+				params.put("start", i*10);
+				params.put("page", 10);
+				apiService.insertJsonHospitalDetail(params);
+				TimeUnit.SECONDS.sleep(1);//delay
+			}
+		} catch(Exception e) {
+			System.out.println(e);
+			mav.addObject("result", result);
+			return mav;
+		}
+		
+		result = "true";
 		mav.addObject("result", result);
 		return mav;
 		

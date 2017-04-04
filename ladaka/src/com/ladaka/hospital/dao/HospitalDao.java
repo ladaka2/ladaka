@@ -36,4 +36,9 @@ public class HospitalDao {
 		return sqlSession.delete("hospitalTraffic.deleteHospitalTraffic");
 	}
 	
+	public int insertHospitalTraffic(HashMap<String, Object> params) {
+		return sqlSession.insert("hospitalTraffic.insertHospitalTraffic", params);
+	}
+	
+	
 }

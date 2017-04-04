@@ -22,4 +22,9 @@ public class HospitalService {
 		return hospitalDao.selectHospitalPage(params);
 	}
 	
+	//Traffic deleteHospitalTraffic
+	public int deleteHospitalTraffic() {
+		return hospitalDao.deleteHospitalTraffic();
+	}
+	
 }
