@@ -1,6 +1,5 @@
 package com.ladaka.user.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,10 @@ public class UserService {
 
 	public int insertUserLogin(HashMap<String, Object> params) {
 		return userDao.insertUserLogin(params);
+	}
+	
+	public int insertUserLogin2(HashMap<String, Object> params) {
+		return userDao.insertUserLogin2(params);
 	}
 
 }

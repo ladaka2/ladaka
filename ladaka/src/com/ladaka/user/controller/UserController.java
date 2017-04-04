@@ -62,4 +62,47 @@ public class UserController {
 		return mav;
 	}
 	
+	/**
+	 * <pre>
+	 * 1. 개요: goRegistAjax2
+	 * 2. 처리내용: 병원 회원가입 AJAX
+	 * </pre>
+	 */
+	@RequestMapping(value = "/goRegistAjax2")
+	public ModelAndView goRegistAjax2(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("UserController > goRegistAjax2");
+		
+		String businessName = req.getParameter("businessName");
+		String businessNum = req.getParameter("businessNum");
+		String registPic = req.getParameter("registPic");
+		String phoneNum = req.getParameter("phoneNum");
+		String password = req.getParameter("password");
+		String email = req.getParameter("email");
+		String hospitalKeyword = req.getParameter("hospitalKeyword");
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+		
+		//결과값
+		String result = "false";
+		
+		//파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("NAME", businessName);
+		params.put("REGIST_NUM", businessNum);
+		params.put("REGIST_PIC", registPic);
+		params.put("PHONE_NUM", phoneNum);
+		params.put("PSWORD", password);
+		params.put("EMAIL", email);
+		params.put("KEYWORD", hospitalKeyword);
+		System.out.println("userLogin2 params : " + params.toString());
+		
+		// 서비스 호출
+		userService.insertUserLogin2(params); // DB Insert
+		
+		mav.addObject("list", result);
+		return mav;
+	}
+	
 }

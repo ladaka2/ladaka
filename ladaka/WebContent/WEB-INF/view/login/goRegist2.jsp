@@ -83,7 +83,7 @@
 			
 			<div style="float: left;">
 				<h5>진료 키워드</h5>
-				<textarea style="width: 100%;" rows="5" cols="100" placeholder="병원의 전문 분야 (예 : 여드름, 피부 클리닉, 보톡스, 여의사 산부인과등) 40자 이내로 입력해 주세요."></textarea>
+				<textarea id="hospitalKeyword" style="width: 100%;" rows="5" cols="100" placeholder="병원의 전문 분야 (예 : 여드름, 피부 클리닉, 보톡스, 여의사 산부인과등) 40자 이내로 입력해 주세요."></textarea>
 			</div>
 
 			<div id="ruleCheck">

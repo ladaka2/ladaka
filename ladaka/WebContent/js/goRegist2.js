@@ -28,13 +28,16 @@ $(document).ready(function() {
 
 	// 회원가입 신청 클릭
 	$("#registTrue").click(function() {
+		var businessName = $("#business_nm").val();
 		var businessNum = $("#business_num1").val() + "-" + $("#business_num2").val();
-		var email = $("#user_email").val() + "@" + $("#str_email").val();
-		var nickname = $("#business_nm").val();
+		var registPic = "";
+		var phoneNum = "";
 		var password = $("#user_pw").val();
 		var passwordRe = $("#user_pw_re").val();
+		var email = $("#user_email").val() + "@" + $("#str_email").val();
+		var hospitalKeyword = $("#hospitalKeyword").val();
 		
-		//console.log(email + " / " + nickname + " / " + password + " / " + gender + " / " + bornyear);
+		console.log(businessName + " / " + businessNum + " / " + password + " / " + email + " / " + hospitalKeyword);
 		
 		if (password != passwordRe) {
 			alert("비밀번호를 확인해주세요.");
@@ -43,13 +46,17 @@ $(document).ready(function() {
 			
 			var param = {};
 			param = {};
-			param.email = email;
-			param.nickname = nickname;
+			param.businessName = businessName;
+			param.businessNum = businessNum;
+			param.registPic = registPic;
+			param.phoneNum = phoneNum;
 			param.password = password;
+			param.email = email;
+			param.hospitalKeyword = hospitalKeyword;
 			
 			$.ajax({
 				type : "POST",
-				url : "/ladaka/goRegistAjax",
+				url : "/ladaka/goRegistAjax2",
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				data : param,
 				dataType : "json",

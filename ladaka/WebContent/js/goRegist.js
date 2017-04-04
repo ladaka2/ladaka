@@ -26,6 +26,19 @@ $(document).ready(function() {
 		});
 	});
 
+	//성별 입력방식 선택
+	$('#gender').change(function() {
+		$("#gender option:selected").each(function() {
+			if ($(this).val() == '1') { //직접입력일 경우
+				$("#genderInput").val(''); //값 초기화
+				$("#genderInput").attr("disabled", false); //활성화
+			} else { //직접입력이 아닐경우
+				$("#genderInput").val($(this).text()); //선택값 입력
+				$("#genderInput").attr("disabled", true); //비활성화
+			}
+		});
+	});
+
 	// 회원가입 신청 클릭
 	$("#registTrue").click(function() {
 		var email = $("#user_email").val() + "@" + $("#str_email").val();
