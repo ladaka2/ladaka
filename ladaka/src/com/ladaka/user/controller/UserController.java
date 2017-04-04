@@ -75,7 +75,6 @@ public class UserController {
 		String businessName = req.getParameter("businessName");
 		String businessNum = req.getParameter("businessNum");
 		String registPic = req.getParameter("registPic");
-		String phoneNum = req.getParameter("phoneNum");
 		String password = req.getParameter("password");
 		String managerName = req.getParameter("managerName");
 		String managerNum = req.getParameter("managerNum");
@@ -94,7 +93,6 @@ public class UserController {
 		params.put("name", businessName);
 		params.put("registNum", businessNum);
 		params.put("registPic", registPic);
-		params.put("phoneNum", phoneNum);
 		params.put("psword", password);
 		params.put("managerName", managerName);
 		params.put("managerNum", managerNum);
