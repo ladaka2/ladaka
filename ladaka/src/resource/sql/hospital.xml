@@ -64,5 +64,7 @@
 		)
 	</insert>
 	
+	<update id="updateHospital" parameterType="hashmap">
+	</update>
 	
 </mapper>

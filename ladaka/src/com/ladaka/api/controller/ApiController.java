@@ -166,20 +166,17 @@ public class ApiController {
 		count = hospitalService.countHospital(params);
 		System.out.println("count:"+count);
 		
-		if(apiType.equals("transport")) {//교통정보
-			//hospitalService.deleteHospitalTraffic();
-		} else if(apiType.equals("sbject")) {//진료과목
-			
-		} else if(apiType.equals("detail")) {//세부정보
-			
-		} else {
+		if(count < 0) {
+			result = "true";
 			mav.addObject("result", result);
 			return mav;
 		}
 		
+		int loopNum = count / 10;
+		
 		/*
 		try {
-			for(int i=0; i<=6922; i++) { //69227 / 10 = 6922
+			for(int i=0; i<=loopNum; i++) { //69227 / 10 = 6922
 				params.put("start", i*10);
 				params.put("page", 10);
 				apiService.insertJsonHospitalDetail(params);
