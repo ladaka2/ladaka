@@ -18,4 +18,12 @@ public class LoginService {
 		return (ArrayList) loginDao.selectUser(params);
 	}
 
+	public ArrayList<HashMap<String, Object>> userLogin(HashMap<String, Object> params) {
+		return (ArrayList) loginDao.selectUserLogin(params);
+	}
+
+	public ArrayList userLogin2(HashMap<String, Object> params) {
+		return (ArrayList) loginDao.selectUserLogin2(params);
+	}
+	
 }

@@ -152,6 +152,11 @@ div.s_bottom2 {
 	width: 100%;
 }
 
+.businessName {
+	float: left;
+	width: 100%;
+}
+
 .pw {
 	float: left;
 	width: 40%;

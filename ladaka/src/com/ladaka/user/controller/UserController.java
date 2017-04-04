@@ -1,6 +1,5 @@
 package com.ladaka.user.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ladaka.user.service.UserService;
@@ -26,72 +23,6 @@ public class UserController {
 	ModelAndView mav = null; // 모델
 	HashMap<String, Object> params = null; // 파라미터
 
-	/**
-	 * <pre>
-	 * 1. 개요: userLogin
-	 * 2. 처리내용: 일반회원 로그인 AJAX
-	 * </pre>
-	 */
-	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView userLogin(HttpServletRequest req, HttpServletResponse res) {
-		logger.debug("UserController > userLogin");
-
-		String email = req.getParameter("emailImsi");
-		String pwNum = req.getParameter("pwImsi");
-		
-		//모델 설정
-		mav = new ModelAndView();
-		mav.setViewName("jsonView");
-
-		//결과값
-		ArrayList result = null;
-
-		//파라메터 설정
-		params = new HashMap<String, Object>();
-		params.put("EMAIL", email);
-		params.put("PSWORD", pwNum);
-		System.out.println("userLogin params : " + params.toString());
-
-		result = userService.userLogin(params); // DB Select
-
-		mav.addObject("list", result);
-		return mav;
-	}
-	
-	/**
-	 * <pre>
-	 * 1. 개요: userLogin2
-	 * 2. 처리내용: 사업자회원 로그인 AJAX
-	 * </pre>
-	 */
-	@RequestMapping(value = "/userLogin2", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView userLogin2(HttpServletRequest req, HttpServletResponse res) {
-		logger.debug("UserController > userLogin2");
-		
-		String registNum = req.getParameter("registNumImsi");
-		String pwNum = req.getParameter("pwImsi");
-		
-		//모델 설정
-		mav = new ModelAndView();
-		mav.setViewName("jsonView");
-
-		//결과값
-		ArrayList result = null;
-
-		//파라메터 설정
-		params = new HashMap<String, Object>();
-		params.put("REGIST_NUM", registNum);
-		params.put("PSWORD", pwNum);
-		System.out.println("userLogin2 params : " + params.toString());
-
-		result = userService.userLogin2(params); // DB Select
-
-		mav.addObject("list", result);
-		return mav;
-	}
-	
 	/**
 	 * <pre>
 	 * 1. 개요: goRegistAjax
