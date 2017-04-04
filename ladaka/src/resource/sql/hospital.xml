@@ -3,9 +3,24 @@
 <mapper namespace="hospital">
 	
 	<resultMap type="java.util.HashMap" id="hashmap"></resultMap>
+	<resultMap type="java.lang.Integer" id="int"></resultMap>
 	
 	<select id="selectHospital" resultMap="hashmap">
 		SELECT * FROM HOSPITAL
+	</select>
+	
+	<select id="countHospital" parameterType="hashmap" resultType="int">
+		SELECT COUNT(1) FROM HOSPITAL
+		WHERE DELETE_YN = 'N'
+		<if test='apiType == "transport"'>
+		AND TRAFFIC_YN = 'N'
+		</if>
+		<if test='apiType == "sbject"'>
+		AND SUBJECT_YN = 'N'
+		</if>
+		<if test='apiType == "detail"'>
+		AND DETAIL_YN = 'N'
+		</if>
 	</select>
 	
 	<select id="selectHospitalPage" resultMap="hashmap">

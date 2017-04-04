@@ -150,6 +150,7 @@ public class ApiController {
 		
 		//결과값
 		String result = "false";
+		int count = 0;
 		
 		//입력값
 		String apiType = req.getParameter("apiType");
@@ -162,6 +163,9 @@ public class ApiController {
 		
 		//서비스 호출
 		/* 초기 데이터 구축용 */
+		count = hospitalService.countHospital(params);
+		System.out.println("count:"+count);
+		
 		if(apiType.equals("transport")) {//교통정보
 			//hospitalService.deleteHospitalTraffic();
 		} else if(apiType.equals("sbject")) {//진료과목
@@ -173,6 +177,7 @@ public class ApiController {
 			return mav;
 		}
 		
+		/*
 		try {
 			for(int i=0; i<=6922; i++) { //69227 / 10 = 6922
 				params.put("start", i*10);
@@ -185,6 +190,7 @@ public class ApiController {
 			mav.addObject("result", result);
 			return mav;
 		}
+		*/
 		
 		result = "true";
 		mav.addObject("result", result);

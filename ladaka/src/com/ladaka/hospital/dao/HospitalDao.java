@@ -31,6 +31,10 @@ public class HospitalDao {
 		return sqlSession.insert("hospital.insertHospital", params);
 	}
 	
+	public int countHospital(HashMap<String, Object> params) {
+		return sqlSession.selectOne("hospital.countHospital", params);
+	}
+	
 	//Traffic
 	public int deleteHospitalTraffic() {
 		return sqlSession.delete("hospitalTraffic.deleteHospitalTraffic");

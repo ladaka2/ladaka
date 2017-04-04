@@ -22,7 +22,11 @@ public class HospitalService {
 		return hospitalDao.selectHospitalPage(params);
 	}
 	
-	//Traffic deleteHospitalTraffic
+	public int countHospital(HashMap<String, Object> params) {
+		return hospitalDao.countHospital(params);
+	}
+	
+	//Traffic
 	public int deleteHospitalTraffic() {
 		return hospitalDao.deleteHospitalTraffic();
 	}

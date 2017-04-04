@@ -39,7 +39,6 @@
 	}
 	
 	function parseJson(data) {
-		alert("L42");
 		var html = "";
 		alert(data.result);
 		//alert(data.response.body.totalCount);
