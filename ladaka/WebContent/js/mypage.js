@@ -1,11 +1,11 @@
 $(document).ready(function() {
-
-	// contentVisible 처리
-	var contentVisible = true;
-	if (contentVisible == true) {
-		$("#contentVisible").css("display", "block");
-	} else {
+	console.log("loginType : ", loginType);
+	
+	// loginType 화면 분기화
+	if (loginType == "non") {
 		$("#contentVisible").css("display", "none");
+	} else {
+		// nothing
 	}
 	
 	// 즐겨찾기카운트

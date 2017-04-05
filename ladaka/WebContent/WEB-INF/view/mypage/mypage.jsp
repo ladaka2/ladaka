@@ -11,6 +11,9 @@
 <script src="js/mypage.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/commonFunc.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="css/healingCamp.css">
+<script type="text/javascript">
+	var loginType = "${loginType}";
+</script>
 </head>
 <body>
 

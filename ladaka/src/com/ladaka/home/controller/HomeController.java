@@ -34,12 +34,33 @@ public class HomeController {
 	public ModelAndView goHome(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("HomeController > goHome");
 
+		String loginType = null;
+		
+		String email = req.getParameter("emailImsi"); // 일반회원
+		String registNum = req.getParameter("registNumImsi"); // 병원회원
+		String pwNum = req.getParameter("pwImsi");
+		
 		// 결과값
 		ArrayList<HashMap<String, Object>> result = null;
 
 		// 파라메터 설정
 		params = new HashMap<String, Object>();
+		params.put("email", email); // 일반회원
+		params.put("registNum", registNum); // 병원회원
+		params.put("psword", pwNum);
+		System.out.println("goHome params : " + params.toString());
 
+		if (email == null && registNum == null) { // 미로그인
+			loginType = "non";
+			req.setAttribute("loginType", loginType);
+		} else if(email == null && registNum != null) { // 일반로그인
+			loginType = "normal";
+			req.setAttribute("loginType", loginType);
+		} else { // 그외 사업자 로그인
+			loginType = "business";
+			req.setAttribute("loginType", loginType);
+		}
+		
 		// 모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("home/home");

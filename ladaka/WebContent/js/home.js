@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+	console.log("loginType : ", loginType);
+	
 	$("#s_left").click(function() {
 		window.open("http://localhost:8080/ladaka/hospitalSearch", "_self");
 	});
