@@ -207,8 +207,6 @@ public class ApiService {
 		HashMap<String, Object> paramsTmp2 = null;//Hospital 처리여부 업데이트
 		
 		//서비스 호출
-		//params.put("start", 0);
-		//params.put("page", 10);
 		hospitalList = hospitalDao.selectHospitalPage(params);
 		
 		String urlApi = "http://apis.data.go.kr/B551182/medicInsttDetailInfoService";//URL
@@ -293,7 +291,7 @@ public class ApiService {
 			
 			totalCount = Integer.parseInt(tmp.get("totalCount").toString());
 			if(totalCount == 0) ; //없을경우
-			else if(totalCount == 1) {
+			else if(totalCount == 1) {//1건
 				tmp = (JSONObject)tmp.get("items");
 				tmp = (JSONObject)tmp.get("item");
 				
@@ -311,7 +309,7 @@ public class ApiService {
 					
 				}
 				
-			} else {
+			} else {//다건
 				tmp = (JSONObject)tmp.get("items");
 				tmpArray = tmp.getJSONArray("item");
 				
@@ -338,7 +336,6 @@ public class ApiService {
 			
 			//Hospital Check Update
 			int tmpInt = hospitalDao.updateHospitalApi(paramsTmp2);
-			System.out.println("tmpInt:"+tmpInt);
 			System.out.println("[L342]"+tmp.toString());
 		}//end for
 		

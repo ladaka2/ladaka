@@ -9,7 +9,7 @@
 		SELECT * FROM HOSPITAL
 	</select>
 	
-	<select id="countHospital" parameterType="hashmap" resultType="int">
+	<select id="countHospitalApi" parameterType="hashmap" resultType="int">
 		SELECT COUNT(1) FROM HOSPITAL
 		WHERE DELETE_YN = 'N'
 		<if test='apiType == "transport"'>

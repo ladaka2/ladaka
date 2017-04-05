@@ -10,37 +10,23 @@
 	
 	<insert id="inserthospitalSubject" parameterType="hashmap">
 		INSERT INTO HOSPITAL_SUBJECT (
-			HOST_IDX
+			SUBJECT_IDX
+			, HOST_IDX
 			, YKIHO
-			, YADM_NM
-			, ADDR
-			, EMDONG_NM
-			, TEL_NO
-			, CL_CD
-			, CL_CD_NM
-			, SIDO_CD
-			, SIDO_CD_NM
-			, SGGU_CD
-			, SGGU_CD_NM
-			, POST_NO
-			, X_POS
-			, Y_POS
+			, DGSBJT_CD
+			, DGSBJT_CD_NM
+			, DELETE_YN
+			, INSERT_DATE
+			, INSERT_ID
 		) VALUES (
-			(SELECT COUNT(1)+1 FROM HOSPITAL A)
+			(SELECT IFNULL(MAX(SUBJECT_IDX), 0)+1 FROM HOSPITAL_SUBJECT A)
+			, '${hostIdx}'
 			, '${ykiho}'
-			, '${yadmNm}'
-			, '${addr}'
-			, '${emdongNm}'
-			, '${telno}'
-			, '${clCd}'
-			, '${clCdNm}'
-			, '${sidoCd}'
-			, '${sidoCdNm}'
-			, '${sgguCd}'
-			, '${sgguCdNm}'
-			, '${postNo}'
-			, '${XPos}'
-			, '${YPos}'
+			, '${dgsbjtCd}'
+			, '${dgsbjtCdNm}'
+			, 'N'
+			, NOW()
+			, '${insertId}'
 		)
 	</insert>
 	

@@ -32,8 +32,8 @@ public class HospitalDao {
 		return sqlSession.insert("hospital.insertHospital", params);
 	}
 	
-	public int countHospital(HashMap<String, Object> params) {
-		return sqlSession.selectOne("hospital.countHospital", params);
+	public int countHospitalApi(HashMap<String, Object> params) {
+		return sqlSession.selectOne("hospital.countHospitalApi", params);
 	}
 	
 	public int updateHospitalApi(HashMap<String, Object> params) {
@@ -47,6 +47,11 @@ public class HospitalDao {
 	
 	public int insertHospitalTraffic(HashMap<String, Object> params) {
 		return sqlSession.insert("hospitalTraffic.insertHospitalTraffic", params);
+	}
+	
+	//Subject 
+	public int inserthospitalSubject(HashMap<String, Object> params) {
+		return sqlSession.insert("hospitalSubject.inserthospitalSubject", params);
 	}
 	
 	

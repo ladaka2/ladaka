@@ -22,8 +22,8 @@ public class HospitalService {
 		return hospitalDao.selectHospitalPage(params);
 	}
 	
-	public int countHospital(HashMap<String, Object> params) {
-		return hospitalDao.countHospital(params);
+	public int countHospitalApi(HashMap<String, Object> params) {
+		return hospitalDao.countHospitalApi(params);
 	}
 	
 	//Traffic

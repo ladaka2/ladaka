@@ -163,10 +163,10 @@ public class ApiController {
 		
 		//서비스 호출
 		/* 초기 데이터 구축용 */
-		count = hospitalService.countHospital(params);
+		count = hospitalService.countHospitalApi(params);
 		System.out.println("count:"+count);
 		
-		if(count < 0) {
+		if(count <= 0) {
 			result = "true";
 			mav.addObject("result", result);
 			return mav;
@@ -174,7 +174,7 @@ public class ApiController {
 		
 		int loopNum = count / 10;
 		System.out.println("loopNum:"+loopNum);
-		if(loopNum > 500) loopNum = 500;
+		if(loopNum > 500) loopNum = 0;
 		System.out.println("loopNum:"+loopNum);
 		
 		/* */
