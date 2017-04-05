@@ -1,8 +1,118 @@
 @CHARSET "EUC-KR";
 
+/* 공통 */
+.body input {
+	font-size: 14px;
+	display: block;
+	width: 90%;
+	height: 100%;
+	padding: 5px 10px;
+	background: none;
+	background-image: none;
+	border: 1px solid #f44336;
+	border-radius: 0;
+	-webkit-transition: border-color .25s ease, box-shadow .25s ease;
+	transition: border-color .25s ease, box-shadow .25s ease;
+}
+
 /* 홈 */
 #title {
 	text-align: center;
+	color: black;
+	background-color: #e7e7e7;
+	margin: 0 auto;
+	padding: 10px 10px 10px 10px;
+}
+
+#back {
+	color: black;
+}
+
+.loginType {
+	padding: 10px 0px 35px 0px;
+}
+
+.loginType div {
+	float: left;
+	width: 49%;
+	text-align: center;
+	border: 1px solid #f44336;
+}
+
+.userNormal {
+	background-color: #f0f0f0;
+	padding: 10px 0px 40px 0px;
+}
+
+.userNormal div {
+	padding-left: 10px;
+}
+
+.userBusiness {
+	background-color: #f0f0f0;
+	padding: 10px 0px 40px 0px;
+}
+
+.userBusiness div {
+	padding-left: 10px;
+}
+
+.login {
+	padding-top: 20px;
+}
+
+.login button {
+	width: 100%;
+	background-color: white;
+	border: none;
+	color: #f44336;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border: 2px solid #f44336;
+}
+
+.bottonBtn {
+	padding-top: 20px;
+}
+
+.bottonBtn div {
+	float: left;
+	width: 50%;
+}
+
+.bottonBtn div button {
+	width: 100%;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.bottonBtn div #findPw {
+	background-color: #555555;
+}
+
+.bottonBtn div #goRegist {
+	background-color: #f44336;
+}
+
+.bottonBtn div #goRegist2 {
+	background-color: #f44336;
+}
+
+.bottonBtn p {
+	font-size: 12px;
+	padding-top: 60px;
 }
 
 #magnify {
@@ -88,7 +198,6 @@ div.s_bottom2 {
 	float: right;
 	margin: 5px;
 }
-
 
 /* 마이페이지 */
 #menuCategory {
@@ -180,8 +289,3 @@ div.s_bottom2 {
 #ruleCheck li {
 	list-style-type: none;
 }
-
-
-
-
-

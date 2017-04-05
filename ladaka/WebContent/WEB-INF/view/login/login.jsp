@@ -10,27 +10,38 @@
 <script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/commonFunc.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/healingCamp.css">
 </head>
-<body>
+<body class="body">
 
 	<div>
 
 		<!-- 상단 -->
 		<div>
-			<div class="topSearch_in">
-				<a href="javascript:;" id="back">뒤로</a>
+			<div id="title">
+				<div style="float: left;">
+					<a href="javascript:;" id="back">뒤로</a>
+				</div>
 				<div>로그인</div>
 			</div>
 		</div>
 		<!--// 상단 -->
+		
+		<div class="loginType">
+			<div>
+				<input type='radio' name='find_type' id='find_type1' value="개인회원" checked /> <label for='find_type1'>개인회원 로그인</label>
+			</div>
+			<div>
+				<input type='radio' name='find_type' id='find_type2' value="사업자회원" /> <label for='find_type2'>사업자회원 로그인</label>
+			</div>
+		</div>
 
 		<!-- 개인회원 로그인 -->
-		<div id="userNormal">
+		<div class="userNormal" id="userNormal">
 			<div>
 				<h5>이메일</h5>
 				<div>
-					<input type='text' id='user_email' maxlength='40' placeholder="이메일" /> @
-					<input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
+					<input type='text' id='user_email' maxlength='40' placeholder="이메일" /> @ <input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
 					<select style="width: 100px; margin-right: 10px" name="selectEmail" id="selectEmail">
 						<option value="1">직접입력</option>
 						<option value="naver.com" selected>naver.com</option>
@@ -51,12 +62,11 @@
 		<!--// 개인회원 로그인 -->
 
 		<!-- 사업자회원 로그인 -->
-		<div id="userBusiness" style="display: none;">
+		<div class="userBusiness" id="userBusiness" style="display: none;">
 			<div>
 				<h5>사업자등록번호</h5>
 				<div>
-					<input type='text' id='business_num1' maxlength='10' placeholder="사업자등록번호10자리" /> -
-					<input type="text" id="business_num2" maxlength='2' placeholder="일련번호2자리" />
+					<input type='text' id='business_num1' maxlength='10' placeholder="사업자등록번호10자리" /> - <input type="text" id="business_num2" maxlength='2' placeholder="일련번호2자리" />
 				</div>
 			</div>
 			<div>
@@ -69,26 +79,11 @@
 		</div>
 		<!--// 사업자회원 로그인 -->
 
-		<div>
-			<div></div>
-		</div>
-		<div>
-			<div>
-				<input type='radio' name='find_type' id='find_type1' value="개인회원" checked /> <label for='find_type1'>개인회원 로그인</label>
-			</div>
-		</div>
-		<div>
-			<div>
-				<input type='radio' name='find_type' id='find_type2' value="사업자회원" /> <label for='find_type2'>사업자회원 로그인</label>
-			</div>
-		</div>
-		<div">
-			<div>
-				<button onclick="login()">로그인</button>
-			</div>
+		<div class="login">
+			<button onclick="login()">로그인</button>
 		</div>
 
-		<div style="padding-top: 40px;">
+		<div class="bottonBtn">
 			<div>
 				<button id="findPw">비밀번호찾기</button>
 			</div>
@@ -97,13 +92,11 @@
 			</div>
 			<div id="goRegist2Div" style="display: none">
 				<button id="goRegist2">병원외 사업자회원 가입</button>
-				<p>
-				* 병원 회원 가입을 하시려면 병원찾기 > 병원 리스트에서 해당 병원 선택 후 병원 회원 가입 신청을 해주셔야 합니다.
-				</p>
 			</div>
+			<p>* 병원 회원 가입을 하시려면 병원찾기 > 병원 리스트에서 해당 병원 선택 후 병원 회원 가입 신청을 해주셔야 합니다.</p>
 		</div>
 
 	</div>
-	
+
 </body>
 </html>

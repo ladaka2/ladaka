@@ -50,7 +50,7 @@ $(document).ready(function() {
 	$("#goRegist").click(function() {
 		window.open("http://localhost:8080/ladaka/goRegist", "_self");
 	})
-	
+
 	$("#goRegist2").click(function() {
 		window.open("http://localhost:8080/ladaka/goRegist2", "_self");
 	})
@@ -97,7 +97,7 @@ function nullCheck2() {
 		alert("business_num1 null");
 		$('#business_num1').focus();
 		return;
-	} else if (business_num2 == ''  || business_num2.length < 2) {
+	} else if (business_num2 == '' || business_num2.length < 2) {
 		alert("business_num2 null");
 		$('#business_num2').focus();
 		return;
@@ -123,7 +123,7 @@ function searchUser() {
 	param = {};
 	param.emailImsi = imsi1;
 	param.pwImsi = imsi2;
-	
+
 	// 일반 회원정보 조회
 	$.ajax({
 		type : "POST",
@@ -138,7 +138,7 @@ function searchUser() {
 		success : function(data) {
 			console.log(data.list[0].EMAIL);
 			console.log(data.list[0].PSWORD);
-			
+
 			if (data != undefined) {
 				var userEmail = data.list[0].EMAIL;
 				var userPsword = data.list[0].PSWORD;
@@ -168,7 +168,7 @@ function searchUser2() {
 	param = {};
 	param.registNumImsi = imsi1;
 	param.pwImsi = imsi2;
-	
+
 	// 사업자 회원정보 조회
 	$.ajax({
 		type : "POST",
@@ -183,14 +183,14 @@ function searchUser2() {
 		success : function(data) {
 			console.log(data.list[0].REGIST_NUM);
 			console.log(data.list[0].PSWORD);
-			
+
 			if (data != undefined) {
 				var userRegistNum = data.list[0].REGIST_NUM;
 				var userPsword = data.list[0].PSWORD;
-				
+
 				var registNum = $('#business_num1').val() + "-" + $('#business_num2').val()
 				var pw = $('#user_pw2').val();
-				
+
 				if (registNum == userRegistNum && pw == userPsword) {
 					window.open("http://localhost:8080/ladaka/home", "_self");
 					return;
@@ -202,7 +202,8 @@ function searchUser2() {
 				alert("사업자등록번호나 비밀번호가 일치하지 않습니다.");
 				return;
 			}
-			
+
 		}
 	});
 }
+
