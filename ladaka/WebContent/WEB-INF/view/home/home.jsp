@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/healingCamp.css">
 <script type="text/javascript">
 	var loginType = "${loginType}";
+	var registNum = "${registNum}";
 </script>
 </head>
 <body>
@@ -28,6 +29,7 @@
 						<img id="menu" src="images/menu.png" alt="menu" onclick="mypage()">
 						<img id="magnify" src="images/magnify.png" alt="magnify" onclick="keywordSearch()">
 					</div>
+					<div id="registNum"></div>
 				</div>
 			</div>
 		</div>

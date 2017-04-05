@@ -131,10 +131,6 @@ function searchUser() {
 		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 		data : param,
 		dataType : "json",
-		beforeSend : function(xhr) {
-			xhr.setRequestHeader("email", imsi1);
-			xhr.setRequestHeader("pw", imsi2);
-		},
 		async : false,
 		error : function(xhr, status, error) {
 			console.log("ajax error code:" + xhr.status);
@@ -151,7 +147,7 @@ function searchUser() {
 				var pw = $('#user_pw').val();
 
 				if (email == userEmail && pw == userPsword) {
-//					window.open("http://localhost:8080/ladaka/home", "_self");
+					window.open("http://localhost:8080/ladaka/home", "_self");
 					return;
 				} else {
 					alert("로그인실패");

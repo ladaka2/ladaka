@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/healingCamp.css">
 <script type="text/javascript">
 	var loginType = "${loginType}";
+	var registNum = "${registNum}";
 </script>
 </head>
 <body>
@@ -48,7 +49,8 @@
 			
 			<!-- 병원회원 로그인 한 경우 -->
 			<div id="businessLogin" style="display: none">
-				병원 명칭/병원회원
+				<div id="registNum"></div>
+				병원회원
 			</div>
 			<!--// 병원회원 로그인 한 경우 -->
 
@@ -62,7 +64,7 @@
 		</div>
 		
 		<div class="contents">
-			<div id="contentVisible" style="display: none">
+			<div id="contentVisible" style="display: block">
 				<div class="conLeft" onclick="contents1()" id="contents1"></div>
 				<div class="conRight" onclick="contents2()" id="contents2"></div>
 				<div class="conLeft" onclick="contents3()" id="contents3"></div>

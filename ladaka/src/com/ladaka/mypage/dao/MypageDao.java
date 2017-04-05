@@ -1,5 +1,8 @@
 package com.ladaka.mypage.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,6 +20,14 @@ public class MypageDao {
 
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
+	}
+	
+	public ArrayList selectNormalUser(HashMap<String, Object> params) {
+		return (ArrayList) sqlSession.selectList("mypage.selectNormalUser", params);
+	}
+	
+	public ArrayList selectBusinessUser(HashMap<String, Object> params) {
+		return (ArrayList) sqlSession.selectList("mypage.selectBusinessUser", params);
 	}
 
 }

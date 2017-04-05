@@ -1,11 +1,14 @@
 $(document).ready(function() {
 	console.log("loginType : ", loginType);
+	console.log("registNum : ", registNum);
 	
 	// loginType 화면 분기화
 	if (loginType == "non") {
 		$("#contentVisible").css("display", "none");
 	} else {
-		// nothing
+		$("#nonLogin").css("display", "none");
+		$("#businessLogin").css("display", "block");
+		$("#registNum").append("사업자번호 : " + registNum);
 	}
 	
 	// 즐겨찾기카운트
