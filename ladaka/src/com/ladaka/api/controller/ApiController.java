@@ -174,7 +174,7 @@ public class ApiController {
 		
 		int loopNum = count / 10;
 		System.out.println("loopNum:"+loopNum);
-		if(loopNum > 500) loopNum = 0;
+		if(loopNum > 500) loopNum = 500;
 		System.out.println("loopNum:"+loopNum);
 		
 		/* */

@@ -227,8 +227,7 @@ public class ApiService {
 		
 		for(int i=0; i<hospitalList.size(); i++) {
 			HashMap hashMap = (HashMap)hospitalList.get(i);
-			System.out.println(hashMap.get("HOST_IDX"));
-			System.out.println(hashMap.get("YKIHO"));
+			System.out.println("HOST_IDX:"+hashMap.get("HOST_IDX"));
 			hostIdx =  hashMap.get("HOST_IDX").toString();
 			ykiho = hashMap.get("YKIHO").toString();
 			paramsTmp = new HashMap<String, Object>();
@@ -287,6 +286,31 @@ public class ApiService {
 			int totalCount = 0;
 			
 			tmp = (JSONObject)jsonObject.get("response");
+			
+			if(apiType.equals("detail")) {//세부정보 별도 처리
+				//System.out.println("[L289]"+tmp.toString());
+				if(tmp.get("body").toString() == "") {
+					System.out.println("없음");
+				} else {
+					tmp = (JSONObject)tmp.get("body");
+					tmp = (JSONObject)tmp.get("item");
+					
+					paramsTmp.put("lunchWeek", CommonUtil.JsonObjectEmptyNull(tmp, "lunchWeek"));
+					paramsTmp.put("noTrmtSun", CommonUtil.JsonObjectEmptyNull(tmp, "noTrmtSun"));
+					paramsTmp.put("noTrmtHoli", CommonUtil.JsonObjectEmptyNull(tmp, "noTrmtHoli"));
+					paramsTmp.put("emyDayYn", CommonUtil.JsonObjectEmptyNull(tmp, "emyDayYn"));
+					paramsTmp.put("emyDayTelNo1", CommonUtil.JsonObjectEmptyNull(tmp, "emyDayTelNo1"));
+					paramsTmp.put("emyDayTelNo2", CommonUtil.JsonObjectEmptyNull(tmp, "emyDayTelNo2"));
+					paramsTmp.put("emyNgtYn", CommonUtil.JsonObjectEmptyNull(tmp, "emyNgtYn"));
+					paramsTmp.put("emyNgtTelNo1", CommonUtil.JsonObjectEmptyNull(tmp, "emyNgtTelNo1"));
+					paramsTmp.put("emyNgtTelNo2", CommonUtil.JsonObjectEmptyNull(tmp, "emyNgtTelNo2"));
+					
+					hospitalDao.inserthospitalDetail(paramsTmp);
+				}
+				hospitalDao.updateHospitalApi(paramsTmp2);
+				continue;
+			}//end if
+			
 			tmp = (JSONObject)tmp.get("body");
 			
 			totalCount = Integer.parseInt(tmp.get("totalCount").toString());
@@ -304,8 +328,12 @@ public class ApiService {
 					
 					hospitalDao.insertHospitalTraffic(paramsTmp);
 				} else if(apiType.equals("sbject")) {//진료과목
+					paramsTmp.put("dgsbjtCd", CommonUtil.JsonObjectEmptyNull(tmp, "dgsbjtCd"));
+					paramsTmp.put("dgsbjtCdNm", CommonUtil.JsonObjectEmptyNull(tmp, "dgsbjtCdNm"));
 					
+					hospitalDao.inserthospitalSubject(paramsTmp);
 				} else if(apiType.equals("detail")) {//세부정보
+					
 					
 				}
 				
@@ -325,8 +353,12 @@ public class ApiService {
 						
 						hospitalDao.insertHospitalTraffic(paramsTmp);
 					} else if(apiType.equals("sbject")) {//진료과목
+						paramsTmp.put("dgsbjtCd", CommonUtil.JsonObjectEmptyNull(obj, "dgsbjtCd"));
+						paramsTmp.put("dgsbjtCdNm", CommonUtil.JsonObjectEmptyNull(obj, "dgsbjtCdNm"));
 						
+						hospitalDao.inserthospitalSubject(paramsTmp);
 					} else if(apiType.equals("detail")) {//세부정보
+						
 						
 					}
 					
@@ -335,8 +367,8 @@ public class ApiService {
 			}
 			
 			//Hospital Check Update
-			int tmpInt = hospitalDao.updateHospitalApi(paramsTmp2);
-			System.out.println("[L342]"+tmp.toString());
+			hospitalDao.updateHospitalApi(paramsTmp2);
+			//System.out.println("[L342]"+tmp.toString());
 		}//end for
 		
 		

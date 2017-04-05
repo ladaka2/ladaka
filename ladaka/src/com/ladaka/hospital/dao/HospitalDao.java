@@ -54,5 +54,9 @@ public class HospitalDao {
 		return sqlSession.insert("hospitalSubject.inserthospitalSubject", params);
 	}
 	
+	//Detail
+	public int inserthospitalDetail(HashMap<String, Object> params) {
+		return sqlSession.insert("hospitalDetail.inserthospitalDetail", params);
+	}
 	
 }

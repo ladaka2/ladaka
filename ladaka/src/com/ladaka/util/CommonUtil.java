@@ -22,8 +22,11 @@ public class CommonUtil {
 	  * @return 
 	  */
 	public static String JsonObjectEmptyNull(JSONObject jonsObject, String key) {
-		if(jonsObject.has(key)) return jonsObject.get(key).toString();
-		else return "";
+		if(jonsObject.has(key)) {
+			String tmp = jonsObject.get(key).toString().trim();
+			tmp = tmp.replace("'", "");
+			return tmp;
+		} else return "";
 	}
 	
 	

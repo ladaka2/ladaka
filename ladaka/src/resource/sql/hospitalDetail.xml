@@ -7,4 +7,41 @@
 	<delete id="deleteHospitalDetail">
 		DELETE FROM HOSPITAL_DETAIL
 	</delete>
+	
+	<insert id="inserthospitalDetail" parameterType="hashmap">
+		INSERT INTO HOSPITAL_DETAIL (
+			DETAIL_IDX
+			, HOST_IDX
+			, YKIHO
+			, LUNCH_WEEK
+			, NO_TRMT_SUN
+			, NO_TRMT_HOLI
+			, EMY_DAY_YN
+			, EMY_DAY_TEL_NO_1
+			, EMY_DAY_TEL_NO_2
+			, EMY_NGT_YN
+			, EMY_NGT_TEL_NO_1
+			, EMY_NGT_TEL_NO_2
+			, DELETE_YN
+			, INSERT_DATE
+			, INSERT_ID
+		) VALUES (
+			(SELECT IFNULL(MAX(DETAIL_IDX), 0)+1 FROM HOSPITAL_DETAIL A)
+			, '${hostIdx}'
+			, '${ykiho}'
+			, '${lunchWeek}'
+			, '${noTrmtSun}'
+			, '${noTrmtHoli}'
+			, '${emyDayYn}'
+			, '${emyDayTelNo1}'
+			, '${emyDayTelNo2}'
+			, '${emyNgtYn}'
+			, '${emyNgtTelNo1}'
+			, '${emyNgtTelNo2}'
+			, 'N'
+			, NOW()
+			, '${insertId}'
+		)
+	</insert>
+	
 </mapper>
