@@ -37,6 +37,7 @@
 	width: 49%;
 	text-align: center;
 	border: 1px solid #f44336;
+	cursor: pointer;
 }
 
 .userNormal {
