@@ -92,6 +92,8 @@
 <body>
 	API CALL 의료기관별 상세 정보서비스<br/>
 	<hr/>
+	<button onclick="location.href='/ladaka/api'">병원 정보</button><br/><br/>
+	<hr/>
 	<select id="apiType" name="apiType">
 		<option value="">선택</option>
 		<option value="transport">교통정보</option>
@@ -99,7 +101,7 @@
 		<option value="detail">세부정보</option>
 	</select>
 	<button onclick="javascript:insert();">입력</button><br/>
-	
+	<hr/>
 	<span id="span">Loading...</span><br/>
 	
 	<table border="1">

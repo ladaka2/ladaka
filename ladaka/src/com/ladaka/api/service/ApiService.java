@@ -204,6 +204,7 @@ public class ApiService {
 		String apiType = commonUtil.HashMapEmptyNull(params, "apiType");
 		String serviceKey = dataPortalKey; //인증키
 		HashMap<String, Object> paramsTmp = null;
+		HashMap<String, Object> paramsTmp2 = null;//Hospital 처리여부 업데이트
 		
 		//서비스 호출
 		//params.put("start", 0);
@@ -214,7 +215,7 @@ public class ApiService {
 		String pageNo = "1";
 		String numOfRows = "100";
 		String hostIdx = "";
-		String ykiho = "JDQ4MTg4MSM1MSMkMSMkMCMkODkkMzgxMzUxIzExIyQyIyQ3IyQwMCQyNjEyMjIjNjEjJDEjJDgjJDgz";
+		String ykiho = "";
 		
 		if(apiType.equals("transport")) {//교통정보
 			urlApi += "/getTransportInfoList";
@@ -236,6 +237,18 @@ public class ApiService {
 			paramsTmp.put("hostIdx", hostIdx);
 			paramsTmp.put("ykiho", ykiho);
 			paramsTmp.put("insertId", "init_batch");
+			//
+			paramsTmp2 = new HashMap<String, Object>();
+			paramsTmp2.put("hostIdx", hostIdx);
+			paramsTmp2.put("ykiho", ykiho);
+			paramsTmp2.put("updateId", "init_batch");
+			if(apiType.equals("transport")) {//교통정보
+				paramsTmp2.put("trafficYn", "Y");
+			} else if(apiType.equals("sbject")) {//진료과목
+				paramsTmp2.put("subjectYn", "Y");
+			} else if(apiType.equals("detail")) {//세부정보
+				paramsTmp2.put("detailYn", "Y");
+			}
 			
 			//API 호출
 			try {
@@ -267,6 +280,7 @@ public class ApiService {
 				System.out.println(jsonObject.toString());
 			} catch (Exception e) {
 				System.out.println(e);
+				return "false";
 			}
 			
 			//DB Insert
@@ -278,7 +292,7 @@ public class ApiService {
 			tmp = (JSONObject)tmp.get("body");
 			
 			totalCount = Integer.parseInt(tmp.get("totalCount").toString());
-			if(totalCount == 0) continue; //없을경우
+			if(totalCount == 0) ; //없을경우
 			else if(totalCount == 1) {
 				tmp = (JSONObject)tmp.get("items");
 				tmp = (JSONObject)tmp.get("item");
@@ -322,7 +336,10 @@ public class ApiService {
 				
 			}
 			
-			System.out.println(tmp.toString());
+			//Hospital Check Update
+			int tmpInt = hospitalDao.updateHospitalApi(paramsTmp2);
+			System.out.println("tmpInt:"+tmpInt);
+			System.out.println("[L342]"+tmp.toString());
 		}//end for
 		
 		

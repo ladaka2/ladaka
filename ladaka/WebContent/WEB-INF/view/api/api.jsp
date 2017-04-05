@@ -84,6 +84,8 @@
 <body>
 	API CALL 병원정보 서비스<br/>
 	<hr/>
+	<button onclick="location.href='/ladaka/apiMedicDetail'">병원 상세정보</button><br/><br/>
+	<hr/>
 	<button onclick="location.href='/ladaka/apiGetToDB'">DB입력</button><br/><br/>
 	<hr/>
 	<button>검색</button><br/>

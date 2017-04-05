@@ -173,8 +173,11 @@ public class ApiController {
 		}
 		
 		int loopNum = count / 10;
+		System.out.println("loopNum:"+loopNum);
+		if(loopNum > 500) loopNum = 500;
+		System.out.println("loopNum:"+loopNum);
 		
-		/*
+		/* */
 		try {
 			for(int i=0; i<=loopNum; i++) { //69227 / 10 = 6922
 				params.put("start", i*10);
@@ -187,7 +190,7 @@ public class ApiController {
 			mav.addObject("result", result);
 			return mav;
 		}
-		*/
+		
 		
 		result = "true";
 		mav.addObject("result", result);

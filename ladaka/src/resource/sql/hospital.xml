@@ -64,7 +64,21 @@
 		)
 	</insert>
 	
-	<update id="updateHospital" parameterType="hashmap">
+	<update id="updateHospitalApi" parameterType="hashmap">
+		UPDATE HOSPITAL SET
+			UPDATE_DATE = now()
+			, UPDATE_ID = '${updateId}'
+			<if test="trafficYn != null">
+			, TRAFFIC_YN = '${trafficYn}'
+			</if>
+			<if test="subjectYn != null">
+			, SUBJECT_YN = '${subjectYn}'
+			</if>
+			<if test="detailYn != null">
+			, DETAIL_YN = '${detailYn}'
+			</if>
+		WHERE HOST_IDX = '${hostIdx}'
+		AND YKIHO = '${ykiho}'
 	</update>
 	
 </mapper>

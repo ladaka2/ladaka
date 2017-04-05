@@ -23,6 +23,7 @@ public class HospitalDao {
 		this.sqlSession = sqlSession;
 	}
 	
+	//Hospital
 	public ArrayList<HashMap<String, Object>> selectHospitalPage(Map params) {
 		return (ArrayList)sqlSession.selectList("hospital.selectHospitalPage", params);
 	}
@@ -33,6 +34,10 @@ public class HospitalDao {
 	
 	public int countHospital(HashMap<String, Object> params) {
 		return sqlSession.selectOne("hospital.countHospital", params);
+	}
+	
+	public int updateHospitalApi(HashMap<String, Object> params) {
+		return sqlSession.update("hospital.updateHospitalApi", params);
 	}
 	
 	//Traffic
