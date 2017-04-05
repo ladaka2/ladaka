@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">
+
+	<resultMap type="java.util.HashMap" id="hashmap"></resultMap>
+
+	<select id="selectNormalUser" resultMap="hashmap">
+		SELECT
+			NICKNAME
+		FROM USER
+		WHERE EMAIL = '${email}'
+		LIMIT 1
+	</select>
+	
+	<select id="selectBusinessUser" resultMap="hashmap">
+		SELECT
+			NAME
+			, REGIST_NUM
+		FROM USER_HOS
+		WHERE REGIST_NUM = '${registNum}'
+		LIMIT 1
+	</select>
+
+</mapper>

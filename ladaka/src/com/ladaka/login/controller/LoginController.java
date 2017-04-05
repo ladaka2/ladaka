@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +83,10 @@ public class LoginController {
 		params.put("psword", pwNum);
 		System.out.println("userLogin params : " + params.toString());
 
+		// 세션 SET
+		HttpSession session = req.getSession();
+		session.setAttribute("email", email);
+
 		result = loginService.userLogin(params); // DB Select
 
 		mav.addObject("list", result);
@@ -114,6 +119,10 @@ public class LoginController {
 		params.put("registNum", registNum);
 		params.put("psword", pwNum);
 		System.out.println("userLogin2 params : " + params.toString());
+		
+		// 세션 SET
+		HttpSession session = req.getSession();
+		session.setAttribute("registNum", registNum);
 
 		result = loginService.userLogin2(params); // DB Select
 

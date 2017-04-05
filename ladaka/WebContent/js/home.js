@@ -1,5 +1,8 @@
 $(document).ready(function() {
 	console.log("loginType : ", loginType);
+	console.log("registNum : ", registNum);
+	
+	$("#registNum").append("사업자번호 : " + registNum);
 	
 	$("#s_left").click(function() {
 		window.open("http://localhost:8080/ladaka/hospitalSearch", "_self");
