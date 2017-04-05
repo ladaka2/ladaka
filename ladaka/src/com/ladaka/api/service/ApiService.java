@@ -45,14 +45,18 @@ public class ApiService {
 		JSONObject result = null;
 		
 		//인증키
-		String serviceKey = "vZNjcCd88Bf%2BSJspiaA%2FfXS6JhvSRPK7yfYknuja0T1KYDickPWAElWdJlIhpkvF8H1hNKLVAVjomuREV%2B0Agw%3D%3D";
-		
-		//URL
-		String urlApi = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList";
+		String serviceKey = dataPortalKey;
 		
 		//입력값
 		String pageNo = params.get("pageNo").toString();
 		String numOfRows = params.get("numOfRows").toString();
+		String apiType = params.get("apiType").toString();
+		
+		//URL : apiType 분기
+		String urlApi = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList"; //병원정보(hosp)
+		////http://apis.data.go.kr/B551182/pharmacyInfoService/ //약국정보(pharm)
+		if(apiType.equals("hosp")) urlApi = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList"; //병원정보(hosp)
+		else if(apiType.equals("pharm")) urlApi = "http://apis.data.go.kr/B551182/pharmacyInfoService/getParmacyBasisList"; //약국정보(pharm)
 		
 		//API 호출
 		try {
@@ -62,6 +66,7 @@ public class ApiService {
 			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode(numOfRows, "UTF-8")); //한 페이지 결과 수
 			
 			URL url = new URL(urlBuilder.toString());
+			System.out.println(url.toString());
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("GET");
 			
@@ -99,9 +104,6 @@ public class ApiService {
 		
 		//인증키
 		String serviceKey = "vZNjcCd88Bf%2BSJspiaA%2FfXS6JhvSRPK7yfYknuja0T1KYDickPWAElWdJlIhpkvF8H1hNKLVAVjomuREV%2B0Agw%3D%3D";
-		
-		
-		
 		
 		//입력값
 		String pageNo = commonUtil.HashMapEmptyNull(params, "pageNo");
@@ -332,9 +334,6 @@ public class ApiService {
 					paramsTmp.put("dgsbjtCdNm", CommonUtil.JsonObjectEmptyNull(tmp, "dgsbjtCdNm"));
 					
 					hospitalDao.inserthospitalSubject(paramsTmp);
-				} else if(apiType.equals("detail")) {//세부정보
-					
-					
 				}
 				
 			} else {//다건
@@ -357,9 +356,6 @@ public class ApiService {
 						paramsTmp.put("dgsbjtCdNm", CommonUtil.JsonObjectEmptyNull(obj, "dgsbjtCdNm"));
 						
 						hospitalDao.inserthospitalSubject(paramsTmp);
-					} else if(apiType.equals("detail")) {//세부정보
-						
-						
 					}
 					
 				}
@@ -375,5 +371,41 @@ public class ApiService {
 		return result;
 	}//end insertJsonHospitalDetail
 	
+	
+	//
+	public int insertJsonPharm(JSONObject data) {
+		
+		System.out.println("ApiService > insertJsonHospital");
+		JSONObject json;
+		HashMap<String, Object> params = null;//파라메터
+		
+		json = (JSONObject)data.get("response");
+		json = (JSONObject)json.get("body");
+		json = (JSONObject)json.get("items");
+		
+		JSONArray array = json.getJSONArray("item");
+		
+		for(int i=0; i<array.length(); i++) {
+			JSONObject obj = (JSONObject) array.get(i);
+			params = new HashMap<String, Object>();
+			params.put("ykiho", obj.get("ykiho") );
+			params.put("yadmNm", obj.get("yadmNm") );
+			params.put("addr", obj.get("addr") );
+			if(obj.has("emdongNm")) params.put("emdongNm", obj.get("emdongNm"));
+			if(obj.has("telno")) params.put("telno", obj.get("telno"));
+			params.put("sidoCd", obj.get("sidoCd") );
+			params.put("sidoCdNm", obj.get("sidoCdNm") );
+			params.put("sgguCd", obj.get("sgguCd") );
+			params.put("sgguCdNm", obj.get("sgguCdNm") );
+			params.put("postNo", obj.get("postNo") );
+			if(obj.has("XPos")) params.put("XPos", obj.get("XPos")); else params.put("XPos", "0");
+			if(obj.has("YPos")) params.put("YPos", obj.get("YPos")); else params.put("YPos", "0");
+			
+			//hospitalDao.insertHospital(params);
+			
+		}
+		
+		return 1;
+	}//end insertJsonPharm
 	
 }

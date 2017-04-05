@@ -86,7 +86,8 @@
 	<hr/>
 	<button onclick="location.href='/ladaka/apiMedicDetail'">병원 상세정보</button><br/><br/>
 	<hr/>
-	<button onclick="location.href='/ladaka/apiGetToDB'">DB입력</button><br/><br/>
+	<button onclick="location.href='/ladaka/apiGetToDB'">병원상세정보 DB입력</button><br/><br/>
+	<button onclick="location.href='/ladaka/apiGetToDBPharm'">약국상세정보 DB입력</button><br/><br/>
 	<hr/>
 	<button>검색</button><br/>
 	

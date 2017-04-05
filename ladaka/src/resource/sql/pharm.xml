@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pharm">
+	
+	<resultMap type="java.util.HashMap" id="hashmap"></resultMap>
+	
+	<delete id="deletePharm">
+		DELETE FROM PHARM
+	</delete>
+	
+	<insert id="insertPharm" parameterType="hashmap">
+		INSERT INTO PHARM (
+			PHARM_IDX
+			, YKIHO
+			, YADM_NM
+			, ADDR
+			, EMDONG_NM
+			, TEL_NO
+			, SIDO_CD
+			, SIDO_CD_NM
+			, SGGU_CD
+			, SGGU_CD_NM
+			, POST_NO
+			, X_POS
+			, Y_POS
+			, DELETE_YN
+			, INSERT_DATE
+			, INSERT_ID
+		) VALUES (
+			(SELECT IFNULL(MAX(DETAIL_IDX), 0)+1 FROM HOSPITAL_DETAIL A)
+			, '${ykiho}'
+			, '${yadmNm}'
+			, '${addr}'
+			, '${emdongNm}'
+			, '${telNo}'
+			, '${sido_cd}'
+			, '${sido_cd_nm}'
+			, '${sggu_cd}'
+			, '${sggu_cd_nm}'
+			, '${post_no}'
+			, '${XPos}'
+			, '${YPos}'
+			, 'N'
+			, NOW()
+			, '${insertId}'
+		)
+	</insert>
+	
+</mapper>

@@ -18,6 +18,7 @@ public class CommonUtil {
 	
 	/**
 	  * JsonObject 에 해당 키값을 리턴 없을경우 ""을 리턴
+	  * 입력값내 ' 제거 및 트림처리
 	  * @param  str 대상 문자열
 	  * @return 
 	  */

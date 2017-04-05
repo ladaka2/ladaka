@@ -53,6 +53,7 @@ public class ApiController {
 		params = new HashMap<String, Object>();
 		params.put("numOfRows", 10);
 		params.put("pageNo", 1);
+		params.put("apiType", "hosp");
 		
 		//모델 설정
 		mav = new ModelAndView();
@@ -65,6 +66,7 @@ public class ApiController {
 	}//end ApiGet
 	
 	
+	//병원 초기데이터 구축용. 임의 사용금지.
 	@RequestMapping(value = "/apiGetToDB")
 	public ModelAndView ApiGetToDB(HttpServletRequest req, HttpServletResponse res) {
 		
@@ -75,6 +77,7 @@ public class ApiController {
 		//파라메터 설정
 		params = new HashMap<String, Object>();
 		params.put("numOfRows", 100);
+		params.put("apiType", "hosp");
 		
 		/* 초기 데이터 구축용
 		for(int i=1; i<=689; i++) {
@@ -118,9 +121,7 @@ public class ApiController {
 		JSONObject result = null;
 		
 		//입력값
-		//String apiType = req.getAttribute("apiType").toString();
 		String apiType = req.getParameter("apiType");
-		
 		
 		//파라메터 설정
 		params = new HashMap<String, Object>();
@@ -191,11 +192,50 @@ public class ApiController {
 			return mav;
 		}
 		
-		
 		result = "true";
 		mav.addObject("result", result);
 		return mav;
 		
 	}//ApiGetToDBDetail
+	
+	
+	//약국기본정보 생성. 임의 실행 금지.
+	//http://apis.data.go.kr/B551182/pharmacyInfoService/
+	@RequestMapping(value = "/apiGetToDBPharm")
+	@ResponseBody
+	public ModelAndView ApiGetToDBPharm(HttpServletRequest req, HttpServletResponse res) {
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+		
+		//결과값
+		JSONObject jsonObj = null;
+		String result = "false";
+		
+		//파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("numOfRows", 10);
+		params.put("apiType", "pharm");
+		
+		/* 초기 데이터 구축용 */
+		for(int i=1; i<=1; i++) {
+			params.put("pageNo", i);
+			
+			//API 호출
+			jsonObj = apiService.apiGet(params);
+			System.out.println("[ApiGetToDBPharm]"+result);// tot 68873 > 689/100
+			//tot 68846 > 6885/10 > 689/100
+			
+			//DB Insert
+			//apiService.insertJsonHospital(result);
+		}
+		
+		
+		result = "true";
+		mav.addObject("result", result);
+		return mav;
+	}
+	
 	
 }
