@@ -188,6 +188,7 @@ public class ApiService {
 			params.put("postNo", obj.get("postNo") );
 			if(obj.has("XPos")) params.put("XPos", obj.get("XPos")); else params.put("XPos", "0");
 			if(obj.has("YPos")) params.put("YPos", obj.get("YPos")); else params.put("YPos", "0");
+			params.put("insertId", "init_batch" );
 			
 			hospitalDao.insertHospital(params);
 			

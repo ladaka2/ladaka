@@ -45,6 +45,9 @@
 			, POST_NO
 			, X_POS
 			, Y_POS
+			, DELETE_YN
+			, INSERT_DATE
+			, INSERT_ID
 		) VALUES (
 			(SELECT COUNT(1)+1 FROM HOSPITAL A)
 			, '${ykiho}'
@@ -61,6 +64,9 @@
 			, '${postNo}'
 			, '${XPos}'
 			, '${YPos}'
+			, 'N'
+			, NOW()
+			, '${insertId}'
 		)
 	</insert>
 	

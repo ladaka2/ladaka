@@ -80,7 +80,7 @@ public class ApiController {
 		params.put("numOfRows", 100);
 		params.put("apiType", "hosp");
 		
-		/* 초기 데이터 구축용
+		/* 초기 데이터 구축용 */
 		for(int i=1; i<=689; i++) {
 			params.put("pageNo", i);
 			
@@ -91,7 +91,7 @@ public class ApiController {
 			//DB Insert
 			apiService.insertJsonHospital(result);
 		}
-		*/
+		
 		
 		//모델 설정
 		mav = new ModelAndView();
