@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/healingCamp.css">
 <script type="text/javascript">
 	var loginType = "${loginType}";
+	var email = "${email}";
 	var registNum = "${registNum}";
 </script>
 </head>
@@ -43,7 +44,8 @@
 			
 			<!-- 일반 회원 로그인 한 경우 -->
 			<div id="normalLogin" style="display: none">
-				닉네임/일반회원
+				<div id="email"></div>
+				일반회원
 			</div>
 			<!--// 일반 회원 로그인 한 경우 -->
 			

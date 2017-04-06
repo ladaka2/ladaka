@@ -1,11 +1,16 @@
 $(document).ready(function() {
 	console.log("loginType : ", loginType);
+	console.log("email : ", email);
 	console.log("registNum : ", registNum);
 	
 	// loginType 화면 분기화
-	if (loginType == "non") {
+	if (loginType == "non") { // 미로그인
 		$("#contentVisible").css("display", "none");
-	} else {
+	} else if (loginType == "normal"){ // 일반로그인
+		$("#nonLogin").css("display", "none");
+		$("#normalLogin").css("display", "block");
+		$("#email").append("이메일 : " + email);
+	} else { // 기타로그인
 		$("#nonLogin").css("display", "none");
 		$("#businessLogin").css("display", "block");
 		$("#registNum").append("사업자번호 : " + registNum);

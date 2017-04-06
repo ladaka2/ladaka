@@ -57,6 +57,7 @@ public class HomeController {
 		} else if(email != null && registNum == null) { // 일반로그인
 			loginType = "normal";
 			req.setAttribute("loginType", loginType);
+			req.setAttribute("email", email);
 		} else { // 그외 사업자 로그인
 			loginType = "business";
 			req.setAttribute("loginType", loginType);

@@ -15,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ladaka.mypage.service.MypageService;
 
-import net.sf.json.JSON;
-
 @Controller
 public class MypageController {
 
@@ -65,13 +63,13 @@ public class MypageController {
 			req.setAttribute("loginType", loginType);
 			req.setAttribute("registNum", registNum);
 			
-			mav = new ModelAndView();
+			/*mav = new ModelAndView();
 			mav.setViewName("jsonView");
 			
 			result = mypageService.businessUser(params); // DB Select
 			System.out.println("result : " + result);
 			
-			mav.addObject("result", result);
+			mav.addObject("result", result);*/
 		}
 		
 		// 모델 설정
