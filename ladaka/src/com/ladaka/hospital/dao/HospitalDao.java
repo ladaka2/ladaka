@@ -28,6 +28,10 @@ public class HospitalDao {
 		return (ArrayList)sqlSession.selectList("hospital.selectHospitalPage", params);
 	}
 	
+	public ArrayList<HashMap<String, Object>> selectHospitalPageApi(Map params) {
+		return (ArrayList)sqlSession.selectList("hospital.selectHospitalPageApi", params);
+	}
+	
 	public int insertHospital(HashMap<String, Object> params) {
 		return sqlSession.insert("hospital.insertHospital", params);
 	}

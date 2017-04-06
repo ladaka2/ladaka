@@ -213,7 +213,7 @@ public class ApiService {
 		HashMap<String, Object> paramsTmp2 = null;//Hospital 처리여부 업데이트
 		
 		//서비스 호출
-		hospitalList = hospitalDao.selectHospitalPage(params);
+		hospitalList = hospitalDao.selectHospitalPageApi(params);
 		
 		String urlApi = "http://apis.data.go.kr/B551182/medicInsttDetailInfoService";//URL
 		String pageNo = "1";

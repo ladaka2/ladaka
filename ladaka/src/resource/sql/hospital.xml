@@ -23,6 +23,25 @@
 		</if>
 	</select>
 	
+	<select id="selectHospitalPageApi" resultMap="hashmap">
+		SELECT * FROM HOSPITAL INNER JOIN
+			(
+				SELECT * FROM HOSPITAL
+				WHERE DELETE_YN = 'N'
+				<if test='apiType == "transport"'>
+				AND TRAFFIC_YN = 'N'
+				</if>
+				<if test='apiType == "sbject"'>
+				AND SUBJECT_YN = 'N'
+				</if>
+				<if test='apiType == "detail"'>
+				AND DETAIL_YN = 'N'
+				</if>
+				ORDER BY HOST_IDX ASC LIMIT ${start}, ${page}
+			)
+			AS B USING(HOST_IDX)
+	</select>
+	
 	<select id="selectHospitalPage" resultMap="hashmap">
 		SELECT * FROM HOSPITAL INNER JOIN
 			(SELECT * FROM HOSPITAL WHERE 1=1 ORDER BY HOST_IDX ASC LIMIT ${start}, ${page}) AS B USING(HOST_IDX)
