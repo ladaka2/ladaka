@@ -21,4 +21,9 @@ public class TestService {
 		//testDao.deleteHospitalDetail(params);
 		return (ArrayList)testDao.selectHospital(params);
 	}
+	
+	//
+	public ArrayList<HashMap<String, Object>> selectBusinessUser(HashMap<String, Object> params) {
+		return testDao.selectBusinessUser(params);
+	}
 }

@@ -33,16 +33,20 @@ public class TestController {
 		
 		//파라메터 설정
 		params = new HashMap<String, Object>();
+		params.put("registNum", "1111111111-11");
 		
 		//모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("test/test");
 		
 		//서비스 호출
-		result = testService.test(params);
+		//result = testService.test(params);
+		result = testService.selectBusinessUser(params);
+		mav.addObject("result", result);
 		
 		//확인
 		logger.debug(result.toString());
+		
 		
 		return mav;
 	}//end test

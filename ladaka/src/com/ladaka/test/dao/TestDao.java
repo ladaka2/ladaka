@@ -47,4 +47,9 @@ public class TestDao {
 		return (int)sqlSession.delete("test.deleteHospitalDetail", params);
 	}
 	
+	//
+	public ArrayList<HashMap<String, Object>> selectBusinessUser(Map params) {
+		return (ArrayList)sqlSession.selectList("user.selectBusinessUser", params);
+	}
+	
 }
