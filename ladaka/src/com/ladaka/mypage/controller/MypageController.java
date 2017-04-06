@@ -57,19 +57,10 @@ public class MypageController {
 		} else if(email != null && registNum == null) { // 일반로그인
 			loginType = "normal";
 			req.setAttribute("loginType", loginType);
-			result = mypageService.normalUser(params); // DB Select
 		} else { // 그외 사업자 로그인
 			loginType = "business";
 			req.setAttribute("loginType", loginType);
 			req.setAttribute("registNum", registNum);
-			
-			/*mav = new ModelAndView();
-			mav.setViewName("jsonView");
-			
-			result = mypageService.businessUser(params); // DB Select
-			System.out.println("result : " + result);
-			
-			mav.addObject("result", result);*/
 		}
 		
 		// 모델 설정

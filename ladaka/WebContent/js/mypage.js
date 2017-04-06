@@ -10,10 +10,12 @@ $(document).ready(function() {
 		$("#nonLogin").css("display", "none");
 		$("#normalLogin").css("display", "block");
 		$("#email").append("이메일 : " + email);
+		$("#logout").css("display", "block");
 	} else { // 기타로그인
 		$("#nonLogin").css("display", "none");
 		$("#businessLogin").css("display", "block");
 		$("#registNum").append("사업자번호 : " + registNum);
+		$("#logout").css("display", "block");
 	}
 	
 	// 즐겨찾기카운트
@@ -40,6 +42,14 @@ $(document).ready(function() {
 		window.open("http://localhost:8080/ladaka/login", "_self");
 	});
 });
+
+function logout() {
+	alert("logout");
+	
+	// 세션 삭제
+	
+}
+
 
 function menu1() {
 	alert("롬");
@@ -84,3 +94,7 @@ function contents5() {
 function contents6() {
 	alert("설정");
 }
+
+
+
+

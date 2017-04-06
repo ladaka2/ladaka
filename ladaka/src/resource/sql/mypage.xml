@@ -4,21 +4,4 @@
 
 	<resultMap type="java.util.HashMap" id="hashmap"></resultMap>
 
-	<select id="selectNormalUser" resultMap="hashmap">
-		SELECT
-			NICKNAME
-		FROM USER
-		WHERE EMAIL = '${email}'
-		LIMIT 1
-	</select>
-	
-	<select id="selectBusinessUser" resultMap="hashmap">
-		SELECT
-			NAME
-			, REGIST_NUM
-		FROM USER_HOS
-		WHERE REGIST_NUM = '${registNum}'
-		LIMIT 1
-	</select>
-
 </mapper>

@@ -59,6 +59,15 @@ public class HomeController {
 			req.setAttribute("loginType", loginType);
 			req.setAttribute("email", email);
 		} else { // 그외 사업자 로그인
+			// 사업자인경우 병원명칭 출력
+			mav = new ModelAndView();
+			mav.setViewName("jsonView");
+			result = homeService.businessUser(params);
+			System.out.println("result : " + result);
+			mav.addObject("result", result);
+			// 사업자인경우 병원명칭 출력
+			
+			
 			loginType = "business";
 			req.setAttribute("loginType", loginType);
 			req.setAttribute("registNum", registNum);

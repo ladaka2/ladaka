@@ -1,5 +1,8 @@
 package com.ladaka.home.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,6 +20,10 @@ public class HomeDao {
 
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
+	}
+	
+	public ArrayList selectBusinessUser(HashMap<String, Object> params) {
+		return (ArrayList) sqlSession.selectList("user.selectBusinessUser", params);
 	}
 
 }

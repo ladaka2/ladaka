@@ -14,11 +14,4 @@ public class MypageService {
 	@Autowired
 	MypageDao mypageDao;
 	
-	public ArrayList<HashMap<String, Object>> normalUser(HashMap<String, Object> params) {
-		return (ArrayList) mypageDao.selectNormalUser(params);
-	}
-
-	public ArrayList<HashMap<String, Object>> businessUser(HashMap<String, Object> params) {
-		return (ArrayList) mypageDao.selectBusinessUser(params);
-	}
 }

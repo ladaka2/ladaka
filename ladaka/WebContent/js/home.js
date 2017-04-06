@@ -2,6 +2,7 @@ $(document).ready(function() {
 	console.log("loginType : ", loginType);
 	console.log("email : ", email);
 	console.log("registNum : ", registNum);
+//	console.log("hospitalNm : ", hospitalNm);
 	
 	// loginType 화면 분기화
 	if (loginType == "non") { // 미로그인
@@ -13,6 +14,7 @@ $(document).ready(function() {
 		$("#email").append("이메일 : " + email);
 	} else { // 기타로그인
 		$("#registNum").css("display", "block");
+//		$("#registNum").append("병원명칭 : " + hospitalNm + "<br/>");
 		$("#registNum").append("사업자번호 : " + registNum);
 	}
 	

@@ -38,6 +38,7 @@
 				<button id="nonLogin" >로그인/회원가입</button>
 				<div style="float: right;">
 					<a href="javascript:;" onclick="goHome()">홈이동</a>
+					<button id="logout" style="display: none" onclick="logout()">로그아웃</button>
 				</div>
 			</div>
 			<!--// 로그인 안한 경우 -->
