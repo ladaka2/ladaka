@@ -58,13 +58,13 @@
 		)
 	</insert>
 	
-<!-- 	<select id="selectNormalUser" resultMap="hashmap"> -->
-<!-- 		SELECT -->
-<!-- 			NICKNAME -->
-<!-- 		FROM USER -->
-<!-- 		WHERE EMAIL = '${email}' -->
-<!-- 		LIMIT 1 -->
-<!-- 	</select> -->
+	<select id="selectNormalUser" resultMap="hashmap">
+		SELECT
+			NICKNAME
+		FROM USER
+		WHERE EMAIL = '${email}'
+		LIMIT 1
+	</select>
 	
 	<select id="selectBusinessUser" resultMap="hashmap">
 		SELECT

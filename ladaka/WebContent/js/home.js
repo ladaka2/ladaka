@@ -2,17 +2,18 @@ $(document).ready(function() {
 	console.log("loginType : ", loginType);
 	console.log("email : ", email);
 	console.log("registNum : ", registNum);
-//	console.log("hospitalNm : ", hospitalNm);
 	
 	// loginType 화면 분기화
 	if (loginType == "non") { // 미로그인
 		$("#email").css("display", "none");
 		$("#registNum").css("display", "none");
 	} else if (loginType == "normal"){ // 일반로그인
+		$("#registNum").css("display", "none");
 		$("#email").css("display", "block");
 		$("#registNum").css("display", "none");
 		$("#email").append("이메일 : " + email);
 	} else { // 기타로그인
+		$("#email").css("display", "none");
 		$("#registNum").css("display", "block");
 //		$("#registNum").append("병원명칭 : " + hospitalNm + "<br/>");
 		$("#registNum").append("사업자번호 : " + registNum);

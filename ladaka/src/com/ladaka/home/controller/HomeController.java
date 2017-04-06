@@ -2,6 +2,7 @@ package com.ladaka.home.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,28 +56,74 @@ public class HomeController {
 			loginType = "non";
 			req.setAttribute("loginType", loginType);
 		} else if(email != null && registNum == null) { // 일반로그인
+			// 일반로그인 닉네임 출력
+			mav = new ModelAndView();
+			mav.setViewName("home/home");
+			result = homeService.normalUser(params);
+			System.out.println("normalUser result : " + result);
+			mav.addObject("result", result);
+			// 일반로그인 닉네임 출력
+
 			loginType = "normal";
 			req.setAttribute("loginType", loginType);
 			req.setAttribute("email", email);
+			
+			return mav;
 		} else { // 그외 사업자 로그인
 			// 사업자인경우 병원명칭 출력
 			mav = new ModelAndView();
-			mav.setViewName("jsonView");
+			mav.setViewName("home/home");
 			result = homeService.businessUser(params);
-			System.out.println("result : " + result);
+			System.out.println("businessUser result : " + result);
 			mav.addObject("result", result);
 			// 사업자인경우 병원명칭 출력
-			
 			
 			loginType = "business";
 			req.setAttribute("loginType", loginType);
 			req.setAttribute("registNum", registNum);
+			
+			return mav;
 		}
 		
 		// 모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("home/home");
 
+		return mav;
+	}
+	
+	/**
+	 * <pre>
+	 * 1. 개요: sessionClearHome
+	 * 2. 처리내용: 세션 클리어 홈화면 출력
+	 * </pre>
+	 */
+	@RequestMapping(value = "/homeNoSession")
+	public ModelAndView sessionClearHome(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("HomeController > sessionClearHome");
+		
+		// 세션 GET
+		HttpSession session = req.getSession();
+		
+		// 세션 Clear
+		session.removeAttribute("email");
+		session.removeAttribute("registNum");
+		
+		String loginType = null;
+		
+		// 결과값
+		ArrayList<HashMap<String, Object>> result = null;
+		
+		// 파라메터 설정
+		params = new HashMap<String, Object>();
+		
+		loginType = "non";
+		req.setAttribute("loginType", loginType);
+		
+		// 모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("home/home");
+		
 		return mav;
 	}
 
