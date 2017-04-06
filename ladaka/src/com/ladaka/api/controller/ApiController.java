@@ -32,6 +32,7 @@ public class ApiController {
 	
 	@RequestMapping(value = "/api")
 	public ModelAndView Api(HttpServletRequest req, HttpServletResponse res) {
+		
 		//모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("api/api");
@@ -215,22 +216,23 @@ public class ApiController {
 		
 		//파라메터 설정
 		params = new HashMap<String, Object>();
-		params.put("numOfRows", 10);
+		params.put("numOfRows", 100);
 		params.put("apiType", "pharm");
 		
-		/* 초기 데이터 구축용 */
-		for(int i=1; i<=1; i++) {
+		/* 초기 데이터 구축용 
+		for(int i=1; i<=216; i++) {
 			params.put("pageNo", i);
 			
 			//API 호출
 			jsonObj = apiService.apiGet(params);
-			System.out.println("[ApiGetToDBPharm]"+result);// tot 68873 > 689/100
+			System.out.println("[ApiGetToDBPharm]"+jsonObj);// tot 21560 > 2156/10 > 216/100
 			//tot 68846 > 6885/10 > 689/100
 			
 			//DB Insert
-			//apiService.insertJsonHospital(result);
+			apiService.insertJsonPharm(jsonObj);
+			
 		}
-		
+		*/
 		
 		result = "true";
 		mav.addObject("result", result);

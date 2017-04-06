@@ -27,17 +27,17 @@
 			, INSERT_DATE
 			, INSERT_ID
 		) VALUES (
-			(SELECT IFNULL(MAX(DETAIL_IDX), 0)+1 FROM HOSPITAL_DETAIL A)
+			(SELECT IFNULL(MAX(PHARM_IDX), 0)+1 FROM PHARM A)
 			, '${ykiho}'
 			, '${yadmNm}'
 			, '${addr}'
 			, '${emdongNm}'
-			, '${telNo}'
-			, '${sido_cd}'
-			, '${sido_cd_nm}'
-			, '${sggu_cd}'
-			, '${sggu_cd_nm}'
-			, '${post_no}'
+			, '${telno}'
+			, '${sidoCd}'
+			, '${sidoCdNm}'
+			, '${sgguCd}'
+			, '${sgguCdNm}'
+			, '${postNo}'
 			, '${XPos}'
 			, '${YPos}'
 			, 'N'

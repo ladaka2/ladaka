@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import com.ladaka.api.dao.ApiDao;
 import com.ladaka.hospital.dao.HospitalDao;
+import com.ladaka.pharm.dao.PharmDao;
 import com.ladaka.util.CommonUtil;
 
 @Service
@@ -29,6 +30,9 @@ public class ApiService {
 	
 	@Autowired
 	HospitalDao hospitalDao;
+	
+	@Autowired
+	PharmDao pharmDao;
 	
 	CommonUtil commonUtil;
 	
@@ -54,7 +58,6 @@ public class ApiService {
 		
 		//URL : apiType 분기
 		String urlApi = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList"; //병원정보(hosp)
-		////http://apis.data.go.kr/B551182/pharmacyInfoService/ //약국정보(pharm)
 		if(apiType.equals("hosp")) urlApi = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList"; //병원정보(hosp)
 		else if(apiType.equals("pharm")) urlApi = "http://apis.data.go.kr/B551182/pharmacyInfoService/getParmacyBasisList"; //약국정보(pharm)
 		
@@ -375,7 +378,6 @@ public class ApiService {
 	//
 	public int insertJsonPharm(JSONObject data) {
 		
-		System.out.println("ApiService > insertJsonHospital");
 		JSONObject json;
 		HashMap<String, Object> params = null;//파라메터
 		
@@ -400,9 +402,10 @@ public class ApiService {
 			params.put("postNo", obj.get("postNo") );
 			if(obj.has("XPos")) params.put("XPos", obj.get("XPos")); else params.put("XPos", "0");
 			if(obj.has("YPos")) params.put("YPos", obj.get("YPos")); else params.put("YPos", "0");
+			params.put("insertId", "init_batch" );
 			
-			//hospitalDao.insertHospital(params);
-			
+			pharmDao.insertPharm(params);
+			//System.out.println(params.toString());
 		}
 		
 		return 1;
