@@ -92,39 +92,4 @@ public class HomeController {
 		return mav;
 	}
 	
-	/**
-	 * <pre>
-	 * 1. 개요: sessionClearHome
-	 * 2. 처리내용: 세션 클리어 홈화면 출력
-	 * </pre>
-	 */
-	@RequestMapping(value = "/homeNoSession")
-	public ModelAndView sessionClearHome(HttpServletRequest req, HttpServletResponse res) {
-		logger.debug("HomeController > sessionClearHome");
-		
-		// 세션 GET
-		HttpSession session = req.getSession();
-		
-		// 세션 Clear
-		session.removeAttribute("email");
-		session.removeAttribute("registNum");
-		
-		String loginType = null;
-		
-		// 결과값
-		ArrayList<HashMap<String, Object>> result = null;
-		
-		// 파라메터 설정
-		params = new HashMap<String, Object>();
-		
-		loginType = "non";
-		req.setAttribute("loginType", loginType);
-		
-		// 모델 설정
-		mav = new ModelAndView();
-		mav.setViewName("home/home");
-		
-		return mav;
-	}
-
 }

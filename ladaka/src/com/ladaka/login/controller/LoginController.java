@@ -37,6 +37,13 @@ public class LoginController {
 	public ModelAndView Login(HttpServletRequest req, HttpServletResponse res) {
 		logger.debug("LoginController > login");
 
+		// 세션 GET
+		HttpSession session = req.getSession();
+		
+		// 세션 Clear
+		session.removeAttribute("email");
+		session.removeAttribute("registNum");
+				
 		// 결과값
 		ArrayList<HashMap<String, Object>> result = null;
 

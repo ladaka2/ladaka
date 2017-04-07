@@ -44,8 +44,8 @@ $(document).ready(function() {
 });
 
 function logout() {
-	alert("로그아웃 후 홈으로 이동합니다.");
-	window.open("http://localhost:8080/ladaka/homeNoSession", "_self");
+	alert("로그아웃 후 로그인페이지로 이동합니다.");
+	window.open("http://localhost:8080/ladaka/login", "_self");
 }
 
 function menu1() {
