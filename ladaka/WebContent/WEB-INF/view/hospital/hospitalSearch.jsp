@@ -28,11 +28,14 @@
 		param.latitude = $("#latitude").val();
 		param.longitude = $("#longitude").val();
 		
+		//본사 고정(좌표 없을시)
+		if(latitude == "0") param.latitude = "37.4907489";
+		if(longitude == "0") param.longitude = "127.0314723";
+		
 		$.ajax({
 			type : "POST"
 			, url : "/ladaka/hospitalSearchAjax"
 			, data : param
-			//, dataType : "xml"
 			, dataType : "json"
 			, success : parseJson
 			, error : function() { alert("error!!"); }
@@ -47,13 +50,23 @@
 		/*
 		$("#span").html(data.response.body.pageNo+"/"+data.response.body.totalCount);
 		*/
+		var distance = 0;
+		var distanceDis = "";
+		
 		$.each(data.result, function(index, entry){
-			html += "<div>";
+			distance = Number(entry["DISTANCE"]);
+			if(distance >= 1000) distanceDis = distance.toFixed(2) + "km";
+			else {
+				distance = distance * 1000;
+				distanceDis = distance.toFixed(0) + "m";
+			}
+			
+			html += "<div class='hospitalList'>";
 				html += entry["YADM_NM"];
 				html += "<br/>";
+				html += distanceDis;
+				html += " | ";
 				html += entry["SGGU_CD_NM"] + " " + entry["EMDONG_NM"];
-				html += "<br/>";
-				html += entry["DISTANCE"];
 				html += "<br/>";
 				html += entry["X_POS"] + "/" + entry["Y_POS"];
 			html += "</div>";
@@ -63,6 +76,7 @@
 		//page
 		html = "";
 		
+		initBtn();
 	}
 	
 	function navGeo() {
@@ -81,6 +95,13 @@
 		}
 	}
 	
+	
+	function initBtn() {//버튼 연결
+		$(".hospitalList").click(function(){
+			$(".hospitalList").css("background-color", "#FFFFFF");
+			$(this).css("background-color", "#FFFFF0");
+		});
+	}
 </script>
 
 <body>
@@ -90,6 +111,14 @@
 			<input type="text" id="latitude" name="latitude" />
 			<input type="text" id="longitude" name="longitude" />
 			<input type="button" id="searchBtn" value="search" />
+			<br/>
+			<select id="searchType1" name="searchType1">
+				<option value="distance">현위치기준</option>
+			</select>
+			<select id="searchType2" name="searchType2">
+				<option value="">전체</option>
+				<option value="1">피부과</option>
+			</select>
 		</from>
 		<table border="1">
 			<thead>

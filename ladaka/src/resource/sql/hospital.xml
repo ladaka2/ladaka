@@ -61,19 +61,55 @@
 					, POST_NO
 					, X_POS
 					, Y_POS
-					, DELETE_YN
 					, TRAFFIC_YN
 					, SUBJECT_YN
 					, (
-						1000 * 6371 * acos(
+						6371 * acos(
 							cos(radians('${latitude}')) * cos(radians(Y_POS))
 							* cos(radians(X_POS) - radians('${longitude}'))
 							+ sin(radians('${latitude}'))*sin(radians(Y_POS))
 						)
 					) AS DISTANCE
 				FROM HOSPITAL
-				WHERE DETAIL_YN = 'N'
-				AND X_POS != 0
+				WHERE X_POS != 0
+				ORDER BY DISTANCE
+				LIMIT ${start}, ${page} 
+			) AS B USING(HOST_IDX)
+	</select>
+	
+	<select id="selectHospitalPage2" resultMap="hashmap">
+		SELECT * FROM HOSPITAL INNER JOIN
+			(
+				SELECT
+					HOS.HOST_IDX
+					, HOS.YKIHO
+					, HOS.YADM_NM
+					, HOS.ADDR
+					, HOS.EMDONG_NM
+					, HOS.TEL_NO
+					, HOS.CL_CD
+					, HOS.CL_CD_NM
+					, HOS.SIDO_CD
+					, HOS.SIDO_CD_NM
+					, HOS.SGGU_CD
+					, HOS.SGGU_CD_NM
+					, HOS.POST_NO
+					, HOS.X_POS
+					, HOS.Y_POS
+					, HOS.TRAFFIC_YN
+					, HOS.SUBJECT_YN
+					, (
+						6371 * acos(
+							cos(radians('${latitude}')) * cos(radians(HOS.Y_POS))
+							* cos(radians(HOS.X_POS) - radians('${longitude}'))
+							+ sin(radians('${latitude}'))*sin(radians(HOS.Y_POS))
+						)
+					) AS DISTANCE
+				FROM HOSPITAL HOS
+					, HOSPITAL_SUBJECT SUB
+				WHERE HOS.DETAIL_YN = 'N'
+				AND HOS.X_POS != 0
+				AND SUB.DGSBJT_CD = '14'
 				ORDER BY DISTANCE
 				LIMIT ${start}, ${page} 
 			) AS B USING(HOST_IDX)
