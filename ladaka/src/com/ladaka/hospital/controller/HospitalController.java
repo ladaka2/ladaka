@@ -41,6 +41,17 @@ public class HospitalController {
 		
 	}
 	
+	@RequestMapping(value = "/hospitalSearch_bak")
+	public ModelAndView hospitalSearch_bak(HttpServletRequest req, HttpServletResponse res) {
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("hospital/hospitalSearch_bak");
+		
+		return mav;
+		
+	}
+	
 	
 	@RequestMapping(value = "/hospitalSearchAjax")
 	@ResponseBody
@@ -51,10 +62,11 @@ public class HospitalController {
 		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
 		
 		//입력값
-		String latitude = null;
-		String longitude = null;
+		String latitude = req.getParameter("latitude");
+		String longitude = req.getParameter("longitude");
 		
 		//Angular JS get Data
+		/*
 		StringBuilder sb = new StringBuilder();
 		BufferedReader br = null;
 		try {
@@ -71,6 +83,8 @@ public class HospitalController {
 		} catch(Exception e) {
 			
 		}
+		*/
+		
 		System.out.println(latitude+"/"+longitude);
 		
 		
@@ -81,6 +95,8 @@ public class HospitalController {
 		//
 		params.put("start", 1);
 		params.put("page", 10);
+		params.put("latitude", latitude);
+		params.put("longitude", longitude);
 		
 		result = hospitalService.selectHospitalPage(params);
 		

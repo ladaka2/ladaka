@@ -44,7 +44,39 @@
 	
 	<select id="selectHospitalPage" resultMap="hashmap">
 		SELECT * FROM HOSPITAL INNER JOIN
-			(SELECT * FROM HOSPITAL WHERE 1=1 ORDER BY HOST_IDX ASC LIMIT ${start}, ${page}) AS B USING(HOST_IDX)
+			(
+				SELECT
+					HOST_IDX
+					, YKIHO
+					, YADM_NM
+					, ADDR
+					, EMDONG_NM
+					, TEL_NO
+					, CL_CD
+					, CL_CD_NM
+					, SIDO_CD
+					, SIDO_CD_NM
+					, SGGU_CD
+					, SGGU_CD_NM
+					, POST_NO
+					, X_POS
+					, Y_POS
+					, DELETE_YN
+					, TRAFFIC_YN
+					, SUBJECT_YN
+					, (
+						1000 * 6371 * acos(
+							cos(radians('${latitude}')) * cos(radians(Y_POS))
+							* cos(radians(X_POS) - radians('${longitude}'))
+							+ sin(radians('${latitude}'))*sin(radians(Y_POS))
+						)
+					) AS DISTANCE
+				FROM HOSPITAL
+				WHERE DETAIL_YN = 'N'
+				AND X_POS != 0
+				ORDER BY DISTANCE
+				LIMIT ${start}, ${page} 
+			) AS B USING(HOST_IDX)
 	</select>
 	
 	<insert id="insertHospital" parameterType="hashmap">
