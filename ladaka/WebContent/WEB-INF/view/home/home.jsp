@@ -1,28 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.HashMap" %>
-<%
-	String nickname = null;
-	String name = null;
-	ArrayList list = (ArrayList)request.getAttribute("result");
-	for(int i=0; i<list.size(); i++) {
-		HashMap map = new HashMap<String, Object>();
-		map = (HashMap)list.get(i);
-		
-		/* if(nickname == null) {
-			nickname = "";
-			name = map.get("NAME").toString();
-		} else if(name == null) {
-			name = "";
-			nickname = map.get("NICKNAME"),toString();
-		} else {
-			nickname = "";
-			name = "";
-		} */
-			nickname = "";
-			name = "";
-	}
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -54,8 +30,8 @@
 						<img id="menu" src="images/menu.png" alt="menu" onclick="mypage()">
 						<img id="magnify" src="images/magnify.png" alt="magnify" onclick="keywordSearch()">
 					</div>
-					<div id="email">닉네임 : <%=nickname%> <br/></div>
-					<div id="registNum">병원명칭 : <%=name%> <br/></div>
+					<div id="email"></div>
+					<div id="registNum"></div>
 				</div>
 			</div>
 		</div>

@@ -22,12 +22,13 @@ public class HomeDao {
 		this.sqlSession = sqlSession;
 	}
 	
+	public ArrayList selectNormalUser(HashMap<String, Object> params) {
+		return (ArrayList) sqlSession.selectList("user.selectNormalUser", params);
+	}
+
 	public ArrayList selectBusinessUser(HashMap<String, Object> params) {
 		return (ArrayList) sqlSession.selectList("user.selectBusinessUser", params);
 	}
 	
-	public ArrayList selectNormalUser(HashMap<String, Object> params) {
-		return (ArrayList) sqlSession.selectList("user.selectNormalUser", params);
-	}
 
 }

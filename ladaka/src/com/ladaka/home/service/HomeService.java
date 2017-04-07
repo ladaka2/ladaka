@@ -14,12 +14,13 @@ public class HomeService {
 	@Autowired
 	HomeDao homeDao;
 	
+	public ArrayList<HashMap<String, Object>> normalUser(HashMap<String, Object> params) {
+		return (ArrayList) homeDao.selectNormalUser(params);
+	}
+
 	public ArrayList<HashMap<String, Object>> businessUser(HashMap<String, Object> params) {
 		return (ArrayList) homeDao.selectBusinessUser(params);
 	}
 	
-	public ArrayList<HashMap<String, Object>> normalUser(HashMap<String, Object> params) {
-		return (ArrayList) homeDao.selectNormalUser(params);
-	}
 
 }

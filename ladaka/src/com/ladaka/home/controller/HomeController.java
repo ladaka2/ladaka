@@ -12,6 +12,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ladaka.home.service.HomeService;
@@ -89,6 +91,46 @@ public class HomeController {
 		mav = new ModelAndView();
 		mav.setViewName("home/home");
 
+		return mav;
+	}
+	
+	/**
+	 * <pre>
+	 * 1. 개요: userInfo
+	 * 2. 처리내용: 로그인 정보 AJAX
+	 * </pre>
+	 */
+	@RequestMapping(value = "/userInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView userInfo(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("HomeController > userInfo");
+
+		// 세션 GET
+		HttpSession session = req.getSession();
+		String email = (String)session.getAttribute("email");
+		String registNum = (String)session.getAttribute("registNum");
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+
+		//결과값
+		ArrayList<HashMap<String, Object>> result = null;
+
+		// 파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("email", email); // 일반회원
+		params.put("registNum", registNum); // 병원회원
+		System.out.println("userLogin params : " + params.toString());
+
+		if (email != null) {
+			result = homeService.normalUser(params); // DB Select
+		} else {
+			result = homeService.businessUser(params); // DB Select
+		}
+		
+
+		mav.addObject("userinfo", result);
 		return mav;
 	}
 	

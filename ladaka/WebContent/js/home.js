@@ -8,15 +8,45 @@ $(document).ready(function() {
 		$("#email").css("display", "none");
 		$("#registNum").css("display", "none");
 	} else if (loginType == "normal"){ // 일반로그인
-		$("#registNum").css("display", "none");
-		$("#email").css("display", "block");
-		$("#registNum").css("display", "none");
-		$("#email").append("이메일 : " + email);
+		// 일반회원 로그인정보 AJAX
+		$.ajax({
+			type : "POST",
+			url : "/ladaka/userInfo",
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			dataType : "json",
+			async : false,
+			error : function(xhr, status, error) {
+				console.log("ajax error code:" + xhr.status);
+			},
+			success : function(data) {
+				var nickname = data.userinfo[0].NICKNAME;
+				
+				$("#registNum").css("display", "none");
+				$("#email").css("display", "block");
+				$("#email").append("닉네임 : " + nickname + "<br/>");
+				$("#email").append("이메일 : " + email);
+			}
+		});
 	} else { // 기타로그인
-		$("#email").css("display", "none");
-		$("#registNum").css("display", "block");
-//		$("#registNum").append("병원명칭 : " + hospitalNm + "<br/>");
-		$("#registNum").append("사업자번호 : " + registNum);
+		// 병원회원 로그인정보 AJAX
+		$.ajax({
+			type : "POST",
+			url : "/ladaka/userInfo",
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			dataType : "json",
+			async : false,
+			error : function(xhr, status, error) {
+				console.log("ajax error code:" + xhr.status);
+			},
+			success : function(data) {
+				var name = data.userinfo[0].NAME;
+				
+				$("#email").css("display", "none");
+				$("#registNum").css("display", "block");
+				$("#registNum").append("병원명칭 : " + name + "<br/>");
+				$("#registNum").append("사업자번호 : " + registNum);
+			}
+		});
 	}
 	
 	$("#s_left").click(function() {
