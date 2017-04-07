@@ -14,24 +14,26 @@
 </head>
 <body>
 
-	<div>
+	<div class="container">
 
 		<!-- 상단 -->
-		<div>
-			<div id="title">
-				<div style="float: left;">
-					<a href="javascript:;" id="back">뒤로</a>
-				</div>
+		<div class="title">
+			<div>
+				<button class="back" id="back">
+					<img src="images/back.png" alt="뒤로">뒤로
+				</button>
 				<div>회원가입</div>
 			</div>
 		</div>
 		<!--// 상단 -->
 
-		<div class="registForm">
+		<div class="registForm" style="float: left; margin-bottom: 30px;">
 			<div>
-				<h5>이메일</h5>
+				<span>이메일</span>
+				<br/>
 				<div>
-					<input type='text' id='user_email' maxlength='40' placeholder="이메일" /> @ <input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
+					<input type='text' id='user_email' maxlength='40' placeholder="이메일" /> @
+					<input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
 					<select style="width: 100px; margin-right: 10px" name="selectEmail" id="selectEmail">
 						<option value="1">직접입력</option>
 						<option value="naver.com" selected>naver.com</option>
@@ -41,10 +43,14 @@
 						<option value="gmail.com">gmail.com</option>
 					</select>
 				</div>
-				<p>병원 회원을 위해 일반 회원의 경우 닉네임에 병원, 전문의, 일반의, 의사, 진료과목명들의 단어를 포함하여 사용할 수 없습니다.</p>
+				
+				<div class="notice">
+					<span>병원 회원을 위해 일반 회원의 경우 닉네임에 병원, 전문의, 일반의, 의사, 진료과목명들의 단어를 포함하여 사용할 수 없습니다.</span>
+				</div>
 			</div>
+			
 			<div class="nickName">
-				<h5>닉네임</h5>
+				<span>닉네임</span>
 				<div>
 					<input type='text' id='user_nickname' maxlength='40' placeholder="닉네임" />
 				</div>
@@ -52,13 +58,13 @@
 
 			<div>
 				<div class="pw">
-					<h6>비밀번호 (4자이상)</h6>
+					<span>비밀번호 (4자이상)</span>
 					<div>
 						<input type='password' id='user_pw' placeholder="비밀번호" />
 					</div>
 				</div>
 				<div class="pw">
-					<h6>비밀번호 확인 (4자이상)</h6>
+					<span>비밀번호 확인 (4자이상)</span>
 					<div>
 						<input type='password' id='user_pw_re' placeholder="비밀번호 확인" />
 					</div>
@@ -66,7 +72,7 @@
 			</div>
 
 			<div class="gender">
-				<h5>성별</h5>
+				<span>성별</span>
 				<div>
 					<!-- 					<input type="text" id='gender' placeholder="성별" /> -->
 					<input type="text" name="genderInput" id="genderInput" style="width: 100px;" disabled value="남">
@@ -77,13 +83,15 @@
 				</div>
 			</div>
 			<div class="bornYear">
-				<h5>출생 연도</h5>
+				<span>출생 연도</span>
 				<div>
 					<input type="month" id='bornYear' placeholder="출생 연도" />
 				</div>
 			</div>
 
-			<div style="float: left; padding: 20px;">* 만 14세 미만은 회원 가입이 안됩니다. 양해 부탁드립니다.</div>
+			<div class="notice">
+				<span>* 만 14세 미만은 회원 가입이 안됩니다. 양해 부탁드립니다.</span>
+			</div>
 
 			<div id="ruleCheck">
 				<table>
@@ -131,10 +139,11 @@
 				</table>
 			</div>
 
-
-			<button id="registTrue" style="width: 100%">회원가입 신청</button>
 		</div>
 
+		<div>
+			<button class="registTrue" id="registTrue">회원가입 신청</button>
+		</div>
 
 	</div>
 

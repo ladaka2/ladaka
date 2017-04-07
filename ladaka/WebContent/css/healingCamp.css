@@ -44,6 +44,7 @@ body button {
 
 .notice span {
 	font-size: 12px;
+	padding-right: 10px;
 }
 
 /* 공통 */
@@ -359,15 +360,46 @@ body button {
 }
 
 /* 회원가입페이지 */
+.registTrue {
+	width: 100%;
+	background-color: Indigo;
+	height: 36px;
+	color: white;
+}
+
 .registForm {
 	width: 100%;
 	margin: 0 auto;
 	cursor: pointer;
 }
 
+.registForm span {
+	float: left;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.registForm div {
+	float: left;
+	margin-left: 10px;
+	padding-top: 10px;
+}
+
 .nickName {
 	float: left;
 	width: 100%;
+}
+
+.nickName span {
+	float: left;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.nickName div {
+	float: left;
+	margin-left: 10px;
+	padding-top: 10px;
 }
 
 .businessName {

@@ -14,14 +14,14 @@
 </head>
 <body>
 
-	<div>
+	<div class="container">
 
 		<!-- 상단 -->
-		<div>
-			<div id="title">
-				<div style="float: left;">
-					<a href="javascript:;" id="back">뒤로</a>
-				</div>
+		<div class="title">
+			<div>
+				<button class="back" id="back">
+					<img src="images/back.png" alt="뒤로">뒤로
+				</button>
 				<div>병원 회원가입</div>
 			</div>
 		</div>
@@ -148,9 +148,11 @@
 				</table>
 			</div>
 
-			<button id="registTrue" style="width: 100%">회원가입 신청</button>
 		</div>
 
+		<div>
+			<button class="registTrue" id="registTrue">회원가입 신청</button>
+		</div>
 
 	</div>
 
