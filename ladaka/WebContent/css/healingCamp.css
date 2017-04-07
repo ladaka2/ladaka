@@ -15,6 +15,10 @@
 	transition: border-color .25s ease, box-shadow .25s ease;
 }
 
+.logout {
+	float: right;
+}
+
 /* Ȩ */
 #title {
 	text-align: center;
