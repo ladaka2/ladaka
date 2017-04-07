@@ -33,7 +33,7 @@ public class HospitalController {
 		
 		//모델 설정
 		mav = new ModelAndView();
-		mav.setViewName("hospital/hospitalSerch");
+		mav.setViewName("hospital/hospitalSearch");
 		
 		return mav;
 		
