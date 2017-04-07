@@ -1,6 +1,5 @@
 package com.ladaka.hospital.controller;
 
-import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -8,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,12 +39,12 @@ public class HospitalController {
 		
 	}
 	
-	@RequestMapping(value = "/hospitalSearch_bak")
-	public ModelAndView hospitalSearch_bak(HttpServletRequest req, HttpServletResponse res) {
-		
+	@RequestMapping(value = "/hospitalSearchBak")
+	public ModelAndView hospitalSearchBak(HttpServletRequest req, HttpServletResponse res) {
+		System.out.println("hospitalSearchBak");
 		//모델 설정
 		mav = new ModelAndView();
-		mav.setViewName("hospital/hospitalSearch_bak");
+		mav.setViewName("hospital/hospitalSearchBak");
 		
 		return mav;
 		
