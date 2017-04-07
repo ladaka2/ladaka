@@ -1,246 +1,156 @@
 @CHARSET "EUC-KR";
 
 /* 공통 */
-.body input {
+html {
 	font-size: 14px;
-	display: block;
-	width: 90%;
-	height: 100%;
-	padding: 5px 10px;
+	font-family: Dotum, Helvetica, AppleSDGothicNeo, sans-serif;
+}
+
+body {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+body button {
+	outline: 0;
 	background: none;
-	background-image: none;
-	border: 1px solid #f44336;
-	border-radius: 0;
-	-webkit-transition: border-color .25s ease, box-shadow .25s ease;
-	transition: border-color .25s ease, box-shadow .25s ease;
-}
-
-.logout {
-	float: right;
-}
-
-/* 홈 */
-#title {
-	text-align: center;
-	color: black;
-	background-color: #e7e7e7;
-	margin: 0 auto;
-	padding: 10px 10px 10px 10px;
-}
-
-#back {
-	color: black;
-}
-
-.loginType {
-	padding: 10px 0px 35px 0px;
-}
-
-.loginType div {
-	float: left;
-	width: 49%;
-	text-align: center;
-	border: 1px solid #f44336;
-	cursor: pointer;
-}
-
-.userNormal {
-	background-color: #f0f0f0;
-	padding: 10px 0px 40px 0px;
-}
-
-.userNormal div {
-	padding-left: 10px;
-}
-
-.userBusiness {
-	background-color: #f0f0f0;
-	padding: 10px 0px 40px 0px;
-}
-
-.userBusiness div {
-	padding-left: 10px;
-}
-
-.login {
-	padding-top: 20px;
-}
-
-.login button {
-	width: 100%;
-	background-color: white;
-	border: none;
-	color: #f44336;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	cursor: pointer;
-	border: 2px solid #f44336;
-}
-
-.bottonBtn {
-	padding-top: 20px;
-}
-
-.bottonBtn div {
-	float: left;
-	width: 50%;
-}
-
-.bottonBtn div button {
-	width: 100%;
-	border: none;
-	color: white;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 14px;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-
-.bottonBtn div #findPw {
-	background-color: #555555;
-}
-
-.bottonBtn div #goRegist {
-	background-color: #f44336;
-}
-
-.bottonBtn div #goRegist2 {
-	background-color: #f44336;
-}
-
-.bottonBtn p {
-	font-size: 12px;
-	padding-top: 60px;
-}
-
-#magnify {
-	width: 20px;
-	height: 20px;
-	float: right;
-}
-
-#menu {
-	width: 24px;
-	height: 24px;
-	float: right;
+	border: 0;
 }
 
 .container {
-	background-color: #c0c0c0;
 	width: 100%;
 	margin: 0 auto;
-	text-align: center;
 	cursor: pointer;
 }
 
-div.s_left {
-	width: 200px;
-	height: 200px;
-	background: #c0c0c0;
-	float: left;
-	margin: 5px;
-}
-
-div.s_right1 {
-	width: 200px;
-	height: 100px;
-	background: #c0c0c0;
-	float: right;
-	margin: 5px;
-}
-
-div.s_right2 {
-	width: 200px;
-	height: 100px;
-	background: #c0c0c0;
-	float: right;
-	margin: 5px;
-}
-
-div.s_center1 {
-	width: 400px;
-	height: 100px;
-	background: #c0c0c0;
-	float: left;
-	margin: 5px;
-}
-
-div.s_center2 {
-	width: 400px;
-	height: 100px;
-	background: #c0c0c0;
-	float: left;
-	margin: 5px;
-}
-
-div.s_center3 {
-	width: 332px;
-	height: 130px;
-	background: #c0c0c0;
-	float: left;
-	margin: 5px;
-}
-
-div.s_bottom1 {
-	width: 200px;
-	height: 60px;
-	background: #c0c0c0;
-	float: left;
-	margin: 5px;
-}
-
-div.s_bottom2 {
-	width: 200px;
-	height: 60px;
-	background: #c0c0c0;
-	float: right;
-	margin: 5px;
-}
-
-/* 마이페이지 */
-#menuCategory {
-	width: 100%;
+.title {
+	font-weight: bold;
+	background-color: lightblue;
 	margin: 0 auto;
-	text-align: center;
-	cursor: pointer;
+	height: 34px;
+	background-color: lightblue;
 }
 
-#menuCategory .menu {
-	background-color: #c0c0c0;
+.back {
 	float: left;
-	width: 18%;
-	height: 40px;
-	margin: 2px;
+	color: black;
 }
 
-.contents {
+.notice {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.notice span {
+	font-size: 12px;
+}
+
+/* 공통 */
+
+/* 홈 START */
+.title div {
+	padding-top: 6px;
+}
+
+.title div img {
+	width: 24px;
+	height: 24px;
+}
+
+.menu {
+	margin: 0 4px 0 0px;
+	padding: 0;
+	float: right;
+}
+
+.magnify {
+	margin: 0 4px 0 0px;
+	padding: 0;
+	float: right;
+}
+
+.userinfo {
+	background-color: AliceBlue;
+	margin: 10px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+	float: left;
 	width: 100%;
-	margin: 0 auto;
-	text-align: center;
-	cursor: pointer;
+	height: 36px;
+	text-align: left;
 }
 
-.conLeft {
+.contentsSearch {
+	margin: 6px 0px 0px 0px;
+}
+
+.contentsSearch .s_left {
+	float: left;
+	width: 40%;
+	background-color: Bisque;
+	margin: 10px 0px 10px 0px;
+	padding: 10px 0px 10px 0px;
+}
+
+.contentsSearch .s_right1 {
+	float: left;
+	width: 40%;
+	background-color: Bisque;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 0px 10px 0px;
+}
+
+.contentsSearch .s_right2 {
+	float: left;
+	width: 40%;
+	background-color: Bisque;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 0px 10px 0px;
+}
+
+.conLeft div {
 	background-color: #f0f0f0;
 	float: left;
-	width: 46%;
-	height: 100px;
-	margin: 5px;
+	width: 48%;
+	height: 150px;
+	margin: 0px 4px 0px 4px;
 }
 
-.conRight {
+.conright div {
 	background-color: #f0f0f0;
 	float: right;
-	width: 46%;
-	height: 100px;
-	margin: 5px;
+	width: 48%;
+	height: 71px;
+	margin: 2px 4px 4px 4px;
+}
+
+.contentsMiddle {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.contentsMiddle div {
+	background-color: LightCoral;
+	height: 80px;
+	margin: 6px 2px 0px 2px;
+}
+
+.s_bottom1 {
+	background-color: Wheat;
+	float: left;
+	width: 48%;
+	height: 80px;
+	margin: 10px 4px 10px 4px;
+}
+
+.s_bottom2 {
+	background-color: Wheat;
+	float: left;
+	width: 48%;
+	height: 80px;
+	margin: 10px 4px 10px 4px;
 }
 
 .footer {
@@ -252,6 +162,200 @@ div.s_bottom2 {
 	background-color: #efefef;
 	text-align: right;
 	font-size: 12px;
+}
+/* 홈 END */
+.loginType {
+	padding: 10px 0px 35px 0px;
+}
+
+.loginType div {
+	float: left;
+	width: 49%;
+	text-align: center;
+	border: 2px solid lightblue;
+	cursor: pointer;
+}
+
+.userNormal {
+	background-color: #f0f0f0;
+	padding: 10px 0px 100px 0px;
+}
+
+.userNormal div {
+	padding-left: 10px;
+}
+
+.userBusiness {
+	background-color: #f0f0f0;
+	padding: 10px 0px 100px 0px;
+}
+
+.userBusiness div {
+	padding-left: 10px;
+}
+
+.login {
+	padding-top: 20px;
+}
+
+.bottonBtn {
+	padding-top: 20px;
+}
+
+.bottonBtn div {
+	float: left;
+	width: 50%;
+}
+
+/* .bottonBtn div button {
+	width: 100%;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	cursor: pointer;
+} */
+
+/* 마이페이지 */
+.mypageUserinfoNone {
+	float: left;
+	width: 100%;
+}
+
+.mypageUserinfo #email {
+	background-color: AliceBlue;
+	margin: 10px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+	float: left;
+	width: 100%;
+	height: 60px;
+	text-align: left;
+}
+
+.mypageUserinfo #registNum {
+	background-color: AliceBlue;
+	margin: 10px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+	float: left;
+	width: 100%;
+	height: 60px;
+	text-align: left;
+}
+
+.nonLogin {
+	float: left;
+}
+
+.gohome {
+	float: right;
+}
+
+.logout {
+	float: right;
+	cursor: pointer;
+}
+
+.contentVisible div {
+	background-color: Wheat;
+	float: left;
+	width: 48%;
+	height: 80px;
+	margin: 4px 4px 4px 4px;
+}
+
+.contentVisibleNormal div {
+	background-color: Lavender;
+	float: left;
+	width: 48%;
+	height: 80px;
+	margin: 4px 4px 4px 4px;
+}
+
+.menuCategory {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	cursor: pointer;
+}
+
+.menuCategory .menu {
+	background-color: #c0c0c0;
+	float: left;
+	width: 19%;
+	height: 40px;
+	margin: 0px 2px 2px 2px;
+}
+
+/* 비밀번호찾기 */
+.emailForm {
+	width: 100%;
+}
+
+.findpw {
+	width: 100%;
+	background-color: Indigo;
+	height: 36px;
+	color: white;
+}
+
+.goRegist {
+	width: 100%;
+	background-color: Indigo;
+	height: 36px;
+	color: white;
+}
+
+.emailForm span {
+	float: left;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.emailForm div {
+	float: left;
+	margin-left: 10px;
+	padding-top: 10px;
+}
+
+/* 로그인 */
+.findPwGo {
+	width: 98%;
+	background-color: Indigo;
+	height: 36px;
+	color: white;
+}
+
+.goRegistGo {
+	width: 98%;
+	background-color: Indigo;
+	height: 36px;
+	color: white;
+}
+
+.login button {
+	width: 100%;
+	background-color: Indigo;
+	height: 36px;
+	color: white;
+}
+
+.registNumForm {
+	width: 100%;
+}
+
+.registNumForm span {
+	float: left;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.registNumForm div {
+	float: left;
+	margin-left: 10px;
+	padding-top: 10px;
 }
 
 /* 회원가입페이지 */

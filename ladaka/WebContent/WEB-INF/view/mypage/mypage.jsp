@@ -19,46 +19,39 @@
 </head>
 <body>
 
-	<div>
+	<div class="container">
 
 		<!-- 상단 -->
-		<div>
+		<div class="title">
 			<div>
-				<div>
-					<div id="title">마이페이지</div>
+				<button class="nonLogin" id="nonLogin">
+					<img src="images/avatar.png" alt="로그인/회원가입">로그인
+				</button>
+				마이페이지
+				<button class="gohome" onclick="goHome()">
+					<img src="images/house.png" alt="홈">홈
+				</button>
+			</div>
+
+			<div class="mypageUserinfoNone" style="display: none"></div>
+
+			<div class="mypageUserinfo" id="normalLogin" style="display: none">
+				<div id="email">
+					<button class="logout" onclick="logout()">로그아웃</button>
 				</div>
 			</div>
+			
+			<div class="mypageUserinfo" id="businessLogin" style="display: none">
+				<div id="registNum">
+					<button class="logout" onclick="logout()">로그아웃</button>
+				</div>
+			</div>
+
 		</div>
 		<!--// 상단 -->
 
-		<div class="UserInfo">
-			
-			<!-- 로그인 안한 경우 -->
-			<div>
-				<button id="nonLogin" >로그인/회원가입</button>
-				<div style="float: right;">
-					<a href="javascript:;" onclick="goHome()">홈이동</a>
-				</div>
-			</div>
-			<!--// 로그인 안한 경우 -->
-			
-			<!-- 일반 회원 로그인 한 경우 -->
-			<div id="normalLogin" style="display: none">
-				<div id="email"></div>
-				일반회원
-				<button id="logout" class="logout" onclick="logout()">로그아웃</button>
-			</div>
-			<!--// 일반 회원 로그인 한 경우 -->
-			
-			<!-- 병원회원 로그인 한 경우 -->
-			<div id="businessLogin" style="display: none">
-				<div id="registNum"></div>
-				병원회원
-				<button id="logout" class="logout" onclick="logout()">로그아웃</button>
-			</div>
-			<!--// 병원회원 로그인 한 경우 -->
-
-			<div id="menuCategory">
+		<div class="mypageMiddle">
+			<div class="menuCategory">
 				<div class="menu" onclick="menu1()">롬</div>
 				<div class="menu" onclick="menu2()">클럽</div>
 				<div class="menu" onclick="menu3()">후원</div>
@@ -67,20 +60,32 @@
 			</div>
 		</div>
 		
-		<div class="contents">
-			<div id="contentVisible" style="display: block">
-				<div class="conLeft" onclick="contents1()" id="contents1"></div>
-				<div class="conRight" onclick="contents2()" id="contents2"></div>
-				<div class="conLeft" onclick="contents3()" id="contents3"></div>
-				<div class="conRight" onclick="contents4()" id="contents4"></div>
+		<div class="mypageBottom">
+			<div class="contentVisible" id="contentVisible1" style="display: block">
+				<div class="conmenu1" onclick="contents1()" id="contents1"></div>
+				<div class="conmenu2" onclick="contents2()" id="contents2"></div>
+				<div class="conmenu3" onclick="contents3()" id="contents3"></div>
+				<div class="conmenu4" onclick="contents4()" id="contents4"></div>
+			</div>
+			<div class="contentVisible" id="contentVisible2" style="display: block">
+				<div class="conmenu1" onclick="contents1()" id="contents9"></div>
+				<div class="conmenu2" onclick="contents2()" id="contents10"></div>
+				<div class="conmenu3" onclick="contents7()" id="contents7"></div>
+				<div class="conmenu4" onclick="contents8()" id="contents8"></div>
 			</div>
 			
-			<div class="conLeft" onclick="contents5()">고객센터</div>
-			<div class="conRight" onclick="contents6()">설정</div>
+			<div class="contentVisibleNormal">
+				<div class="conLeft" onclick="contents5()">고객센터</div>
+				<div class="conRight" onclick="contents6()">설정</div>
+			</div>
 		</div>
 
 		<!-- 푸터 -->
-		<div class="footer">상호: 라다카주식회사 사업자등록번호: 214-88-81992 대표자: 이봉민 서울특별시 강남구 도산대로 209 옐로오투오 9층 통신판매업신고: 제2011-서울강남-00557 ALL RIGHT RESERVED. ©goodoc 이용약관  및  개인정보취급방침</div>
+		<div class="footer">
+			<p>상호	: 라다카주식회사 사업자등록번호: 214-88-81992 대표자: 이봉민 
+			서울특별시 강남구 도산대로 209 옐로오투오 9층 통신판매업신고: 
+			제2011-서울강남-00557 ALL RIGHT RESERVED. ©goodoc 이용약관  및  개인정보취급방침</p>
+		</div>
 		<!--// 푸터 -->
 
 	</div>

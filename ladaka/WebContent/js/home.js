@@ -5,6 +5,7 @@ $(document).ready(function() {
 	
 	// loginType 화면 분기화
 	if (loginType == "non") { // 미로그인
+		$(".userinfo").css("display", "none");
 		$("#email").css("display", "none");
 		$("#registNum").css("display", "none");
 	} else if (loginType == "normal"){ // 일반로그인
@@ -23,7 +24,7 @@ $(document).ready(function() {
 				
 				$("#registNum").css("display", "none");
 				$("#email").css("display", "block");
-				$("#email").append("닉네임 : " + nickname + "<br/>");
+				$("#email").append("닉네임 : " + nickname + "	|	");
 				$("#email").append("이메일 : " + email);
 			}
 		});
