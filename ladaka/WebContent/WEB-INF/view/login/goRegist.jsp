@@ -29,10 +29,10 @@
 
 		<div class="registForm" style="float: left; margin-bottom: 30px;">
 			<div>
-				<span>이메일</span>
+				<span>이메일*</span>
 				<br/>
 				<div>
-					<input type='text' name="user_email" id='user_email' maxlength='40' placeholder="이메일*" /> @
+					<input type='text' name="user_email" id='user_email' maxlength='40' placeholder="이메일" /> @
 					<input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
 					<select style="width: 100px; margin-right: 10px" name="selectEmail" id="selectEmail">
 						<option value="1">직접입력</option>
@@ -50,29 +50,29 @@
 			</div>
 			
 			<div class="nickName">
-				<span>닉네임</span>
+				<span>닉네임*</span>
 				<div>
-					<input type='text' id='user_nickname' maxlength='40' placeholder="닉네임*" />
+					<input type='text' id='user_nickname' maxlength='40' placeholder="닉네임" />
 				</div>
 			</div>
 
 			<div>
 				<div class="pw">
-					<span>비밀번호 (4자이상)</span>
+					<span>비밀번호 (4자이상)*</span>
 					<div>
-						<input type='password' id='user_pw' placeholder="비밀번호*" />
+						<input type='password' id='user_pw' placeholder="비밀번호" />
 					</div>
 				</div>
 				<div class="pw">
-					<span>비밀번호 확인 (4자이상)</span>
+					<span>비밀번호 확인 (4자이상)*</span>
 					<div>
-						<input type='password' id='user_pw_re' placeholder="비밀번호 확인*" />
+						<input type='password' id='user_pw_re' placeholder="비밀번호 확인" />
 					</div>
 				</div>
 			</div>
 
 			<div class="gender">
-				<span>성별</span>
+				<span>성별*</span>
 				<div>
 					<!-- 					<input type="text" id='gender' placeholder="성별" /> -->
 					<input type="text" name="genderInput" id="genderInput" style="width: 100px;" disabled value="남">
@@ -83,7 +83,7 @@
 				</div>
 			</div>
 			<div class="bornYear">
-				<span>출생 연도</span>
+				<span>출생 연도*</span>
 				<div>
 					<input type="month" id='bornYear' placeholder="출생 연도" />
 				</div>

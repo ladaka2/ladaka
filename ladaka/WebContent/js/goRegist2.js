@@ -16,7 +16,6 @@ $(document).ready(function() {
 	$("[name=checkOne]").each(function(index) {
 		$(this).click(function() {
 			oneCheckFunc($(this));
-			alert('checked' + index);
 		});
 	});
 
@@ -40,16 +39,19 @@ $(document).ready(function() {
 			$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
 		}
 	});
-
+	
 	// 회원가입 신청 클릭
 	$("#registTrue").click(function() {
 		var businessName = $("#business_nm").val();
+		var businessNumFirst = $("#business_num1").val();
+		var businessNumSecond = $("#business_num2").val();
 		var businessNum = $("#business_num1").val() + "-" + $("#business_num2").val();
 		var registPic = "";
 		var password = $("#user_pw").val();
 		var passwordRe = $("#user_pw_re").val();
 		var managerName = $("#managerName").val();
 		var managerNum = $("#managerNum").val();
+		var emialFirst = $("#user_email").val();
 		var email = $("#user_email").val() + "@" + $("#str_email").val();
 		var hospitalKeyword = $("#hospitalKeyword").val();
 
@@ -58,6 +60,18 @@ $(document).ready(function() {
 		if (password != passwordRe) {
 			alert("비밀번호를 확인해주세요.");
 			return;
+		} else if (businessName == "") {
+			alert("사업자 명칭을 기입해주세요.");
+		} else if (businessNumFirst == "" || businessNumSecond == "") {
+			alert("사업자 등록번호를 기입해주세요.");
+		} else if (password == "" || passwordRe == "") {
+			alert("비밀번호를 기입해주세요.");
+		} else if (managerName == "") {
+			alert("담당자 이름을 기입해주세요.");
+		} else if (managerNum == "") {
+			alert("담당자 휴대번호를 기입해주세요.");
+		} else if (emialFirst == "") {
+			alert("담당자 이메일을 기입해주세요.");
 		} else {
 
 			var param = {};
@@ -82,7 +96,8 @@ $(document).ready(function() {
 					console.log("ajax error code:" + xhr.status);
 				},
 				success : function(data) {
-
+					alert("회원가입 되었습니다. 로그인해주세요.");
+					window.open("http://localhost:8080/ladaka/login", "_self");
 				}
 			});
 

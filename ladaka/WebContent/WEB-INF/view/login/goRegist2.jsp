@@ -29,42 +29,42 @@
 
 		<div class="registForm" style="float: left; margin-bottom: 30px;">
 			<div>
-				<span>사업자 명칭</span>
+				<span>사업자 명칭*</span>
 				<div class="notice">
 					<span>병원 회원의 경우 병원 상세보기에서 선택된 병원 명칭이 그대로 입력됨(수정 불가)</span>
 				</div>
 				<div>
-					<input type='text' id='business_nm' maxlength='40' placeholder="사업자 명칭*" />
+					<input type='text' id='business_nm' maxlength='40' placeholder="사업자 명칭" />
 				</div>
 			</div>
 			<div>
-				<span>사업자 등록 번호</span>
+				<span>사업자 등록 번호*</span>
 				<div class="notice">
 					<span>(아이디로 사용함. 직영점이 여러 개일 경우 일련번호에 번호가입. 입력하지 않으면 자동으로 OO으로 입력됨</span>
 				</div>
 				<div>
-					<input type='text' id='business_num1' maxlength='10' placeholder="사업자등록번호10자리*" /> -
-					<input type="text" id="business_num2" maxlength='2' placeholder="일련번호2자리*" />
+					<input type='text' id='business_num1' maxlength='10' placeholder="사업자등록번호10자리" /> -
+					<input type="text" id="business_num2" maxlength='2' placeholder="일련번호2자리" />
 				</div>
 			</div>
 
 			<div>
 				<div class="pw">
-					<span>비밀번호 (4자이상)</span>
+					<span>비밀번호 (4자이상)*</span>
 					<div>
-						<input type='password' id='user_pw' placeholder="비밀번호*" />
+						<input type='password' id='user_pw' placeholder="비밀번호" />
 					</div>
 				</div>
 				<div class="pw">
-					<span>비밀번호 확인 (4자이상)</span>
+					<span>비밀번호 확인 (4자이상)*</span>
 					<div>
-						<input type='password' id='user_pw_re' placeholder="비밀번호 확인*" />
+						<input type='password' id='user_pw_re' placeholder="비밀번호 확인" />
 					</div>
 				</div>
 			</div>
 			
 			<div style="float: left;">
-				<span>사업자 등록증 사본 제출</span>
+				<span>사업자 등록증 사본 제출*</span>
 				<input type="file">
 				<div class="notice">
 					<span>병원 회원 검증을 위해 사업자 등록증 사본을 제출하셔야 합니다.</span>
@@ -73,24 +73,24 @@
 			
 			<div>
 				<div style="float: left; width: 40%;">
-					<span>담당자 이름</span>
+					<span>담당자 이름*</span>
 					<div>
-						<input type='text' id='managerName' placeholder="담당자 이름*" />
+						<input type='text' id='managerName' placeholder="담당자 이름" />
 					</div>
 				</div>
 				<div style="float: left; width: 40%;">
-					<span>담당자 휴대폰 번호</span>
+					<span>담당자 휴대폰 번호*</span>
 					<div>
-						<input type="text" name="managerNum" id="managerNum" placeholder="담당자 휴대폰 번호*" maxlength="13" />
+						<input type="text" name="managerNum" id="managerNum" placeholder="담당자 휴대폰 번호" maxlength="13" />
 					</div>
 				</div>
 			</div>
 			
 			
 			<div style="float: left;">
-				<span>담당자 이메일</span>
+				<span>담당자 이메일*</span>
 				<div>
-					<input type='text' name="user_email" id='user_email' maxlength='40' placeholder="담당자 이메일*" /> @
+					<input type='text' name="user_email" id='user_email' maxlength='40' placeholder="담당자 이메일" /> @
 					<input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
 					<select style="width: 100px; margin-right: 10px" name="selectEmail" id="selectEmail">
 						<option value="1">직접입력</option>

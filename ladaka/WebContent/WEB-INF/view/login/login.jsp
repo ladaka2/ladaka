@@ -76,7 +76,7 @@
 			
 			<span>비밀번호 (4자이상)</span>
 			<div>
-				<input type='text' id='user_pw2' placeholder="비밀번호" />
+				<input type='password' id='user_pw2' placeholder="비밀번호" />
 			</div>
 			<div id="pwcnt"></div>
 			</div>
