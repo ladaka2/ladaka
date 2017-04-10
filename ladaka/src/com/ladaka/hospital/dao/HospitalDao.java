@@ -25,7 +25,7 @@ public class HospitalDao {
 	
 	//Hospital
 	public ArrayList<HashMap<String, Object>> selectHospitalPage(Map params) {
-		return (ArrayList)sqlSession.selectList("hospital.selectHospitalPage", params);
+		return (ArrayList)sqlSession.selectList("hospital.selectHospitalPage2", params);
 	}
 	
 	public ArrayList<HashMap<String, Object>> selectHospitalPageApi(Map params) {

@@ -78,7 +78,7 @@
 	</select>
 	
 	<select id="selectHospitalPage2" resultMap="hashmap">
-		SELECT * FROM HOSPITAL INNER JOIN
+		SELECT * FROM HOSPITAL A INNER JOIN
 			(
 				SELECT
 					HOS.HOST_IDX
@@ -107,11 +107,12 @@
 					) AS DISTANCE
 				FROM HOSPITAL HOS
 					, HOSPITAL_SUBJECT SUB
-				WHERE HOS.DETAIL_YN = 'N'
+				WHERE HOS.DETAIL_YN = 'Y'
 				AND HOS.X_POS != 0
 				AND SUB.DGSBJT_CD = '14'
+				AND HOS.HOST_IDX = SUB.HOST_IDX
 				ORDER BY DISTANCE
-				LIMIT ${start}, ${page} 
+				LIMIT ${start}, ${page}
 			) AS B USING(HOST_IDX)
 	</select>
 	
