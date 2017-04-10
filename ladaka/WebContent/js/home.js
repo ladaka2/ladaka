@@ -29,7 +29,7 @@ $(document).ready(function() {
 			}
 		});
 	} else { // 기타로그인
-		// 병원회원 로그인정보 AJAX
+		// 사업자회원 로그인정보 AJAX
 		$.ajax({
 			type : "POST",
 			url : "/ladaka/userInfo",
@@ -44,7 +44,7 @@ $(document).ready(function() {
 				
 				$("#email").css("display", "none");
 				$("#registNum").css("display", "block");
-				$("#registNum").append("병원명칭 : " + name + "<br/>");
+				$("#registNum").append("사업자명칭 : " + name + "<br/>");
 				$("#registNum").append("사업자번호 : " + registNum);
 			}
 		});

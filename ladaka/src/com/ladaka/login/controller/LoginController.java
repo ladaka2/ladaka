@@ -103,7 +103,7 @@ public class LoginController {
 	/**
 	 * <pre>
 	 * 1. 개요: userLogin2
-	 * 2. 처리내용: 사업자회원 로그인 AJAX
+	 * 2. 처리내용: 병원회원 로그인 AJAX
 	 * </pre>
 	 */
 	@RequestMapping(value = "/userLogin2", method = RequestMethod.POST)
@@ -133,6 +133,43 @@ public class LoginController {
 
 		result = loginService.userLogin2(params); // DB Select
 
+		mav.addObject("list", result);
+		return mav;
+	}
+	
+	/**
+	 * <pre>
+	 * 1. 개요: userLogin3
+	 * 2. 처리내용: 사업자회원 로그인 AJAX
+	 * </pre>
+	 */
+	@RequestMapping(value = "/userLogin3", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView userLogin3(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("UserController > userLogin3");
+		
+		String registNum = req.getParameter("registNumImsi");
+		String pwNum = req.getParameter("pwImsi");
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+		
+		//결과값
+		ArrayList result = null;
+		
+		//파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("registNum", registNum);
+		params.put("psword", pwNum);
+		System.out.println("userLogin3 params : " + params.toString());
+		
+		// 세션 SET
+		HttpSession session = req.getSession();
+		session.setAttribute("registNum", registNum);
+		
+		result = loginService.userLogin3(params); // DB Select
+		
 		mav.addObject("list", result);
 		return mav;
 	}
@@ -186,7 +223,7 @@ public class LoginController {
 	/**
 	 * <pre>
 	 * 1. 개요: goRegist2
-	 * 2. 처리내용: 병원외사업자회원가입 화면 출력
+	 * 2. 처리내용: 병원회원가입 화면 출력
 	 * </pre>
 	 */
 	@RequestMapping(value = "/goRegist2")
@@ -203,6 +240,29 @@ public class LoginController {
 		mav = new ModelAndView();
 		mav.setViewName("login/goRegist2");
 
+		return mav;
+	}
+	
+	/**
+	 * <pre>
+	 * 1. 개요: goRegist3
+	 * 2. 처리내용: 병원외 회원가입 화면 출력
+	 * </pre>
+	 */
+	@RequestMapping(value = "/goRegist3")
+	public ModelAndView goRegist3(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("LoginController > goRegist3");
+		
+		// 결과값
+		ArrayList<HashMap<String, Object>> result = null;
+		
+		// 파라메터 설정
+		params = new HashMap<String, Object>();
+		
+		// 모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("login/goRegist3");
+		
 		return mav;
 	}
 

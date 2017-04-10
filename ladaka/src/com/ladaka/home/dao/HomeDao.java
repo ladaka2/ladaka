@@ -25,6 +25,10 @@ public class HomeDao {
 	public ArrayList selectNormalUser(HashMap<String, Object> params) {
 		return (ArrayList) sqlSession.selectList("user.selectNormalUser", params);
 	}
+	
+	public ArrayList selectHosUser(HashMap<String, Object> params) {
+		return (ArrayList) sqlSession.selectList("user.selectHosUser", params);
+	}
 
 	public ArrayList selectBusinessUser(HashMap<String, Object> params) {
 		return (ArrayList) sqlSession.selectList("user.selectBusinessUser", params);

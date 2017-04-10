@@ -28,5 +28,9 @@ public class UserDao {
 	public int insertUserLogin2(HashMap<String, Object> params) {
 		return sqlSession.insert("user.insertUserLogin2", params);
 	}
+	
+	public int insertUserLogin3(HashMap<String, Object> params) {
+		return sqlSession.insert("user.insertUserLogin3", params);
+	}
 
 }

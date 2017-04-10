@@ -20,5 +20,9 @@ public class UserService {
 	public int insertUserLogin2(HashMap<String, Object> params) {
 		return userDao.insertUserLogin2(params);
 	}
+	
+	public int insertUserLogin3(HashMap<String, Object> params) {
+		return userDao.insertUserLogin3(params);
+	}
 
 }

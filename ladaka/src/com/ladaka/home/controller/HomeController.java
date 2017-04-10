@@ -126,6 +126,7 @@ public class HomeController {
 		if (email != null) {
 			result = homeService.normalUser(params); // DB Select
 		} else {
+			//result = homeService.hosUser(params); // DB Select
 			result = homeService.businessUser(params); // DB Select
 		}
 		

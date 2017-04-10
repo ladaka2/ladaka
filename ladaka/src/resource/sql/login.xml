@@ -28,4 +28,14 @@
 		LIMIT 1
 	</select>
 
+	<select id="selectUserLogin3" resultMap="hashmap">
+		SELECT
+			REGIST_NUM
+			, PSWORD
+		FROM USER_ETC
+		WHERE REGIST_NUM = '${registNum}'
+		AND PSWORD = '${psword}'
+		LIMIT 1
+	</select>
+
 </mapper>

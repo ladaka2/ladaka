@@ -52,7 +52,7 @@ $(document).ready(function() {
 	})
 
 	$("#goRegist2").click(function() {
-		window.open("http://localhost:8080/ladaka/goRegist2", "_self");
+		window.open("http://localhost:8080/ladaka/goRegist3", "_self");
 	})
 
 });
@@ -172,7 +172,8 @@ function searchUser2() {
 	// 사업자 회원정보 조회
 	$.ajax({
 		type : "POST",
-		url : "/ladaka/userLogin2",
+//		url : "/ladaka/userLogin2",
+		url : "/ladaka/userLogin3",
 		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 		data : param,
 		dataType : "json",

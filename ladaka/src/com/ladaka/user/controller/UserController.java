@@ -107,4 +107,51 @@ public class UserController {
 		return mav;
 	}
 	
+	/**
+	 * <pre>
+	 * 1. 개요: goRegistAjax3
+	 * 2. 처리내용: 사업자 회원가입 AJAX
+	 * </pre>
+	 */
+	@RequestMapping(value = "/goRegistAjax3")
+	public ModelAndView goRegistAjax3(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("UserController > goRegistAjax3");
+		
+		String businessCate = req.getParameter("businessCate");
+		String businessName = req.getParameter("businessName");
+		String businessNum = req.getParameter("businessNum");
+		String registPic = req.getParameter("registPic");
+		String password = req.getParameter("password");
+		String managerName = req.getParameter("managerName");
+		String managerNum = req.getParameter("managerNum");
+		String email = req.getParameter("email");
+		String businessKeyword = req.getParameter("businessKeyword");
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+		
+		//결과값
+		String result = "false";
+		
+		//파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("category", businessCate);
+		params.put("name", businessName);
+		params.put("registNum", businessNum);
+		params.put("registPic", registPic);
+		params.put("psword", password);
+		params.put("managerName", managerName);
+		params.put("managerNum", managerNum);
+		params.put("email", email);
+		params.put("keyword", businessKeyword);
+		System.out.println("goRegistAjax3 params : " + params.toString());
+		
+		// 서비스 호출
+		userService.insertUserLogin3(params); // DB Insert
+		
+		mav.addObject("list", result);
+		return mav;
+	}
+	
 }

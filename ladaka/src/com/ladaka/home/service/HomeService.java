@@ -17,6 +17,10 @@ public class HomeService {
 	public ArrayList<HashMap<String, Object>> normalUser(HashMap<String, Object> params) {
 		return (ArrayList) homeDao.selectNormalUser(params);
 	}
+	
+	public ArrayList<HashMap<String, Object>> hosUser(HashMap<String, Object> params) {
+		return (ArrayList) homeDao.selectHosUser(params);
+	}
 
 	public ArrayList<HashMap<String, Object>> businessUser(HashMap<String, Object> params) {
 		return (ArrayList) homeDao.selectBusinessUser(params);

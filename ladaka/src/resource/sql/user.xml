@@ -57,6 +57,38 @@
 			, '${insertId}'
 		)
 	</insert>
+
+	<insert id="insertUserLogin3" parameterType="hashmap">
+		INSERT INTO USER_ETC (
+			USER_ETC_IDX
+			, REGIST_CATE
+			, REGIST_NM
+			, REGIST_NUM
+			, REGIST_PIC
+			, PSWORD
+			, NAME
+			, PHONE_NUM
+			, EMAIL
+			, KEYWORD
+			, DELETE_YN
+			, INSERT_DATE
+			, INSERT_ID
+		) VALUES (
+			(SELECT IFNULL(MAX(USER_ETC_IDX), 0)+1 FROM USER_ETC A)
+			, '${category}'
+			, '${name}'
+			, '${registNum}'
+			, '${registPic}'
+			, '${psword}'
+			, '${managerName}'
+			, '${managerNum}'
+			, '${email}'
+			, '${keyword}'
+			, 'N'
+			, NOW()
+			, '${insertId}'
+		)
+	</insert>
 	
 	<select id="selectNormalUser" resultMap="hashmap">
 		SELECT

@@ -51,7 +51,7 @@ $(document).ready(function() {
 		$('#contents4').append(couponHtml);
 	} else { // 기타로그인
 		$("#contentVisible1").css("display", "none");
-		// 병원회원 로그인정보 AJAX
+		// 사업자회원 로그인정보 AJAX
 		$.ajax({
 			type : "POST",
 			url : "/ladaka/userInfo",
@@ -66,8 +66,8 @@ $(document).ready(function() {
 
 				$("#nonLogin").css("display", "none");
 				$("#businessLogin").css("display", "block");
-				$("#registNum").append("병원명칭 : " + name + "<br/>");
-				$("#registNum").append("사업자번호 : " + registNum + "<br/>병원회원");
+				$("#registNum").append("사업자명칭 : " + name + "<br/>");
+				$("#registNum").append("사업자번호 : " + registNum + "<br/>사업자회원");
 			}
 		});
 		
