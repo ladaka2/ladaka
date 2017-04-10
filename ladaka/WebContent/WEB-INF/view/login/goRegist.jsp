@@ -32,7 +32,7 @@
 				<span>이메일</span>
 				<br/>
 				<div>
-					<input type='text' id='user_email' maxlength='40' placeholder="이메일" /> @
+					<input type='text' name="user_email" id='user_email' maxlength='40' placeholder="이메일*" /> @
 					<input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
 					<select style="width: 100px; margin-right: 10px" name="selectEmail" id="selectEmail">
 						<option value="1">직접입력</option>
@@ -52,7 +52,7 @@
 			<div class="nickName">
 				<span>닉네임</span>
 				<div>
-					<input type='text' id='user_nickname' maxlength='40' placeholder="닉네임" />
+					<input type='text' id='user_nickname' maxlength='40' placeholder="닉네임*" />
 				</div>
 			</div>
 
@@ -60,13 +60,13 @@
 				<div class="pw">
 					<span>비밀번호 (4자이상)</span>
 					<div>
-						<input type='password' id='user_pw' placeholder="비밀번호" />
+						<input type='password' id='user_pw' placeholder="비밀번호*" />
 					</div>
 				</div>
 				<div class="pw">
 					<span>비밀번호 확인 (4자이상)</span>
 					<div>
-						<input type='password' id='user_pw_re' placeholder="비밀번호 확인" />
+						<input type='password' id='user_pw_re' placeholder="비밀번호 확인*" />
 					</div>
 				</div>
 			</div>
@@ -93,7 +93,7 @@
 				<span>* 만 14세 미만은 회원 가입이 안됩니다. 양해 부탁드립니다.</span>
 			</div>
 
-			<div>
+			<div class="termcheck">
 				<table>
 					<thead>
 						<tr>

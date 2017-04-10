@@ -32,6 +32,14 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	//이메일 한글입력 방지
+	$("input[name=user_email]").keyup(function(event){ 
+		if (!(event.keyCode >=37 && event.keyCode<=40)) {
+			var inputVal = $(this).val();
+			$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+		}
+	});
 
 	// 회원가입 신청 클릭
 	$("#registTrue").click(function() {

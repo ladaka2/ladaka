@@ -45,8 +45,27 @@ body button {
 .notice span {
 	font-size: 12px;
 	padding-right: 10px;
+	text-align: left;
+}
+/* 
+::-webkit-input-placeholder {
+	color: #f00;
 }
 
+:-moz-placeholder {
+	color: #f00;
+	opacity: 1;
+}
+
+::-moz-placeholder {
+	color: #f00;
+	opacity: 1;
+}
+
+:-ms-input-placeholder {
+	color: #f00;
+}
+ */
 /* °øÅë */
 
 /* È¨ START */
@@ -420,6 +439,11 @@ body button {
 .ruleCheck {
 	float: left;
 	padding-bottom: 10px;
+}
+
+.termcheck {
+	width: 100%;
+	text-align: left;
 }
 
 .termsForm {
