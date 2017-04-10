@@ -27,17 +27,21 @@
 		</div>
 		<!--// 상단 -->
 
-		<div class="registForm">
-			<div class="businessName">
-				<h5>사업자 명칭</h5>
-				<p>병원 회원의 경우 병원 상세보기에서 선택된 병원 명칭이 그대로 입력됨(수정 불가)</p>
+		<div class="registForm" style="float: left; margin-bottom: 30px;">
+			<div>
+				<span>사업자 명칭</span>
+				<div class="notice">
+					<span>병원 회원의 경우 병원 상세보기에서 선택된 병원 명칭이 그대로 입력됨(수정 불가)</span>
+				</div>
 				<div>
 					<input type='text' id='business_nm' maxlength='40' placeholder="사업자 명칭" />
 				</div>
 			</div>
 			<div>
-				<h5>사업자 등록 번호</h5>
-				<p style="font-size: 12px;">(아이디로 사용함. 직영점이 여러 개일 경우 일련번호에 번호가입. 입력하지 않으면 자동으로 OO으로 입력됨</p>
+				<span>사업자 등록 번호</span>
+				<div class="notice">
+					<span>(아이디로 사용함. 직영점이 여러 개일 경우 일련번호에 번호가입. 입력하지 않으면 자동으로 OO으로 입력됨</span>
+				</div>
 				<div>
 					<input type='text' id='business_num1' maxlength='10' placeholder="사업자등록번호10자리" /> -
 					<input type="text" id="business_num2" maxlength='2' placeholder="일련번호2자리" />
@@ -46,13 +50,13 @@
 
 			<div>
 				<div class="pw">
-					<h6>비밀번호 (4자이상)</h6>
+					<span>비밀번호 (4자이상)</span>
 					<div>
 						<input type='password' id='user_pw' placeholder="비밀번호" />
 					</div>
 				</div>
 				<div class="pw">
-					<h6>비밀번호 확인 (4자이상)</h6>
+					<span>비밀번호 확인 (4자이상)</span>
 					<div>
 						<input type='password' id='user_pw_re' placeholder="비밀번호 확인" />
 					</div>
@@ -60,20 +64,22 @@
 			</div>
 			
 			<div style="float: left;">
-				<h5>사업자 등록증 사본 제출</h5>
+				<span>사업자 등록증 사본 제출</span>
 				<input type="file">
-				<p style="font-size: 12px;">병원 회원 검증을 위해 사업자 등록증 사본을 제출하셔야 합니다.</p>
+				<div class="notice">
+					<span>병원 회원 검증을 위해 사업자 등록증 사본을 제출하셔야 합니다.</span>
+				</div>
 			</div>
 			
 			<div>
 				<div style="float: left; width: 40%;">
-					<h6>담당자 이름</h6>
+					<span>담당자 이름</span>
 					<div>
 						<input type='text' id='managerName' placeholder="담당자 이름" />
 					</div>
 				</div>
 				<div style="float: left; width: 40%;">
-					<h6>담당자 휴대폰 번호</h6>
+					<span>담당자 휴대폰 번호</span>
 					<div>
 						<input type="text" name="managerNum" id="managerNum" placeholder="담당자 휴대폰 번호" maxlength="13" />
 					</div>
@@ -82,7 +88,7 @@
 			
 			
 			<div style="float: left;">
-				<h5>담당자 이메일</h5>
+				<span>담당자 이메일</span>
 				<div>
 					<input type='text' id='user_email' maxlength='40' placeholder="담당자 이메일" /> @
 					<input type="text" name="str_email" id="str_email" style="width: 100px;" disabled value="naver.com">
@@ -98,11 +104,11 @@
 			</div>
 			
 			<div style="float: left;">
-				<h5>진료 키워드</h5>
+				<span>진료 키워드</span>
 				<textarea id="hospitalKeyword" style="width: 100%;" rows="5" cols="100" placeholder="병원의 전문 분야 (예 : 여드름, 피부 클리닉, 보톡스, 여의사 산부인과등) 40자 이내로 입력해 주세요."></textarea>
 			</div>
 
-			<div id="ruleCheck">
+			<div>
 				<table>
 					<thead>
 						<tr>

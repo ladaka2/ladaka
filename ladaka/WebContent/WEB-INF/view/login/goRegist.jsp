@@ -93,7 +93,7 @@
 				<span>* 만 14세 미만은 회원 가입이 안됩니다. 양해 부탁드립니다.</span>
 			</div>
 
-			<div id="ruleCheck">
+			<div>
 				<table>
 					<thead>
 						<tr>
