@@ -62,6 +62,7 @@ public class HospitalController {
 		//입력값
 		String latitude = req.getParameter("latitude");
 		String longitude = req.getParameter("longitude");
+		String dgsbjtCd = req.getParameter("dgsbjtCd");
 		
 		//Angular JS get Data
 		/*
@@ -91,10 +92,11 @@ public class HospitalController {
 		mav.setViewName("jsonView");
 		
 		//
-		params.put("start", 1);
+		params.put("start", 0);
 		params.put("page", 10);
 		params.put("latitude", latitude);
 		params.put("longitude", longitude);
+		params.put("dgsbjtCd", dgsbjtCd);
 		
 		result = hospitalService.selectHospitalPage(params);
 		

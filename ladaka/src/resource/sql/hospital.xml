@@ -83,21 +83,6 @@
 				SELECT
 					HOS.HOST_IDX
 					, HOS.YKIHO
-					, HOS.YADM_NM
-					, HOS.ADDR
-					, HOS.EMDONG_NM
-					, HOS.TEL_NO
-					, HOS.CL_CD
-					, HOS.CL_CD_NM
-					, HOS.SIDO_CD
-					, HOS.SIDO_CD_NM
-					, HOS.SGGU_CD
-					, HOS.SGGU_CD_NM
-					, HOS.POST_NO
-					, HOS.X_POS
-					, HOS.Y_POS
-					, HOS.TRAFFIC_YN
-					, HOS.SUBJECT_YN
 					, (
 						6371 * acos(
 							cos(radians('${latitude}')) * cos(radians(HOS.Y_POS))
@@ -109,8 +94,11 @@
 					, HOSPITAL_SUBJECT SUB
 				WHERE HOS.DETAIL_YN = 'Y'
 				AND HOS.X_POS != 0
-				AND SUB.DGSBJT_CD = '14'
+				<if test="dgsbjtCd != ''">
+				AND SUB.DGSBJT_CD = '${dgsbjtCd}'
+				</if>
 				AND HOS.HOST_IDX = SUB.HOST_IDX
+				GROUP BY HOS.HOST_IDX , HOS.YKIHO
 				ORDER BY DISTANCE
 				LIMIT ${start}, ${page}
 			) AS B USING(HOST_IDX)
