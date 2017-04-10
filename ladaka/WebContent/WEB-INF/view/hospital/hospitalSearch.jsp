@@ -13,6 +13,7 @@
 
 <script>
 	var param = {};
+	var map = null;
 	var latitude = 0;
 	var longitude = 0;
 	
@@ -23,6 +24,7 @@
 			search();
 		});
 		
+		search();
 	});
 	
 	function search() {
@@ -60,6 +62,8 @@
 		var distance = 0;
 		var distanceDis = "";
 		
+		initMap();//지도 초기화
+		
 		$.each(data.result, function(index, entry){
 			distance = Number(entry["DISTANCE"]);
 			if(distance >= 1) distanceDis = distance.toFixed(2) + "km";
@@ -67,16 +71,18 @@
 				distance = distance * 1000;
 				distanceDis = distance.toFixed(0) + "m";
 			}
-			
-			html += "<div class='hospitalList'>";
-				html += entry["YADM_NM"];
+			var no = index + 1;
+			html += "<div class='hospitalList' x='"+entry["Y_POS"]+"' y='"+entry["X_POS"]+"'>";
+				html += no + ". " + entry["YADM_NM"];
 				html += "<br/>";
 				html += distanceDis;
 				html += " | ";
 				html += entry["SGGU_CD_NM"] + " " + entry["EMDONG_NM"];
-				html += "<br/>";
-				html += entry["X_POS"] + "/" + entry["Y_POS"];
+				//html += "<br/>";
+				//html += entry["X_POS"] + "/" + entry["Y_POS"];
 			html += "</div>";
+			
+			makerMap(entry["Y_POS"], entry["X_POS"]);
 		});
 		//$("#listTd").html(html);
 		$("#lstDiv").html(html);
@@ -85,6 +91,7 @@
 		html = "";
 		
 		initBtn();
+		
 	}
 	
 	function navGeo() {
@@ -108,8 +115,57 @@
 		$(".hospitalList").click(function(){
 			$(".hospitalList").css("background-color", "#FFFFFF");
 			$(this).css("background-color", "#FFFFF0");
+			
+			//alert($(this).attr("x"));
+			moveMap($(this).attr("x"), $(this).attr("y"));
 		});
 	}
+	
+	//네이버 지도
+	function initMap() {
+		var mapOptions = { center: new naver.maps.LatLng(latitude, longitude), zoom: 11 };
+		map = new naver.maps.Map('map', mapOptions);
+		
+		makerMapMy(latitude, longitude);
+	}
+	
+	function moveMap(x, y) {
+		//e.preventDefault();
+		var target = new naver.maps.LatLng(x, y);
+		map.setCenter(target);
+	}
+	
+	//네이버 지도 마커
+	function makerMapMy(x, y) {
+		var marker = new naver.maps.Marker({
+			position: new naver.maps.LatLng(x, y)
+			, map: map
+			, icon: {
+				url: 'images/map/ico_pin.jpg'
+				, size: new naver.maps.Size(25, 34)
+				, scaledSize: new naver.maps.Size(25, 34)
+				, origin: new naver.maps.Point(0, 0)
+				, anchor: new naver.maps.Point(12, 34)
+			}
+		});
+	}
+	
+	function makerMap(x, y) {
+		var marker = new naver.maps.Marker({
+			position: new naver.maps.LatLng(x, y)
+			, map: map
+			/* */
+			, icon: {
+				url: 'images/map/maker_blue.png'
+				, size: new naver.maps.Size(22, 33)
+				, scaledSize: new naver.maps.Size(22, 33)
+				, origin: new naver.maps.Point(0, 0)
+				, anchor: new naver.maps.Point(12, 34)
+			}
+		
+		});
+	}
+	
 </script>
 
 <body>
@@ -200,8 +256,8 @@
 			</from>
 			
 			<div>
-				<div id="map" style="width:49%;height:400px;float:left;" ></div>
-				<div id="lstDiv" style="width:49%;display:inline-block;"></div>
+				<div id="map" style="width:49%;height:500px;float:left;" ></div>
+				<div id="lstDiv" style="width:49%;height:500px;display:inline-block;"></div>
 			</div>
 			
 		</div>
@@ -216,11 +272,6 @@
 		<!--// 푸터 -->
 		
 	</div>
-	
-	<script>
-		var mapOptions = { center: new naver.maps.LatLng(37.3595704, 127.105399), zoom: 10 };
-		var map = new naver.maps.Map('map', mapOptions);
-	</script>
 	
 </body>
 
