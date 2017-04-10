@@ -384,6 +384,7 @@ body button {
 	background-color: Indigo;
 	height: 36px;
 	color: white;
+	cursor: pointer;
 }
 
 .registForm {

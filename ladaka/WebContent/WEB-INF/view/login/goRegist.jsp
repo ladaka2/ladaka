@@ -104,7 +104,7 @@
 					<tbody>
 						<tr>
 							<td>
-								<input type="checkbox" name="checkOne">
+								<input type="checkbox" name="checkOne" value="필수">
 							</td>
 							<td>
 							이용약관 동의 (필수)
@@ -115,7 +115,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="checkbox" name="checkOne">
+								<input type="checkbox" name="checkOne" value="필수">
 							</td>
 							<td>
 							개인정보취급방침 동의 (필수)
@@ -126,7 +126,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="checkbox" name="checkOne">
+								<input type="checkbox" name="checkOne" value="선택">
 							</td>
 							<td>
 							위치정보 동의 (선택)

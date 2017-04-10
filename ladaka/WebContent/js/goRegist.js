@@ -11,7 +11,7 @@ $(document).ready(function() {
 			oneCheckFunc($(this));
 		});
 	});
-	
+
 	//이메일 입력방식 선택
 	$('#selectEmail').change(function() {
 		$("#selectEmail option:selected").each(function() {
@@ -24,12 +24,12 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+
 	//이메일 한글입력 방지
-	$("input[name=user_email]").keyup(function(event){ 
-		if (!(event.keyCode >=37 && event.keyCode<=40)) {
+	$("input[name=user_email]").keyup(function(event) {
+		if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
 			var inputVal = $(this).val();
-			$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+			$(this).val(inputVal.replace(/[^a-z0-9]/gi, ''));
 		}
 	});
 
@@ -55,13 +55,11 @@ $(document).ready(function() {
 		var passwordRe = $("#user_pw_re").val();
 		var gender = $("#genderInput").val();
 		var bornyear = $("#bornYear").val();
-		
-		//console.log(email + " / " + nickname + " / " + password + " / " + gender + " / " + bornyear);
-		
+
 		if (password != passwordRe) {
 			alert("비밀번호를 확인해주세요.");
 			return;
-		} else if (emialFirst == ""){
+		} else if (emialFirst == "") {
 			alert("이메일을 기입해주세요.");
 		} else if (nickname == "") {
 			alert("닉네임을 기입해주세요.");
@@ -72,47 +70,55 @@ $(document).ready(function() {
 		} else if (bornyear == "") {
 			alert("출생연도를 선택해주세요.");
 		} else {
+
+			var checkOne1 = $("input[name=checkOne]:eq(0)");
+			var checkOne2 = $("input[name=checkOne]:eq(1)");
 			
-			var param = {};
-			param = {};
-			param.email = email;
-			param.nickname = nickname;
-			param.password = password;
-			param.gender = gender;
-			param.bornyear = bornyear;
-			
-			$.ajax({
-				type : "POST",
-				url : "/ladaka/goRegistAjax",
-				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-				data : param,
-				dataType : "json",
-				async : false,
-				error : function(xhr, status, error) {
-					console.log("ajax error code:" + xhr.status);
-				},
-				success : function(data) {
-					alert("회원가입 되었습니다. 로그인해주세요.");
-					window.open("http://localhost:8080/ladaka/login", "_self");
-				}
-			});
-			
+			if ((checkOne1.prop("checked") == true) && (checkOne2.prop("checked") == true)) {
+				
+				var param = {};
+				param = {};
+				param.email = email;
+				param.nickname = nickname;
+				param.password = password;
+				param.gender = gender;
+				param.bornyear = bornyear;
+
+				$.ajax({
+					type : "POST",
+					url : "/ladaka/goRegistAjax",
+					contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+					data : param,
+					dataType : "json",
+					async : false,
+					error : function(xhr, status, error) {
+						console.log("ajax error code:" + xhr.status);
+					},
+					success : function(data) {
+						alert("회원가입 되었습니다. 로그인해주세요.");
+						window.open("http://localhost:8080/ladaka/login", "_self");
+					}
+				});
+				
+			} else {
+				alert("필수항목은 모두 체크해주세요");
+			}
+
 		}
-		
+
 	});
 
 });
 
 function allCheckFunc(obj) {
-	$("[name=checkOne]").prop("checked", $(obj).prop("checked")); // 필수
-	$("[name=checkTwo]").prop("checked", $(obj).prop("checked")); // 선택
+	$("[name=checkOne]").prop("checked", $(obj).prop("checked"));
 }
 
 /* 체크박스 체크시 전체선택 체크 여부 */
 function oneCheckFunc(obj) {
 	var allObj = $("[name=checkAll]");
 	var objName = $(obj).attr("name");
-	
+
 	if ($(obj).prop("checked")) {
 		checkBoxLength = $("[name=" + objName + "]").length;
 		checkedLength = $("[name=" + objName + "]:checked").length;

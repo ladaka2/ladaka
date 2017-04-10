@@ -84,33 +84,42 @@ $(document).ready(function() {
 				return;
 			}
 		} else {
+			
+			var checkOne1 = $("input[name=checkOne]:eq(0)");
+			var checkOne2 = $("input[name=checkOne]:eq(1)");
+			
+			if ((checkOne1.prop("checked") == true) && (checkOne2.prop("checked") == true)) {
+				
+				var param = {};
+				param = {};
+				param.businessName = businessName;
+				param.businessNum = businessNum;
+				param.registPic = registPic;
+				param.password = password;
+				param.managerName = managerName;
+				param.managerNum = managerNum;
+				param.email = email;
+				param.hospitalKeyword = hospitalKeyword;
 
-			var param = {};
-			param = {};
-			param.businessName = businessName;
-			param.businessNum = businessNum;
-			param.registPic = registPic;
-			param.password = password;
-			param.managerName = managerName;
-			param.managerNum = managerNum;
-			param.email = email;
-			param.hospitalKeyword = hospitalKeyword;
-
-			/*$.ajax({
-				type : "POST",
-				url : "/ladaka/goRegistAjax2",
-				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-				data : param,
-				dataType : "json",
-				async : false,
-				error : function(xhr, status, error) {
-					console.log("ajax error code:" + xhr.status);
-				},
-				success : function(data) {
-					alert("회원가입 되었습니다. 로그인해주세요.");
-					window.open("http://localhost:8080/ladaka/login", "_self");
-				}
-			});*/
+				$.ajax({
+					type : "POST",
+					url : "/ladaka/goRegistAjax2",
+					contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+					data : param,
+					dataType : "json",
+					async : false,
+					error : function(xhr, status, error) {
+						console.log("ajax error code:" + xhr.status);
+					},
+					success : function(data) {
+						alert("회원가입 되었습니다. 로그인해주세요.");
+						window.open("http://localhost:8080/ladaka/login", "_self");
+					}
+				});
+				
+			} else {
+				alert("필수항목은 모두 체크해주세요");
+			}
 
 		}
 
