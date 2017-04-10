@@ -43,8 +43,8 @@
 					<span>(아이디로 사용함. 직영점이 여러 개일 경우 일련번호에 번호가입. 입력하지 않으면 자동으로 OO으로 입력됨</span>
 				</div>
 				<div>
-					<input type='text' id='business_num1' maxlength='10' placeholder="사업자등록번호10자리" /> -
-					<input type="text" id="business_num2" maxlength='2' placeholder="일련번호2자리" />
+					<input type='text' id='business_num1' maxlength='10' placeholder="사업자등록번호10자리" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"/> -
+					<input type="text" id="business_num2" maxlength='2' placeholder="일련번호2자리" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"/>
 				</div>
 			</div>
 

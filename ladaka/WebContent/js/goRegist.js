@@ -65,6 +65,8 @@ $(document).ready(function() {
 			alert("이메일을 기입해주세요.");
 		} else if (nickname == "") {
 			alert("닉네임을 기입해주세요.");
+		} else if (password.length < 4) {
+			alert("비밀번호는 4글자 이상으로 기입해주세요.");
 		} else if (password == "" || passwordRe == "") {
 			alert("비밀번호를 기입해주세요.");
 		} else if (bornyear == "") {
