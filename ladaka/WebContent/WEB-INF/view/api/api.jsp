@@ -85,10 +85,13 @@
 <body>
 	API CALL 병원정보 서비스<br/>
 	<hr/>
+	(화면이동)<br/>
 	<button onclick="location.href='/ladaka/apiMedicDetail'">병원 상세정보</button><br/><br/>
 	<hr/>
-	<button onclick="location.href='/ladaka/apiGetToDB'">병원정보 DB입력</button><br/><br/>
-	<button onclick="location.href='/ladaka/apiGetToDBPharm'">약국정보 DB입력</button><br/><br/>
+	(API 호출 DB Insert)<br/>
+	- 초기 데이터 구축시 필요. 실행 로직은 주석으로 막았음.<br/>
+	<button onclick="location.href='/ladaka/apiGetToDB'">병원정보 DB입력</button>(HOSPITAL)<br/><br/>
+	<button onclick="location.href='/ladaka/apiGetToDBPharm'">약국정보 DB입력</button>(PHARM)<br/><br/>
 	<hr/>
 	<button>검색</button><br/>
 	

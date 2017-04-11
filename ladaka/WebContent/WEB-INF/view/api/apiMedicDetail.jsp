@@ -92,8 +92,13 @@
 <body>
 	API CALL 의료기관별 상세 정보서비스<br/>
 	<hr/>
+	(화면이동)<br/>
 	<button onclick="location.href='/ladaka/api'">병원 정보</button><br/><br/>
 	<hr/>
+	(API 호출 DB Insert)<br/>
+	- API 호출 제한이 일일 10000건 이라 동작시 마다 5000번 호출해서 입력하게 되어있음.<br/>
+	- 1일 1회 실행해서 데이터를 구축 할것.<br/>
+	- HOSPITAL 를 조회 후 HOSPITAL_TRAFFIC, HOSPITAL_SUBJECT, HOSPITAL_DETAIL 에 입력<br/>
 	<select id="apiType" name="apiType">
 		<option value="">선택</option>
 		<option value="transport">교통정보</option>
