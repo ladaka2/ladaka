@@ -17,6 +17,10 @@
 	var latitude = 0;
 	var longitude = 0;
 	
+	//
+	var latlngs = [];
+	var markerList = [];
+	
 	$(document).ready(function(){
 		navGeo();
 		
@@ -63,6 +67,8 @@
 		var distanceDis = "";
 		
 		initMap();//지도 초기화
+		latlngs = [];
+		markerList = [];
 		
 		$.each(data.result, function(index, entry){
 			distance = Number(entry["DISTANCE"]);
@@ -78,11 +84,12 @@
 				html += distanceDis;
 				html += " | ";
 				html += entry["SGGU_CD_NM"] + " " + entry["EMDONG_NM"];
-				//html += "<br/>";
-				//html += entry["X_POS"] + "/" + entry["Y_POS"];
+				html += "<br/>";
+				html += entry["X_POS"] + "/" + entry["Y_POS"];
 			html += "</div>";
 			
-			makerMap(entry["Y_POS"], entry["X_POS"]);
+			//makerMap(entry["Y_POS"], entry["X_POS"]);
+			latlngs.push(new naver.maps.LatLng(entry["Y_POS"], entry["X_POS"]));
 		});
 		//$("#listTd").html(html);
 		$("#lstDiv").html(html);
@@ -91,7 +98,7 @@
 		html = "";
 		
 		initBtn();
-		
+		initBtn2();
 	}
 	
 	function navGeo() {
@@ -116,9 +123,42 @@
 			$(".hospitalList").css("background-color", "#FFFFFF");
 			$(this).css("background-color", "#FFFFF0");
 			
-			//alert($(this).attr("x"));
 			moveMap($(this).attr("x"), $(this).attr("y"));
 		});
+	}
+	
+	function initBtn2() {
+		var HOME_PATH = window.HOME_PATH || '.';
+		
+		for(var i=0, ii=latlngs.length; i<ii; i++) {
+			var icon = {
+				url: HOME_PATH +'/img/example/sp_pins_spot_v3.png',
+				size: new naver.maps.Size(24, 37),
+				anchor: new naver.maps.Point(12, 37),
+				origin: new naver.maps.Point(i * 29, 0)
+			}
+			, marker = new naver.maps.Marker({
+				position: latlngs[i],
+				map: map,
+				icon: icon,
+				shadow: {
+					url: HOME_PATH +'/img/example/shadow-pin_default.png',
+					size: new naver.maps.Size(40, 35),
+					origin: new naver.maps.Point(0, 0),
+					anchor: new naver.maps.Point(11, 35)
+				}
+			});
+			
+			marker.set('seq', i);
+			
+			markerList.push(marker);
+
+			//marker.addListener('mouseover', onMouseOver);
+			//marker.addListener('mouseout', onMouseOut);
+
+			icon = null;
+			marker = null;
+		}
 	}
 	
 	//네이버 지도
