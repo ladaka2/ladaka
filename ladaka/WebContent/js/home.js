@@ -53,7 +53,10 @@ $(document).ready(function() {
 	$("#s_left").click(function() {
 		window.open("http://localhost:8080/ladaka/hospitalSearch", "_self");
 	});
-	$("#s_right1").click(function() {
+//	$("#s_right1").click(function() {
+//		alert("가까운 약국 찾기");
+//	});
+	$('#s_right1').bind('click', function() {
 		alert("가까운 약국 찾기");
 	});
 	$("#s_right2").click(function() {
