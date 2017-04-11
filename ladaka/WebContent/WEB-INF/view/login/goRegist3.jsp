@@ -173,6 +173,14 @@
 		<div>
 			<button class="registTrue" id="registTrue">회원가입 신청</button>
 		</div>
+		
+		<!-- 푸터 -->
+		<div class="footer">
+			<p>상호	: 라다카주식회사 사업자등록번호: 214-88-81992 대표자: 이봉민 
+			서울특별시 강남구 도산대로 209 옐로오투오 9층 통신판매업신고: 
+			제2011-서울강남-00557 ALL RIGHT RESERVED. ©goodoc 이용약관  및  개인정보취급방침</p>
+		</div>
+		<!--// 푸터 -->
 
 	</div>
 	
