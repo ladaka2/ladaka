@@ -134,7 +134,7 @@ function initBtn2() {
 
 	for (var i = 0, ii = latlngs.length; i < ii; i++) {
 		var icon = {
-			url : HOME_PATH + '/img/example/sp_pins_spot_v3.png',
+			url : HOME_PATH + '/images/map/sp_pins_spot_v3.png',
 			size : new naver.maps.Size(24, 37),
 			anchor : new naver.maps.Point(12, 37),
 			origin : new naver.maps.Point(i * 29, 0)
@@ -143,7 +143,7 @@ function initBtn2() {
 			map : map,
 			icon : icon,
 			shadow : {
-				url : HOME_PATH + '/img/example/shadow-pin_default.png',
+				url : HOME_PATH + '/images/map/shadow-pin_default.png',
 				size : new naver.maps.Size(40, 35),
 				origin : new naver.maps.Point(0, 0),
 				anchor : new naver.maps.Point(11, 35)
