@@ -130,6 +130,10 @@ public class HomeController {
 			result = homeService.businessUser(params); // DB Select
 		}
 		
+		//삼항연산자 이용???
+		//result = email !< null ? homeService.normalUser(params) : homeService.businessUser(params);
+		
+		
 
 		mav.addObject("userinfo", result);
 		return mav;

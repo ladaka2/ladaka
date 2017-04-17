@@ -46,4 +46,26 @@
 		)
 	</insert>
 	
+	<select id="selectPharmPage" resultMap="hashmap">
+		SELECT * FROM PHARM A INNER JOIN
+			(
+				SELECT
+					PH.PHARM_IDX
+					, PH.YKIHO
+					, (
+						6371 * acos(
+							cos(radians('${latitude}')) * cos(radians(PH.Y_POS))
+							* cos(radians(PH.X_POS) - radians('${longitude}'))
+							+ sin(radians('${latitude}'))*sin(radians(PH.Y_POS))
+						)
+					) AS DISTANCE
+				FROM PHARM PH
+				
+				WHERE PH.X_POS != 0
+				GROUP BY PH.PHARM_IDX , PH.YKIHO
+				ORDER BY DISTANCE
+				LIMIT ${start}, ${page}
+			) AS B USING(PHARM_IDX)
+	</select>
+	
 </mapper>
