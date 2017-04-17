@@ -17,6 +17,21 @@ $(document).ready(function() {
 	search();
 });
 
+function hideBtn() {
+	$("#lstDiv").css("display", "none");
+	$("#map").css("width", "100%");
+	$("#hideBtn").css("display", "none");
+	$("#listBtn").css("display", "inline-block");
+}
+
+function listBtn() {
+	$("#lstDiv").css("display", "inline-block");
+	$("#map").css("width", "49%");
+	$("#hideBtn").css("display", "inline-block");
+	$("#listBtn").css("display", "none");
+	
+}
+
 function search() {
 	navGeo();
 
@@ -198,3 +213,4 @@ function makerMap(x, y) {
 
 	});
 }
+

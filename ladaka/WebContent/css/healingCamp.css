@@ -47,6 +47,18 @@ body button {
 	padding-right: 10px;
 	text-align: left;
 }
+
+.hideBtn {
+	background-color: skyblue;
+	border: none;
+	color: white;
+	padding: 10px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
 /* 
 ::-webkit-input-placeholder {
 	color: #f00;

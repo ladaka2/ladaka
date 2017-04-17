@@ -17,15 +17,27 @@ $(document).ready(function() {
 	search();
 });
 
+function hideBtn() {
+	$("#lstDiv").css("display", "none");
+	$("#map").css("width", "100%");
+	$("#hideBtn").css("display", "none");
+	$("#listBtn").css("display", "inline-block");
+}
+
+function listBtn() {
+	$("#lstDiv").css("display", "inline-block");
+	$("#map").css("width", "49%");
+	$("#hideBtn").css("display", "inline-block");
+	$("#listBtn").css("display", "none");
+	
+}
+
 function search() {
 	navGeo();
 
 	param = {};
 	param.latitude = $("#latitude").val();
 	param.longitude = $("#longitude").val();
-	param.dgsbjtCd = $("#dgsbjtCd").val();// 진료과목
-
-	// alert(param.dgsbjtCd);
 
 	// 본사 고정(좌표 없을시)
 	if (latitude == "0")
