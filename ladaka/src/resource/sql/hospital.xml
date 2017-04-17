@@ -163,4 +163,30 @@
 		AND YKIHO = '${ykiho}'
 	</update>
 	
+	<select id="selectEmergencySearch" resultMap="hashmap">
+		SELECT * FROM HOSPITAL A INNER JOIN
+			(
+				SELECT
+					HOS.HOST_IDX
+					, HOS.YKIHO
+					, (
+						6371 * acos(
+							cos(radians('${latitude}')) * cos(radians(HOS.Y_POS))
+							* cos(radians(HOS.X_POS) - radians('${longitude}'))
+							+ sin(radians('${latitude}'))*sin(radians(HOS.Y_POS))
+						)
+					) AS DISTANCE
+				FROM HOSPITAL HOS
+					, HOSPITAL_DETAIL DET
+				WHERE HOS.DETAIL_YN = 'Y'
+				AND DET.EMY_DAY_YN = 'Y'
+				AND DET.EMY_NGT_YN = 'Y'
+				AND HOS.X_POS != 0
+				AND HOS.HOST_IDX = DET.HOST_IDX
+				GROUP BY HOS.HOST_IDX , HOS.YKIHO
+				ORDER BY DISTANCE
+				LIMIT ${start}, ${page}
+			) AS B USING(HOST_IDX)
+	</select>
+	
 </mapper>

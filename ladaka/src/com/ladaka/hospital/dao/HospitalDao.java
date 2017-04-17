@@ -63,4 +63,8 @@ public class HospitalDao {
 		return sqlSession.insert("hospitalDetail.inserthospitalDetail", params);
 	}
 	
+	public ArrayList<HashMap<String, Object>> selectEmergencySearch(Map params) {
+		return (ArrayList)sqlSession.selectList("hospital.selectEmergencySearch", params);
+	}
+	
 }

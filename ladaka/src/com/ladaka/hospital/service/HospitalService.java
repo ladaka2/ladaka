@@ -31,4 +31,8 @@ public class HospitalService {
 		return hospitalDao.deleteHospitalTraffic();
 	}
 	
+	public ArrayList selectEmergencySearch(HashMap<String, Object> params) {
+		return hospitalDao.selectEmergencySearch(params);
+	}
+	
 }

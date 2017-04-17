@@ -50,7 +50,6 @@ public class HospitalController {
 		
 	}
 	
-	
 	@RequestMapping(value = "/hospitalSearchAjax")
 	@ResponseBody
 	public ModelAndView hospitalSearchAjax(HttpServletRequest req, HttpServletResponse res) {
@@ -86,7 +85,6 @@ public class HospitalController {
 		
 		System.out.println(latitude+"/"+longitude);
 		
-		
 		//모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("jsonView");
@@ -102,7 +100,46 @@ public class HospitalController {
 		
 		mav.addObject("result", result);
 		return mav;
+	}
+
+	@RequestMapping(value = "/emergencySearch")
+	public ModelAndView emergencySearch(HttpServletRequest req, HttpServletResponse res) {
 		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("hospital/emergencySearch");
+		
+		return mav;
+		
+	}
+	
+	@RequestMapping(value = "/emergencySearchAjax")
+	@ResponseBody
+	public ModelAndView emergencySearchAjax(HttpServletRequest req, HttpServletResponse res) {
+		
+		//결과값
+		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
+		
+		//입력값
+		String latitude = req.getParameter("latitude");
+		String longitude = req.getParameter("longitude");
+		
+		System.out.println(latitude+"/"+longitude);
+		
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+		
+		//
+		params.put("start", 0);
+		params.put("page", 10);
+		params.put("latitude", latitude);
+		params.put("longitude", longitude);
+		
+		result = hospitalService.selectEmergencySearch(params);
+		
+		mav.addObject("result", result);
+		return mav;
 	}
 	
 	
