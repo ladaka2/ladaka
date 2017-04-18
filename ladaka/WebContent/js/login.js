@@ -1,4 +1,31 @@
 $(document).ready(function() {
+	// facebook
+	// Load the Facebook JS SDK Asynchronously
+	(function(d) {
+		var js, id = 'facebook-jssdk';
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement('script');
+		js.id = id;
+		js.async = true;
+		js.src = "//connect.facebook.net/en_US/all.js";
+		d.getElementsByTagName('head')[0].appendChild(js);
+	}(document));
+
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId : 424443167912242,
+			cookie : true, // enable cookies to allow the server to access 
+			// the session
+			xfbml : true, // parse social plugins on this page
+			version : 'v2.1' // use version 2.1
+		});
+	};
+	
+	//kakaotalk
+	Kakao.init("b2e018ab90ee0932951d915ff01ee80d");
+	
 	var userType = $(":input:radio[name=find_type]:checked").val();
 	console.log(userType);
 
@@ -26,15 +53,15 @@ $(document).ready(function() {
 		$('#user_pw2').val('');
 	})
 
-	//이메일 입력방식 선택
+	// 이메일 입력방식 선택
 	$('#selectEmail').change(function() {
 		$("#selectEmail option:selected").each(function() {
-			if ($(this).val() == '1') { //직접입력일 경우
-				$("#str_email").val(''); //값 초기화
-				$("#str_email").attr("disabled", false); //활성화
-			} else { //직접입력이 아닐경우
-				$("#str_email").val($(this).text()); //선택값 입력
-				$("#str_email").attr("disabled", true); //비활성화
+			if ($(this).val() == '1') { // 직접입력일 경우
+				$("#str_email").val(''); // 값 초기화
+				$("#str_email").attr("disabled", false); // 활성화
+			} else { // 직접입력이 아닐경우
+				$("#str_email").val($(this).text()); // 선택값 입력
+				$("#str_email").attr("disabled", true); // 비활성화
 			}
 		});
 	});
@@ -67,6 +94,71 @@ function login() {
 	}
 }
 
+function facebooklogin() {
+	FB.login(function(response) {
+		
+		console.log(response);
+		console.log(response.status);
+		
+		if (response.status == "connected") {
+			alert("이미 페이스북 로그인 됨");
+			return;
+		}
+		
+	});
+};
+
+// hkroh - Logout
+function facebooklogout() {
+	FB.logout(function(response) {
+		location.reload();
+	});
+}
+
+function getKakaotalkUserProfile(){
+	Kakao.API.request({
+		url: '/v1/user/me',
+		success: function(res) {
+			$("#kakao-profile").append(res.properties.nickname);
+			$("#kakao-profile").append($("<img/>",{"src":res.properties.profile_image,"alt":res.properties.nickname+"님의 프로필 사진"}));
+		},
+		fail: function(error) {
+			console.log(error);
+		}
+	});
+}
+function createKakaotalkLogin(){
+		Kakao.Auth.login({
+			persistAccessToken: true,
+			persistRefreshToken: true,
+			success: function(authObj) {
+				getKakaotalkUserProfile();
+				createKakaotalkLogout();
+			},
+			fail: function(err) {
+				console.log(err);
+			}
+		});
+}
+function createKakaotalkLogout(){
+	$("#kakao-logged-group .kakao-logout-btn,#kakao-logged-group .kakao-login-btn").remove();
+	var logoutBtn = $("<a/>",{"class":"kakao-logout-btn","text":"로그아웃"});
+	logoutBtn.click(function(){
+		Kakao.Auth.logout();
+		createKakaotalkLogin();
+		$("#kakao-profile").text("");
+	});
+	$("#kakao-logged-group").prepend(logoutBtn);
+}
+if(Kakao.Auth.getRefreshToken()!=undefined&&Kakao.Auth.getRefreshToken().replace(/ /gi,"")!=""){
+	createKakaotalkLogout();
+	getKakaotalkUserProfile();
+}else{
+	createKakaotalkLogin();
+}
+
+// kakaotalk login
+
 function nullCheck() {
 	var email = $('#user_email').val();
 	var pw = $('#user_pw').val();
@@ -84,7 +176,8 @@ function nullCheck() {
 		return;
 	} else {
 		console.log("http://localhost:8080/ladaka/login?" + email + "&" + pw);
-		//	window.open("http://localhost:8080/ladaka/login?" + email + "&" + pw);
+		// window.open("http://localhost:8080/ladaka/login?" + email + "&" +
+		// pw);
 		searchUser();
 	}
 }
@@ -111,7 +204,8 @@ function nullCheck2() {
 		return;
 	} else {
 		console.log("http://localhost:8080/ladaka/login?" + business_num1 + "&" + business_num2);
-		//	window.open("http://localhost:8080/ladaka/login?" + business_num1 + "&" + business_num2);
+		// window.open("http://localhost:8080/ladaka/login?" + business_num1 +
+		// "&" + business_num2);
 		searchUser2();
 	}
 }
@@ -172,7 +266,7 @@ function searchUser2() {
 	// 사업자 회원정보 조회
 	$.ajax({
 		type : "POST",
-//		url : "/ladaka/userLogin2",
+		// url : "/ladaka/userLogin2",
 		url : "/ladaka/userLogin3",
 		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 		data : param,

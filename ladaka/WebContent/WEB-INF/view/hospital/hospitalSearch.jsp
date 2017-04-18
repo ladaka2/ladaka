@@ -107,13 +107,13 @@
 		</div>
 		<!--// 콘텐츠 -->
 		
-	</div>
-	
-	<div class="hideBtn" id="hideBtn" onclick="hideBtn();">
-		<button>지도</button>
-	</div>
-	<div class="hideBtn" id="listBtn" onclick="listBtn();" style="display: none">
-		<button>목록</button>
+		<div class="hideBtn" id="hideBtn" onclick="hideBtn();">
+			<button>지도</button>
+		</div>
+		<div class="hideBtn" id="listBtn" onclick="listBtn();" style="display: none">
+			<button>목록</button>
+		</div>
+		
 	</div>
 	
 </body>
