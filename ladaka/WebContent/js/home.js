@@ -26,7 +26,7 @@ $(document).ready(function() {
 			version : 'v2.1' // use version 2.1
 		});
 	};
-	
+
 	// loginType 화면 분기화
 	if (loginType == "non") { // 미로그인
 		$(".userinfo").css("display", "none");
@@ -99,25 +99,32 @@ $(document).ready(function() {
 		alert("쿠폰");
 	});
 
-//	facebooklogin();
-	
+	//	facebooklogin();
+
+	$("input[name=keyword]").keydown(function(key) {
+		if (key.keyCode == 13) {
+			keywordSearch();
+		}
+	});
+
 });
 
-function keywordPress() {
-	keywordSearch();
-}
+/*function keywordPress() {
+ keywordSearch();
+ }*/
 
 function keywordSearch() {
+	$("#result").empty();
 	var keyword = $("#keyword").val();
-	
+
 	if (keyword == "") {
 		alert("키워드를 입력해주세요.");
 	} else {
 		//alert(keyword);
-		
+
 		var param = {};
 		param.keyword = keyword;
-		
+
 		// 키워드검색 ajax
 		$.ajax({
 			type : "POST",
@@ -131,16 +138,21 @@ function keywordSearch() {
 			},
 			success : function(data) {
 				var result = data.searchKeyword;
-//				console.log(result);
-				
-				for (var index = 0; index < result.length; index++) {
-					console.log(result[index].YADM_NM);
-					
-					$("#result").append(result[index].YADM_NM + "<br/>");
+				//				console.log(result);
+
+				if (result == "") {
+					alert("해당 키워드 검색결과 없음");
+				} else {
+					for (var index = 0; index < result.length; index++) {
+						console.log(result[index].YADM_NM);
+
+						$("#result").append(result[index].YADM_NM + "<br/>");
+					}
 				}
+				
 			}
 		});
-		
+
 	}
 }
 
@@ -152,10 +164,10 @@ function facebooklogin() {
 	FB.getLoginStatus(function(response) {
 		console.log(response);
 		console.log(response.status);
-		
+
 		if (response.status == "connected") {
 			alert("이미 페이스북 로그인 됨");
-			
+
 		} else {
 			FB.login(function(response) {
 				console.log(response);
@@ -163,7 +175,6 @@ function facebooklogin() {
 			});
 		}
 	});
-	
-};
 
+};
 

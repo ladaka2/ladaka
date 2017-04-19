@@ -34,7 +34,7 @@
 			</div>
 			
 			<div>
-				<input type="text" id="keyword" value="" placeholder="검색어 입력" onkeypress="keywordPress()">
+				<input type="text" id="keyword" name="keyword" value="" placeholder="검색어 입력" onkeypress="keywordPress()">
 			</div>
 			
 			<div class="userinfo">
