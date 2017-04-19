@@ -95,17 +95,21 @@ function login() {
 }
 
 function facebooklogin() {
-	FB.login(function(response) {
-		
+	FB.getLoginStatus(function(response) {
 		console.log(response);
 		console.log(response.status);
 		
 		if (response.status == "connected") {
 			alert("이미 페이스북 로그인 됨");
 			return;
+		} else {
+			FB.login(function(response) {
+				console.log(response);
+				console.log(response.status);
+			});
 		}
-		
 	});
+	
 };
 
 // hkroh - Logout

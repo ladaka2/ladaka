@@ -2,13 +2,37 @@ $(document).ready(function() {
 	console.log("loginType : ", loginType);
 	console.log("email : ", email);
 	console.log("registNum : ", registNum);
-	
+
+	// facebook
+	// Load the Facebook JS SDK Asynchronously
+	(function(d) {
+		var js, id = 'facebook-jssdk';
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement('script');
+		js.id = id;
+		js.async = true;
+		js.src = "//connect.facebook.net/en_US/all.js";
+		d.getElementsByTagName('head')[0].appendChild(js);
+	}(document));
+
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId : 424443167912242,
+			cookie : true, // enable cookies to allow the server to access
+			// the session
+			xfbml : true, // parse social plugins on this page
+			version : 'v2.1' // use version 2.1
+		});
+	};
+
 	// loginType 화면 분기화
 	if (loginType == "non") { // 미로그인
 		$(".userinfo").css("display", "none");
 		$("#email").css("display", "none");
 		$("#registNum").css("display", "none");
-	} else if (loginType == "normal"){ // 일반로그인
+	} else if (loginType == "normal") { // 일반로그인
 		// 일반회원 로그인정보 AJAX
 		$.ajax({
 			type : "POST",
@@ -21,7 +45,7 @@ $(document).ready(function() {
 			},
 			success : function(data) {
 				var nickname = data.userinfo[0].NICKNAME;
-				
+
 				$("#registNum").css("display", "none");
 				$("#email").css("display", "block");
 				$("#email").append("닉네임 : " + nickname + "	|	");
@@ -41,7 +65,7 @@ $(document).ready(function() {
 			},
 			success : function(data) {
 				var name = data.userinfo[0].NAME;
-				
+
 				$("#email").css("display", "none");
 				$("#registNum").css("display", "block");
 				$("#registNum").append("사업자명칭 : " + name + "<br/>");
@@ -49,7 +73,7 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
+
 	$("#s_left").click(function() {
 		window.open("http://localhost:8080/ladaka/hospitalSearch", "_self");
 	});
@@ -75,6 +99,8 @@ $(document).ready(function() {
 		alert("쿠폰");
 	});
 
+	statusChangeCallback();
+
 });
 
 function keywordSearch() {
@@ -84,3 +110,13 @@ function keywordSearch() {
 function mypage() {
 	window.open("http://localhost:8080/ladaka/mypage", "_self");
 }
+
+function statusChangeCallback() {
+	FB.getLoginStatus(function(response) {
+		console.log(response);
+		console.log(response.status);
+	});
+}
+
+
+
