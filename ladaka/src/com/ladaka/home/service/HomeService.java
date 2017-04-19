@@ -26,5 +26,9 @@ public class HomeService {
 		return (ArrayList) homeDao.selectBusinessUser(params);
 	}
 	
+	public ArrayList<HashMap<String, Object>> searchKeyword(HashMap<String, Object> params) {
+		return (ArrayList) homeDao.selectSearchKeyword(params);
+	} 
+	
 
 }

@@ -20,13 +20,13 @@ $(document).ready(function() {
 	window.fbAsyncInit = function() {
 		FB.init({
 			appId : 424443167912242,
-			cookie : true, // enable cookies to allow the server to access
+			cookie : true, // enable cookies to allow the server to access 
 			// the session
 			xfbml : true, // parse social plugins on this page
 			version : 'v2.1' // use version 2.1
 		});
 	};
-
+	
 	// loginType 화면 분기화
 	if (loginType == "non") { // 미로그인
 		$(".userinfo").css("display", "none");
@@ -99,24 +99,71 @@ $(document).ready(function() {
 		alert("쿠폰");
 	});
 
-	statusChangeCallback();
-
+//	facebooklogin();
+	
 });
 
+function keywordPress() {
+	keywordSearch();
+}
+
 function keywordSearch() {
-	alert("키워드검색");
+	var keyword = $("#keyword").val();
+	
+	if (keyword == "") {
+		alert("키워드를 입력해주세요.");
+	} else {
+		//alert(keyword);
+		
+		var param = {};
+		param.keyword = keyword;
+		
+		// 키워드검색 ajax
+		$.ajax({
+			type : "POST",
+			url : "/ladaka/searchKeyword",
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			data : param,
+			dataType : "json",
+			async : false,
+			error : function(xhr, status, error) {
+				console.log("ajax error code:" + xhr.status);
+			},
+			success : function(data) {
+				var result = data.searchKeyword;
+//				console.log(result);
+				
+				for (var index = 0; index < result.length; index++) {
+					console.log(result[index].YADM_NM);
+					
+					$("#result").append(result[index].YADM_NM + "<br/>");
+				}
+			}
+		});
+		
+	}
 }
 
 function mypage() {
 	window.open("http://localhost:8080/ladaka/mypage", "_self");
 }
 
-function statusChangeCallback() {
+function facebooklogin() {
 	FB.getLoginStatus(function(response) {
 		console.log(response);
 		console.log(response.status);
+		
+		if (response.status == "connected") {
+			alert("이미 페이스북 로그인 됨");
+			
+		} else {
+			FB.login(function(response) {
+				console.log(response);
+				console.log(response.status);
+			});
+		}
 	});
-}
-
+	
+};
 
 

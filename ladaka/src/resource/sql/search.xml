@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="search">
+
+	<resultMap type="java.util.HashMap" id="hashmap"></resultMap>
+
+	<select id="selectSearchKeyword" resultMap="hashmap">
+		SELECT 
+			HOST_IDX
+					, YKIHO
+					, YADM_NM
+					, ADDR
+					, EMDONG_NM
+					, TEL_NO
+					, CL_CD
+					, CL_CD_NM
+					, SIDO_CD
+					, SIDO_CD_NM
+					, SGGU_CD
+					, SGGU_CD_NM
+					, POST_NO
+					, X_POS
+					, Y_POS
+					, TRAFFIC_YN
+					, SUBJECT_YN
+		FROM HOSPITAL
+		WHERE YADM_NM LIKE '%${keyword}%'
+		LIMIT 10
+	</select>
+
+</mapper>

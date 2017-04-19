@@ -129,4 +129,40 @@ public class HomeController {
 		return mav;
 	}
 	
+	/**
+	 * <pre>
+	 * 1. 개요: searchKeyword
+	 * 2. 처리내용: 키워드검색 AJAX
+	 * </pre>
+	 */
+	@RequestMapping(value = "/searchKeyword", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView searchKeyword(HttpServletRequest req, HttpServletResponse res) {
+		logger.debug("HomeController > searchKeyword");
+		
+		// 입력값
+		String keyword = req.getParameter("keyword");
+
+		//모델 설정
+		mav = new ModelAndView();
+		mav.setViewName("jsonView");
+		
+		//결과값
+		ArrayList<HashMap<String, Object>> result = null;
+		
+		// 파라메터 설정
+		params = new HashMap<String, Object>();
+		params.put("keyword", keyword); // 일반회원
+		System.out.println("searchKeyword params : " + params.toString());
+		
+		if (keyword == null) {
+			return null;
+		} else {
+			result = homeService.searchKeyword(params); // DB Select
+		}
+		
+		mav.addObject("searchKeyword", result);
+		return mav;
+	}
+	
 }

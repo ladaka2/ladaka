@@ -34,5 +34,9 @@ public class HomeDao {
 		return (ArrayList) sqlSession.selectList("user.selectBusinessUser", params);
 	}
 	
+	public ArrayList selectSearchKeyword(HashMap<String, Object> params) {
+		return (ArrayList) sqlSession.selectList("search.selectSearchKeyword", params);
+	}
+	
 
 }

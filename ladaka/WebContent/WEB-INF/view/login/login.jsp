@@ -10,9 +10,7 @@
 <script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/commonFunc.js" type="text/javascript" charset="utf-8"></script>
-
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
+<!-- <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script> -->
 <link rel="stylesheet" href="css/healingCamp.css">
 </head>
 <body>

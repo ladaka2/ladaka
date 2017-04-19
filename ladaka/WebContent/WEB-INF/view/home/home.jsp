@@ -33,6 +33,10 @@
 				</button>
 			</div>
 			
+			<div>
+				<input type="text" id="keyword" value="" placeholder="검색어 입력" onkeypress="keywordPress()">
+			</div>
+			
 			<div class="userinfo">
 				<div id="email"></div>
 				<div id="registNum"></div>
@@ -81,6 +85,10 @@
 			</div>
 		</div>
 		<!--// 콘텐츠 -->
+
+		<div id="result">
+		
+		</div>
 
 		<!-- 푸터 -->
 		<div class="footer">
