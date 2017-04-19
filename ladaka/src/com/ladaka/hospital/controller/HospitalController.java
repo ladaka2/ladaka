@@ -16,33 +16,31 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ladaka.api.controller.ApiController;
 import com.ladaka.hospital.service.HospitalService;
 
-
-
 @Controller
 public class HospitalController {
 	
 	@Autowired
 	private HospitalService hospitalService;
 	
-	protected static Logger logger = Logger.getLogger(ApiController.class.getName());//로그
+	protected static Logger logger = Logger.getLogger(ApiController.class.getName()); // 로그
 	ModelAndView mav = null;//모델
-	HashMap<String, Object> params = new HashMap<String, Object>();//파라메터
+	HashMap<String, Object> params = new HashMap<String, Object>(); // 파라메터
 	
 	@RequestMapping(value = "/hospitalSearch")
 	public ModelAndView hospitalSearch(HttpServletRequest req, HttpServletResponse res) {
 		
-		//모델 설정
+		// 모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("hospital/hospitalSearch");
 		
 		return mav;
-		
 	}
 	
 	@RequestMapping(value = "/hospitalSearchBak")
 	public ModelAndView hospitalSearchBak(HttpServletRequest req, HttpServletResponse res) {
 		System.out.println("hospitalSearchBak");
-		//모델 설정
+		
+		// 모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("hospital/hospitalSearchBak");
 		
@@ -54,11 +52,10 @@ public class HospitalController {
 	@ResponseBody
 	public ModelAndView hospitalSearchAjax(HttpServletRequest req, HttpServletResponse res) {
 		
-		//결과값
-		//ArrayList result = new ArrayList();
+		// 결과값
 		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
 		
-		//입력값
+		// 입력값
 		String latitude = req.getParameter("latitude");
 		String longitude = req.getParameter("longitude");
 		String dgsbjtCd = req.getParameter("dgsbjtCd");
@@ -85,7 +82,7 @@ public class HospitalController {
 		
 		System.out.println(latitude+"/"+longitude);
 		
-		//모델 설정
+		// 모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("jsonView");
 		
@@ -110,27 +107,25 @@ public class HospitalController {
 		mav.setViewName("hospital/emergencySearch");
 		
 		return mav;
-		
 	}
 	
 	@RequestMapping(value = "/emergencySearchAjax")
 	@ResponseBody
 	public ModelAndView emergencySearchAjax(HttpServletRequest req, HttpServletResponse res) {
 		
-		//결과값
+		// 결과값
 		ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
 		
-		//입력값
+		// 입력값
 		String latitude = req.getParameter("latitude");
 		String longitude = req.getParameter("longitude");
 		
 		System.out.println(latitude+"/"+longitude);
 		
-		//모델 설정
+		// 모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("jsonView");
 		
-		//
 		params.put("start", 0);
 		params.put("page", 10);
 		params.put("latitude", latitude);
@@ -141,6 +136,5 @@ public class HospitalController {
 		mav.addObject("result", result);
 		return mav;
 	}
-	
-	
+
 }

@@ -1,8 +1,7 @@
-package com.ladaka.home.controller;
+	package com.ladaka.home.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,13 +57,11 @@ public class HomeController {
 			loginType = "non";
 			req.setAttribute("loginType", loginType);
 		} else if(email != null && registNum == null) { // 일반로그인
-			// 일반로그인 닉네임 출력
 			mav = new ModelAndView();
 			mav.setViewName("home/home");
 			result = homeService.normalUser(params);
-			System.out.println("normalUser result : " + result);
+			System.out.println("normalUser result : " + result); // 일반로그인 닉네임 출력
 			mav.addObject("result", result);
-			// 일반로그인 닉네임 출력
 
 			loginType = "normal";
 			req.setAttribute("loginType", loginType);
@@ -72,13 +69,11 @@ public class HomeController {
 			
 			return mav;
 		} else { // 그외 사업자 로그인
-			// 사업자인경우 병원명칭 출력
 			mav = new ModelAndView();
 			mav.setViewName("home/home");
 			result = homeService.businessUser(params);
-			System.out.println("businessUser result : " + result);
+			System.out.println("businessUser result : " + result); // 사업자인경우 병원명칭 출력
 			mav.addObject("result", result);
-			// 사업자인경우 병원명칭 출력
 			
 			loginType = "business";
 			req.setAttribute("loginType", loginType);
@@ -130,11 +125,6 @@ public class HomeController {
 			result = homeService.businessUser(params); // DB Select
 		}
 		
-		//삼항연산자 이용???
-		//result = email !< null ? homeService.normalUser(params) : homeService.businessUser(params);
-		
-		
-
 		mav.addObject("userinfo", result);
 		return mav;
 	}
