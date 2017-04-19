@@ -23,7 +23,7 @@ public class HospitalController {
 	private HospitalService hospitalService;
 	
 	protected static Logger logger = Logger.getLogger(ApiController.class.getName()); // 로그
-	ModelAndView mav = null;//모델
+	ModelAndView mav = null; // 모델
 	HashMap<String, Object> params = new HashMap<String, Object>(); // 파라메터
 	
 	@RequestMapping(value = "/hospitalSearch")
@@ -45,7 +45,6 @@ public class HospitalController {
 		mav.setViewName("hospital/hospitalSearchBak");
 		
 		return mav;
-		
 	}
 	
 	@RequestMapping(value = "/hospitalSearchAjax")
@@ -102,7 +101,7 @@ public class HospitalController {
 	@RequestMapping(value = "/emergencySearch")
 	public ModelAndView emergencySearch(HttpServletRequest req, HttpServletResponse res) {
 		
-		//모델 설정
+		// 모델 설정
 		mav = new ModelAndView();
 		mav.setViewName("hospital/emergencySearch");
 		
