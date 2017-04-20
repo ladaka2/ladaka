@@ -101,7 +101,7 @@
 	<select id="selectBusinessUser" resultMap="hashmap">
 		SELECT
 			NAME
-		FROM USER_HOS
+		FROM USER_ETC
 		WHERE REGIST_NUM = '${registNum}'
 		LIMIT 1
 	</select>

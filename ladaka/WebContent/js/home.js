@@ -2,7 +2,10 @@ $(document).ready(function() {
 	console.log("loginType : ", loginType);
 	console.log("email : ", email);
 	console.log("registNum : ", registNum);
-
+	
+	var fbLoginValue = $("#fbLoginValue").val();
+	console.log("fbLoginValue : ", fbLoginValue);
+	
 	// facebook
 	// Load the Facebook JS SDK Asynchronously
 	(function(d) {
@@ -28,7 +31,7 @@ $(document).ready(function() {
 	};
 
 	// loginType 화면 분기화
-	if (loginType == "non") { // 미로그인
+	if (loginType == "non" && fbLoginValue != "connected") { // 미로그인
 		$(".userinfo").css("display", "none");
 		$("#email").css("display", "none");
 		$("#registNum").css("display", "none");
@@ -52,7 +55,7 @@ $(document).ready(function() {
 				$("#email").append("이메일 : " + email);
 			}
 		});
-	} else { // 기타로그인
+	} else if (loginType == "business") { // 사업자로그인
 		// 사업자회원 로그인정보 AJAX
 		$.ajax({
 			type : "POST",
@@ -72,6 +75,11 @@ $(document).ready(function() {
 				$("#registNum").append("사업자번호 : " + registNum);
 			}
 		});
+	} else if (loginType != "normal" && loginType != "business" && fbLoginValue == "connected") {
+		$("#email").remove();
+		$("#registNum").remove();
+		$("#snsLogin").css("display", "block");
+		$("#snsLogin").append("페이스북 로그인한 회원");
 	}
 
 	$("#s_left").click(function() {

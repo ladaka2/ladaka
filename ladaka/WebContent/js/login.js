@@ -34,11 +34,15 @@ $(document).ready(function() {
 		console.log(userType2);
 
 		if (userType2 == "사업자회원") {
+			$("#fblogin").css("display", "none");
+			$("#kakaologin").css("display", "none");
 			$("#userNormal").css("display", "none");
 			$("#userBusiness").css("display", "block");
 			$("#goRegistDiv").css("display", "none");
 			$("#goRegist2Div").css("display", "block");
 		} else {
+			$("#fblogin").css("display", "block");
+			$("#kakaologin").css("display", "block");
 			$("#userNormal").css("display", "block");
 			$("#userBusiness").css("display", "none");
 			$("#goRegistDiv").css("display", "block");
@@ -101,7 +105,8 @@ function facebooklogin() {
 		
 		if (response.status == "connected") {
 			alert("이미 페이스북 로그인 됨");
-			return;
+			$("#fbLoginValue").val(response.status);
+			window.open("http://localhost:8080/ladaka/home?fbLoginValue=" + response.status, "_self");
 		} else {
 			FB.login(function(response) {
 				console.log(response);
@@ -234,10 +239,7 @@ function searchUser() {
 			console.log("ajax error code:" + xhr.status);
 		},
 		success : function(data) {
-			console.log(data.list[0].EMAIL);
-			console.log(data.list[0].PSWORD);
-
-			if (data != undefined) {
+			if (typeof data.list[0] != "undefined") {
 				var userEmail = data.list[0].EMAIL;
 				var userPsword = data.list[0].PSWORD;
 
@@ -248,13 +250,14 @@ function searchUser() {
 					window.open("http://localhost:8080/ladaka/home", "_self");
 					return;
 				} else {
-					alert("로그인실패");
+					alert("error");
 					return;
 				}
+				
 			} else {
-				alert("이메일이나 비밀번호가 일치하지 않습니다.");
-				return;
+				alert("로그인정보 확인해주세요.");
 			}
+			
 		}
 	});
 }
@@ -280,10 +283,7 @@ function searchUser2() {
 			console.log("ajax error code:" + xhr.status);
 		},
 		success : function(data) {
-			console.log(data.list[0].REGIST_NUM);
-			console.log(data.list[0].PSWORD);
-
-			if (data != undefined) {
+			if (typeof data.list[0] != "undefined") {
 				var userRegistNum = data.list[0].REGIST_NUM;
 				var userPsword = data.list[0].PSWORD;
 
@@ -294,12 +294,11 @@ function searchUser2() {
 					window.open("http://localhost:8080/ladaka/home", "_self");
 					return;
 				} else {
-					alert("로그인실패");
+					alert("error");
 					return;
 				}
 			} else {
-				alert("사업자등록번호나 비밀번호가 일치하지 않습니다.");
-				return;
+				alert("로그인정보 확인해주세요.");
 			}
 
 		}

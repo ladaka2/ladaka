@@ -25,7 +25,7 @@
 		<div class="title">
 			<div>
 				<button class="nonLogin" id="nonLogin">
-					<img src="images/avatar.png" alt="로그인/회원가입">로그인
+					<img src="images/avatar.png" alt="로그인/회원가입">로그인/회원가입
 				</button>
 				마이페이지
 				<button class="gohome" onclick="goHome()">
@@ -50,7 +50,7 @@
 		</div>
 		<!--// 상단 -->
 
-		<div class="mypageMiddle">
+		<div class="mypageMiddle" style="padding-top: 2px;">
 			<div class="menuCategory">
 				<div class="menu" onclick="menu1()">롬</div>
 				<div class="menu" onclick="menu2()">클럽</div>

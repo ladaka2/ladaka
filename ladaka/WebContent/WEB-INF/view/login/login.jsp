@@ -10,7 +10,7 @@
 <script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/commonFunc.js" type="text/javascript" charset="utf-8"></script>
-<!-- <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script> -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <link rel="stylesheet" href="css/healingCamp.css">
 </head>
 <body>
@@ -81,11 +81,11 @@
 			<button onclick="login()">로그인</button>
 		</div>
 
-		<div class="login">
+		<div class="login" id="fblogin">
 			<button style="background-color: RoyalBlue" onclick="facebooklogin();">페이스북 로그인</button>
 		</div>
 
-		<div class="login">
+		<div class="login" id="kakaologin">
 			<button style="background-color: yellow; color: black;" onclick="createKakaotalkLogin();">카카오톡 로그인</button>
 		</div>
 
@@ -114,6 +114,8 @@
 		<!--// 푸터 -->
 
 	</div>
+	
+	<input type="hidden" value="" id="fbLoginValue">
 
 </body>
 </html>

@@ -16,6 +16,10 @@
 	var email = "${email}";
 	var registNum = "${registNum}";
 </script>
+<%
+request.setCharacterEncoding("utf-8");
+String fbLoginValue = request.getParameter("fbLoginValue");
+%>
 </head>
 <body>
 
@@ -33,19 +37,20 @@
 				</button>
 			</div>
 			
-			<div>
-				<input type="text" id="keyword" name="keyword" value="" placeholder="검색어 입력" onkeypress="keywordPress()">
+			<div class="keyword">
+				<input type="text" id="keyword" name="keyword" value="" placeholder="검색어 입력" onkeypress="keywordPress()" style="width: 100%; height: 26px;">
 			</div>
 			
 			<div class="userinfo">
 				<div id="email"></div>
 				<div id="registNum"></div>
+				<div id="snsLogin" style="display: none"></div>
 			</div>
 		</div>
 		<!--// 상단 -->
 
 		<!-- 콘텐츠 -->
-		<div class="contents">
+		<div class="contents" style="padding-top: 50px;">
 
 			<div class="contentsSearch">
 				<div class="conLeft">
@@ -95,6 +100,8 @@
 		<!--// 푸터 -->
 
 	</div>
+	
+	<input type="hidden" value="<%=fbLoginValue%>" id="fbLoginValue">
 
 </body>
 </html>

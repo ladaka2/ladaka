@@ -83,6 +83,7 @@ body button {
 /* Ȩ START */
 .title div {
 	padding-top: 6px;
+	padding-bottom: 18px;
 }
 
 .title div img {
@@ -102,9 +103,14 @@ body button {
 	float: right;
 }
 
+.keyword {
+	position: absolute;
+	width: 100%;
+}
+
 .userinfo {
 	background-color: AliceBlue;
-	margin: 10px 0px 10px 0px;
+	margin: 50px 0px 10px 0px;
 	padding: 0px 0px 0px 0px;
 	float: left;
 	width: 100%;
