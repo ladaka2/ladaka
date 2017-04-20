@@ -27,7 +27,7 @@ $(document).ready(function() {
 				//				console.log(result);
 
 				if (result == "") {
-					alert("해당 키워드 검색결과 없음");
+					$("#result").append("<div class='notice'><span>해당 키워드 검색결과가 없음</span></div>");
 				} else {
 					for (var index = 0; index < result.length; index++) {
 						console.log(result[index].YADM_NM);
