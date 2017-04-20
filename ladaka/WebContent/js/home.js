@@ -2,10 +2,10 @@ $(document).ready(function() {
 	console.log("loginType : ", loginType);
 	console.log("email : ", email);
 	console.log("registNum : ", registNum);
-	
+
 	var fbLoginValue = $("#fbLoginValue").val();
 	console.log("fbLoginValue : ", fbLoginValue);
-	
+
 	// facebook
 	// Load the Facebook JS SDK Asynchronously
 	(function(d) {
@@ -76,10 +76,10 @@ $(document).ready(function() {
 			}
 		});
 	} else if (loginType != "normal" && loginType != "business" && fbLoginValue == "connected") {
-		$("#email").remove();
+		/*$("#email").remove();
 		$("#registNum").remove();
 		$("#snsLogin").css("display", "block");
-		$("#snsLogin").append("페이스북 로그인한 회원");
+		$("#snsLogin").append("페이스북 로그인한 회원");*/
 	}
 
 	$("#s_left").click(function() {
@@ -107,13 +107,15 @@ $(document).ready(function() {
 		alert("쿠폰");
 	});
 
-	//	facebooklogin();
-
 	$("input[name=keyword]").keydown(function(key) {
 		if (key.keyCode == 13) {
 			keywordSearch();
 		}
 	});
+
+	setTimeout(function() {
+		facebooklogin()
+	}, 500);
 
 });
 
@@ -130,7 +132,7 @@ function keywordSearch() {
 		param.keyword = keyword;
 
 		window.open("http://localhost:8080/ladaka/searchList?keyword=" + keyword, "_self");
-		
+
 		// 키워드검색 ajax
 		/*$.ajax({
 			type : "POST",
@@ -172,15 +174,28 @@ function facebooklogin() {
 		console.log(response.status);
 
 		if (response.status == "connected") {
-			alert("이미 페이스북 로그인 됨");
-
+			$(".userinfo").css("display", "block");
+			$("#email").remove();
+			$("#registNum").remove();
+			$("#snsLogin").css("display", "block");
+			$("#snsLogin").append("페이스북 로그인한 회원");
 		} else {
-			FB.login(function(response) {
+			/*FB.login(function(response) {
 				console.log(response);
 				console.log(response.status);
-			});
+			});*/
 		}
 	});
 
 };
+
+function fbLogout() {
+	FB.logout(function(response) {
+		alert("페이스북 로그아웃합니다.");
+		location.reload();
+	});
+}
+
+
+
 

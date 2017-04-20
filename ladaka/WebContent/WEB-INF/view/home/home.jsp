@@ -44,7 +44,9 @@ String fbLoginValue = request.getParameter("fbLoginValue");
 			<div class="userinfo">
 				<div id="email"></div>
 				<div id="registNum"></div>
-				<div id="snsLogin" style="display: none"></div>
+				<div id="snsLogin" style="display: none">
+				</div>
+				<button style="float: right; border: 1px solid blue;" onclick="fbLogout();">facebook logout</button>
 			</div>
 		</div>
 		<!--// 상단 -->

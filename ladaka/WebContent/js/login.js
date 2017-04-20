@@ -106,11 +106,18 @@ function facebooklogin() {
 		if (response.status == "connected") {
 			alert("이미 페이스북 로그인 됨");
 			$("#fbLoginValue").val(response.status);
-			window.open("http://localhost:8080/ladaka/home?fbLoginValue=" + response.status, "_self");
-		} else {
+//			window.open("http://localhost:8080/ladaka/home?fbLoginValue=" + response.status, "_self");
+			window.open("http://localhost:8080/ladaka/home", "_self");
+		} else if (response.status == "unknown") {
 			FB.login(function(response) {
 				console.log(response);
 				console.log(response.status);
+				if (response.status == "connected") {
+					alert("페이스북 로그인 했습니다.");
+					window.open("http://localhost:8080/ladaka/home", "_self");
+				} else {
+					// nothing
+				}
 			});
 		}
 	});
