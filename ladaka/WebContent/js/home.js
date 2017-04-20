@@ -109,10 +109,6 @@ $(document).ready(function() {
 
 });
 
-/*function keywordPress() {
- keywordSearch();
- }*/
-
 function keywordSearch() {
 	$("#result").empty();
 	var keyword = $("#keyword").val();
@@ -125,8 +121,10 @@ function keywordSearch() {
 		var param = {};
 		param.keyword = keyword;
 
+		window.open("http://localhost:8080/ladaka/searchList?keyword=" + keyword, "_self");
+		
 		// 키워드검색 ajax
-		$.ajax({
+		/*$.ajax({
 			type : "POST",
 			url : "/ladaka/searchKeyword",
 			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
@@ -151,7 +149,7 @@ function keywordSearch() {
 				}
 				
 			}
-		});
+		});*/
 
 	}
 }
