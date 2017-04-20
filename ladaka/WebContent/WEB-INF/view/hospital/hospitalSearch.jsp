@@ -29,11 +29,6 @@
 					<img src="images/magnifying-glass.png" alt="검색">검색
 				</button>
 			</div>
-			
-			<div class="userinfo">
-				<div id="email"></div>
-				<div id="registNum"></div>
-			</div>
 		</div>
 		<!--// 상단 -->
 		

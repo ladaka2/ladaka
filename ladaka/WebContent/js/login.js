@@ -124,13 +124,6 @@ function facebooklogin() {
 	
 };
 
-// hkroh - Logout
-function facebooklogout() {
-	FB.logout(function(response) {
-		location.reload();
-	});
-}
-
 function getKakaotalkUserProfile(){
 	Kakao.API.request({
 		url: '/v1/user/me',
@@ -165,12 +158,13 @@ function createKakaotalkLogout(){
 		$("#kakao-profile").text("");
 	});
 	$("#kakao-logged-group").prepend(logoutBtn);
-}
-if(Kakao.Auth.getRefreshToken()!=undefined&&Kakao.Auth.getRefreshToken().replace(/ /gi,"")!=""){
-	createKakaotalkLogout();
-	getKakaotalkUserProfile();
-}else{
-	createKakaotalkLogin();
+	
+	if(Kakao.Auth.getRefreshToken()!=undefined&&Kakao.Auth.getRefreshToken().replace(/ /gi,"")!=""){
+		createKakaotalkLogout();
+		getKakaotalkUserProfile();
+	}else{
+		createKakaotalkLogin();
+	}
 }
 
 // kakaotalk login

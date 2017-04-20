@@ -180,10 +180,7 @@ function facebooklogin() {
 			$("#snsLogin").css("display", "block");
 			$("#snsLogin").append("페이스북 로그인한 회원");
 		} else {
-			/*FB.login(function(response) {
-				console.log(response);
-				console.log(response.status);
-			});*/
+			// nothing
 		}
 	});
 
