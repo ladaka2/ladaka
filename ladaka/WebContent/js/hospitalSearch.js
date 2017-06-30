@@ -47,7 +47,7 @@ function search() {
 		param.latitude = "37.4907489";
 	if (longitude == "0")
 		param.longitude = "127.0314723";
-
+	
 	$.ajax({
 		type : "POST",
 		url : "/ladaka/hospitalSearchAjax",
@@ -84,7 +84,7 @@ function parseJson(data) {
 			distanceDis = distance.toFixed(0) + "m";
 		}
 		var no = index + 1;
-		html += "<div class='hospitalList' x='" + entry["Y_POS"] + "' y='" + entry["X_POS"] + "' style='border-top:1px solid blue; border-bottom:1px solid blue; border-left:1px solid blue; border-right:1px solid blue; padding:10px;'>";
+		html += "<div class='hospitalList' x='" + entry["Y_POS"] + "' y='" + entry["X_POS"] + "' h-name='" + entry["YADM_NM"] + "' style='border-top:1px solid blue; border-bottom:1px solid blue; border-left:1px solid blue; border-right:1px solid blue; padding:10px;'>";
 		html += no + ". " + entry["YADM_NM"];
 		html += "<br/>";
 		html += distanceDis;
@@ -94,7 +94,7 @@ function parseJson(data) {
 		html += entry["X_POS"] + "/" + entry["Y_POS"];
 		html += "</div>";
 
-		// makerMap(entry["Y_POS"], entry["X_POS"]);
+		//makerMap(entry["Y_POS"], entry["X_POS"]);
 		latlngs.push(new naver.maps.LatLng(entry["Y_POS"], entry["X_POS"]));
 	});
 	// $("#listTd").html(html);
@@ -107,14 +107,46 @@ function parseJson(data) {
 	initBtn2();
 }
 
-function navGeo() {
+//지도 정보창
+var HOME_PATH = window.HOME_PATH || '.';
+
+var infowindow = new naver.maps.InfoWindow({});
+function info(item, x, y) {
+	var target = new naver.maps.LatLng(x, y),
+		/*
+		map = new naver.maps.Map('map', {
+			center: target.destinationPoint(0, 500),
+			zoom: 10
+		}),
+		*/
+		marker = new naver.maps.Marker({
+			map: map,
+			position: target
+		});
+		
+	var contentString = [
+		'<div class="iw_inner">',
+		'    <h3>'+$(item).attr("h-name")+'</h3>',
+		'    <p>X점, 2명</p>',
+		'</div>'
+	].join('');
+	
+	infowindow = new naver.maps.InfoWindow({
+		content: contentString
+	});
+	
+	infowindow.open(map, marker);
+}
+//지도 정보창
+
+function navGeo(x, y) {
 	if (navigator.geolocation) {
 		// geolocation is available
 		navigator.geolocation.getCurrentPosition(showMap);
 		function showMap(position) {
 			latitude = position.coords.latitude;
 			longitude = position.coords.longitude;
-
+			
 			$("#latitude").val(latitude);
 			$("#longitude").val(longitude);
 		}
@@ -123,18 +155,19 @@ function navGeo() {
 	}
 }
 
-function initBtn() {// 버튼 연결
+function initBtn() {//버튼 연결
 	$(".hospitalList").click(function() {
 		$(".hospitalList").css("background-color", "#FFFFFF");
 		$(this).css("background-color", "#FFFFF0");
-
+		
+		info(this, $(this).attr("x"), $(this).attr("y"));
 		moveMap($(this).attr("x"), $(this).attr("y"));
 	});
 }
 
 function initBtn2() {
 	var HOME_PATH = window.HOME_PATH || '.';
-
+	
 	for (var i = 0, ii = latlngs.length; i < ii; i++) {
 		var icon = {
 			url : HOME_PATH + '/images/map/sp_pins_spot_v3.png',
@@ -144,22 +177,25 @@ function initBtn2() {
 		}, marker = new naver.maps.Marker({
 			position : latlngs[i],
 			map : map,
-			icon : icon,
+			icon : icon
+			/*
+			,
 			shadow : {
 				url : HOME_PATH + '/images/map/shadow-pin_default.png',
 				size : new naver.maps.Size(40, 35),
 				origin : new naver.maps.Point(0, 0),
 				anchor : new naver.maps.Point(11, 35)
 			}
+			*/
 		});
-
+		
 		marker.set('seq', i);
-
+		
 		markerList.push(marker);
-
+		
 		// marker.addListener('mouseover', onMouseOver);
 		// marker.addListener('mouseout', onMouseOut);
-
+		
 		icon = null;
 		marker = null;
 	}
