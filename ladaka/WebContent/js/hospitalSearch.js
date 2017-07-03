@@ -13,8 +13,10 @@ $(document).ready(function() {
 	$("#searchBtn").click(function() {
 		search();
 	});
-
+	
 	search();
+	
+	
 });
 
 function hideBtn() {
@@ -43,9 +45,9 @@ function search() {
 	// alert(param.dgsbjtCd);
 
 	// 본사 고정(좌표 없을시)
-	if (latitude == "0")
+	if(latitude == "0")
 		param.latitude = "37.4907489";
-	if (longitude == "0")
+	if(longitude == "0")
 		param.longitude = "127.0314723";
 	
 	$.ajax({
@@ -70,11 +72,11 @@ function parseJson(data) {
 	 */
 	var distance = 0;
 	var distanceDis = "";
-
+	
 	initMap();// 지도 초기화
 	latlngs = [];
 	markerList = [];
-
+	
 	$.each(data.result, function(index, entry) {
 		distance = Number(entry["DISTANCE"]);
 		if (distance >= 1)
@@ -90,10 +92,10 @@ function parseJson(data) {
 		html += distanceDis;
 		html += " | ";
 		html += entry["SGGU_CD_NM"] + " " + entry["EMDONG_NM"];
-		html += "<br/>";
-		html += entry["X_POS"] + "/" + entry["Y_POS"];
+		//html += "<br/>";
+		//html += entry["X_POS"] + "/" + entry["Y_POS"];
 		html += "</div>";
-
+		
 		//makerMap(entry["Y_POS"], entry["X_POS"]);
 		latlngs.push(new naver.maps.LatLng(entry["Y_POS"], entry["X_POS"]));
 	});
@@ -104,7 +106,7 @@ function parseJson(data) {
 	html = "";
 
 	initBtn();
-	initBtn2();
+	initBtn2();//마커찍기 10개
 }
 
 //지도 정보창
@@ -125,9 +127,9 @@ function info(item, x, y) {
 		});
 		
 	var contentString = [
-		'<div class="iw_inner">',
+		'<div class="iw_inner22">',
 		'    <h3>'+$(item).attr("h-name")+'</h3>',
-		'    <p>X점, 2명</p>',
+		'    <p>X점, X명</p>',
 		'</div>'
 	].join('');
 	
@@ -137,7 +139,7 @@ function info(item, x, y) {
 	
 	infowindow.open(map, marker);
 }
-//지도 정보창
+//지도 정보창 end
 
 function navGeo(x, y) {
 	if (navigator.geolocation) {
@@ -196,6 +198,11 @@ function initBtn2() {
 		// marker.addListener('mouseover', onMouseOver);
 		// marker.addListener('mouseout', onMouseOut);
 		
+		//마커클릭 이벤트
+		naver.maps.Event.addListener(marker, "click", function(e) {
+			//alert("클릭");
+		});
+		
 		icon = null;
 		marker = null;
 	}
@@ -208,7 +215,7 @@ function initMap() {
 		zoom : 11
 	};
 	map = new naver.maps.Map('map', mapOptions);
-
+	
 	makerMapMy(latitude, longitude);
 }
 
@@ -231,14 +238,15 @@ function makerMapMy(x, y) {
 			anchor : new naver.maps.Point(12, 34)
 		}
 	});
+	
+	
+	
 }
 
 function makerMap(x, y) {
 	var marker = new naver.maps.Marker({
 		position : new naver.maps.LatLng(x, y),
-		map : map
-		/* */
-		,
+		map : map,
 		icon : {
 			url : 'images/map/maker_blue.png',
 			size : new naver.maps.Size(22, 33),
@@ -246,7 +254,7 @@ function makerMap(x, y) {
 			origin : new naver.maps.Point(0, 0),
 			anchor : new naver.maps.Point(12, 34)
 		}
-
+		
 	});
 }
 
